@@ -4,6 +4,8 @@
 
 ScreenRest is a desktop application that reminds you to take regular breaks while working on your computer. It runs quietly in your system tray and displays a fullscreen break overlay at configurable intervals, helping you reduce eye strain, prevent repetitive stress injuries, and maintain focus throughout the day.
 
+This project was built on top of the excellent [stretchly](https://github.com/hovancik/stretchly) app by [hovancik](https://github.com/hovancik), which serves as the foundation for ScreenRest's break reminder functionality.
+
 ## What It Does
 
 - **Automatic break reminders** — ScreenRest shows a fullscreen break screen at regular intervals (default: every 10 minutes for 20 seconds). You set the schedule that works for you.
