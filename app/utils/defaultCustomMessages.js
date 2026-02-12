@@ -1,17 +1,13 @@
 export default [
-  'Renew your intention — you are working for the sake of Allah.',
-  'Remember Allah in your work — "Verily, in the remembrance of Allah do hearts find rest." (13:28)',
-  'Ask yourself: Is this task bringing me closer to Allah?',
-  'Begin with Bismillah — let every action be for His sake.',
-  'Make dua for barakah in your time and effort.',
-  'Take a moment to say Alhamdulillah for the ability to work.',
-  'Seek excellence (Ihsan) — Allah loves those who do good.',
-  'Your rizq is already written — trust Allah and give your best.',
-  'A moment of dhikr can refresh your soul more than any break.',
-  'The Prophet (peace be upon him) said: "The best of people are those who are most beneficial to others."',
-  'Purify your intention — are you working to please Allah or people?',
-  'Remember: Every halal effort to provide for your family is an act of worship.',
-  'SubhanAllah, Alhamdulillah, Allahu Akbar — say it now and earn rewards.',
-  'Be patient and persistent — "Indeed, Allah is with the patient." (2:153)',
-  'Take care of your body — it is an amanah (trust) from Allah.'
+  'Allah is with me, Allah is watching me.',
+  'Allah is a witness over what I do.',
+  'I will stand before Allah and He will question me about how I spent my time.',
+  'Every moment wasted is a moment I can never get back. Use it wisely for Allah\'s sake.',
+  'Am I doing something that would please Allah right now?',
+  'My eyes, my time, and my body are all trusts from Allah. I must guard them.',
+  'Allah sees what is on my screen. Would I be comfortable if others saw it too?',
+  'Time is my most valuable asset. Once gone, it never returns.',
+  'The best of deeds are those done consistently, even if small. Let me take this break to reset.',
+  'Wasting time is a sign of ingratitude. Let me be grateful and use it wisely.',
+  'Allah does not burden a soul beyond that it can bear. I can step away from the screen.'
 ]

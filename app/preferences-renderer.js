@@ -117,7 +117,7 @@ window.onload = async (e) => {
   // Color picker logic
   const colorPicker = document.querySelector('#colorPicker')
   if (colorPicker) {
-    colorPicker.value = settings.mainColor || '#478484'
+    colorPicker.value = settings.mainColor || '#26A69A'
     if (!eventsAttached) {
       colorPicker.oninput = () => {
         window.settings.saveSettings('mainColor', colorPicker.value)

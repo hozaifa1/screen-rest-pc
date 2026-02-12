@@ -1,59 +1,71 @@
 @media (prefers-color-scheme: light) {
   :root {
-    --main-color: #252525;
-    --main-bg-color: #EDEDED;
-    --nav-bg:  linear-gradient(180deg, #EDECED 1%, #D2D1D2 97%);
-    --nav-shadow: inset 0 0 0 0 rgba(255,255,255,0.50), inset 0 0 0 0 #B7B4B7, inset 0 -1px 0 0 rgba(183,180,183,0.30);
+    --main-color: #1A2B2A;
+    --main-bg-color: #F5F7F6;
+    --nav-bg: linear-gradient(180deg, #E0F2F1 1%, #D0F0ED 97%);
+    --nav-shadow: inset 0 0 0 0 rgba(255,255,255,0.50), inset 0 0 0 0 #B2DFDB, inset 0 -1px 0 0 rgba(178,223,219,0.30);
 
-    --hr-bg-color: #DBDBDB;
+    --hr-bg-color: #B2DFDB;
 
     --button-bg-color: #FFFFFF;
-    --button-color: rgba(0,0,0,0.85);
-    --button-shadow: 0 0 1px 0 rgba(0,0,0,0.20);
-    --button-push-bg: linear-gradient(180deg, #2DD4BF 0%, #0D9488 100%);
+    --button-color: #1A2B2A;
+    --button-shadow: 0 0 1px 0 rgba(0,0,0,0.15);
+    --button-push-bg: linear-gradient(180deg, #4DB6AC 0%, #26A69A 100%);
     --button-push-shadow: 0 0 0 0 rgba(0,0,0,0.15);
 
     --checkbox-bg: #FFFFFF;
-    --checkbox-shadow: inset 0 0 1px 0 rgba(0,0,0,0.38);
-    --checkbox-checked-bg: #0D9488;
+    --checkbox-shadow: inset 0 0 1px 0 rgba(0,0,0,0.25);
+    --checkbox-checked-bg: #26A69A;
 
-    --has-select-before-bg: linear-gradient(180deg, #2DD4BF 0%, #0D9488 100%);
+    --has-select-before-bg: linear-gradient(180deg, #4DB6AC 0%, #26A69A 100%);
     --select-bg: #FFFFFF;
-    --select-color: #252525;
-    --select-border:0 solid rgba(0,0,0,0.15);
-    --select-shadow:  0 0 1px 0 rgba(0,0,0,0.20);
+    --select-color: #1A2B2A;
+    --select-border: 0 solid rgba(0,0,0,0.10);
+    --select-shadow: 0 0 1px 0 rgba(0,0,0,0.15);
     --select-option-bg: #FFFFFF;
 
-    --appearance-border-color: #FFFFFF;
+    --appearance-border-color: #EEF3F2;
+
+    --accent-color: #26A69A;
+    --accent-light: #4DB6AC;
+    --text-secondary: #5F7A78;
+    --surface-variant: #EEF3F2;
+    --primary-container: #D0F0ED;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --main-color: rgba(255,255,255,0.85);
-    --main-bg-color: #2D2D2D;
-    --nav-bg: linear-gradient(180deg, #4B4B4B 1%, #3D3D3D 97%);
-    --nav-shadow: inset 0 0 0 0 #000000, inset 0 -1px 0 0 #2B2B2B, inset 0 0 0 0 rgba(255,255,255,0.10);
+    --main-color: #E0F2F1;
+    --main-bg-color: #0D1B1A;
+    --nav-bg: linear-gradient(180deg, #1A302F 1%, #142625 97%);
+    --nav-shadow: inset 0 0 0 0 #000000, inset 0 -1px 0 0 #0D1B1A, inset 0 0 0 0 rgba(255,255,255,0.05);
 
-    --hr-bg-color: #535353;
+    --hr-bg-color: #1C3331;
 
-    --button-bg-color: rgba(255,255,255,0.25);
-    --button-color: rgba(255,255,255,0.85);;
-    --button-shadow: 0 0 1px 0 rgba(0,0,0,0.20), inset 0 1px 0 0 rgba(255,255,255,0.04), inset 0 0 0 0 rgba(255,255,255,0.16);
-    --button-push-bg: linear-gradient(180deg, #0D9488 0%, #065F46 100%);
-    --button-push-shadow: 0 0 1px 0 rgba(0,0,0,0.40), 0 0 1px 0 rgba(0,0,0,0.20), inset 0 0 0 0 rgba(255,255,255,0.25), inset 0 1px 0 0 rgba(255,255,255,0.06);
+    --button-bg-color: rgba(77,182,172,0.15);
+    --button-color: #E0F2F1;
+    --button-shadow: 0 0 1px 0 rgba(0,0,0,0.30);
+    --button-push-bg: linear-gradient(180deg, #26A69A 0%, #00897B 100%);
+    --button-push-shadow: 0 0 1px 0 rgba(0,0,0,0.40);
 
-    --checkbox-bg: linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.28) 100%);
-    --checkbox-shadow: 0 0 1px 0 rgba(0,0,0,0.40), 0 0 1px 0 rgba(0,0,0,0.20), inset 0 0 0 0 rgba(255,255,255,0.25), inset 0 1px 0 0 rgba(255,255,255,0.06);
-    --checkbox-checked-bg:  linear-gradient(180deg, #0D9488 0%, #065F46 100%);
+    --checkbox-bg: rgba(77,182,172,0.12);
+    --checkbox-shadow: 0 0 1px 0 rgba(0,0,0,0.40), inset 0 0 0 0 rgba(255,255,255,0.08);
+    --checkbox-checked-bg: linear-gradient(180deg, #26A69A 0%, #00897B 100%);
 
-    --has-select-before-bg:  linear-gradient(180deg, #0D9488 0%, #065F46 100%);
-    --select-bg: rgba(255,255,255,0.25);
-    --select-color: rgba(255,255,255,0.85);
+    --has-select-before-bg: linear-gradient(180deg, #26A69A 0%, #00897B 100%);
+    --select-bg: rgba(77,182,172,0.12);
+    --select-color: #E0F2F1;
     --select-border: 0 solid rgba(0,0,0,0.35);
-    --select-shadow: 0 0 1px 0 rgba(0,0,0,0.20), inset 0 1px 0 0 rgba(255,255,255,0.04), inset 0 0 0 0 rgba(255,255,255,0.16);
-    --select-option-bg: #616161;
+    --select-shadow: 0 0 1px 0 rgba(0,0,0,0.30);
+    --select-option-bg: #1A302F;
 
-    --appearance-border-color: #3A3A3A;
+    --appearance-border-color: #1C3331;
+
+    --accent-color: #4DB6AC;
+    --accent-light: #80CBC4;
+    --text-secondary: #80A09E;
+    --surface-variant: #1A302F;
+    --primary-container: #1C3331;
   }
 }

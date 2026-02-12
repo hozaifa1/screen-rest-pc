@@ -29,12 +29,15 @@ window.onload = async (event) => {
 
   async function fetchOnlineAyat () {
     try {
-      const randomAyah = Math.floor(Math.random() * 6236) + 1
-      const resp = await fetch(`https://api.alquran.cloud/v1/ayah/${randomAyah}/en.asad`)
-      if (resp.ok) {
-        const data = await resp.json()
-        if (data && data.data) {
-          return `"${data.data.text}" — Quran ${data.data.surah.englishName} ${data.data.surah.number}:${data.data.numberInSurah}`
+      const maxAttempts = 3
+      for (let i = 0; i < maxAttempts; i++) {
+        const randomAyah = Math.floor(Math.random() * 6236) + 1
+        const resp = await fetch(`https://api.alquran.cloud/v1/ayah/${randomAyah}/en.hilali`)
+        if (resp.ok) {
+          const data = await resp.json()
+          if (data && data.data && data.data.text.length <= 150) {
+            return `"${data.data.text}" — Quran ${data.data.surah.englishName} ${data.data.surah.number}:${data.data.numberInSurah}`
+          }
         }
       }
     } catch (e) { /* offline, use stored */ }

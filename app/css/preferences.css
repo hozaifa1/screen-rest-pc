@@ -215,8 +215,8 @@ body[dir=rtl] .theme > :nth-child(17) {
 }
 
 #greenClouds + label:before {
-  background: #478484;
-  color: #478484;
+  background: #26A69A;
+  color: #26A69A;
 }
 
 #autumnBeBlessed + label:before {

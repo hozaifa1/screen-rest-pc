@@ -441,7 +441,7 @@ function createWelcomeWindow (isAppStart = true) {
       show: false,
       autoHideMenuBar: true,
       icon: windowIconPath(),
-      backgroundColor: 'EDEDED',
+      backgroundColor: '#F5F7F6',
       webPreferences: {
         preload: join(__dirname, './welcome-preload.mjs'),
         sandbox: false
@@ -756,7 +756,7 @@ function createPreferencesWindow () {
     maxHeight: Math.round(maxHeight),
     x: displayManager.getDisplayX(-1, 600),
     y: displayManager.getDisplayY(-1, 530),
-    backgroundColor: '#EDEDED',
+    backgroundColor: '#F5F7F6',
     webPreferences: {
       preload: join(__dirname, './preferences-preload.mjs'),
       sandbox: false

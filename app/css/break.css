@@ -8,8 +8,10 @@
     'Noto Sans Gujarati Light', 'Noto Sans Gurmukhi Light',
     'Noto Sans Hebrew Light';
   font-weight: 300;
-  grid-template: 85vh 10vh / 100px auto 100px;
+  grid-template: minmax(0, 85vh) 10vh / 100px auto 100px;
   justify-items: center;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .breaks > * {
@@ -18,6 +20,14 @@
 
 .breaks > :nth-child(1) {
   text-align: center;
+  max-height: 85vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 40px;
+  box-sizing: border-box;
 }
 
 .breaks > :nth-child(1) > progress {
@@ -44,13 +54,16 @@
 }
 
 .breaks > :nth-child(1) > .custom-break-message {
-  font-size: 42px;
+  font-size: 26px;
   font-weight: 400;
-  letter-spacing: 0.6px;
-  line-height: 56px;
-  margin-bottom: 40px;
+  letter-spacing: 0.4px;
+  line-height: 38px;
+  margin-bottom: 30px;
+  max-width: 80vw;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   animation: fadeIn 0.8s ease-in;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .breaks > :nth-child(2) {
