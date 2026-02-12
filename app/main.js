@@ -15,7 +15,7 @@ import Store from 'electron-store'
 import humanizeDuration from 'humanize-duration'
 
 import {
-  canPostpone, canSkip, formatTimeRemaining,
+  canSkip, formatTimeRemaining,
   minutesRemaining, insideWindowsStore, insideFlatpak, insideSnap, insideWindowsPortable
 } from './utils/utils.js'
 import BreaksPlanner from './breaksPlanner.js'
@@ -494,10 +494,6 @@ function startMicrobreak () {
 
   const breakDuration = settings.get('microbreakDuration')
   const strictMode = settings.get('microbreakStrictMode')
-  const postponesLimit = settings.get('microbreakPostponesLimit')
-  const postponableDurationPercent = settings.get('microbreakPostponableDurationPercent')
-  const postponable = settings.get('microbreakPostpone') &&
-    breakPlanner.postponesNumber < postponesLimit && postponesLimit > 0
   const showBreaksAsRegularWindows = settings.get('showBreaksAsRegularWindows')
 
   const modalPath = 'file://' + join(__dirname, '/microbreak.html')
@@ -522,15 +518,13 @@ function startMicrobreak () {
           finishMicrobreak(false)
           return
         }
-        if (canPostpone(postponable, passedPercent, postponableDurationPercent)) {
-          postponeMicrobreak()
-        } else if (canSkip(strictMode, postponable, passedPercent, postponableDurationPercent)) {
+        if (canSkip(strictMode, false, passedPercent, 0)) {
           finishMicrobreak(false)
         }
       })
     }
     return [idea, startTime, breakDuration, strictMode,
-      postponable, postponableDurationPercent,
+      false, 0,
       calculateBackgroundColor(settings.get('miniBreakColor'))]
   })
 
@@ -674,13 +668,6 @@ function finishMicrobreak (shouldPlaySound = true, shouldPlanNext = true) {
   } else {
     breakPlanner.clear()
   }
-  updateTray()
-}
-
-function postponeMicrobreak () {
-  microbreakWins = breakComplete(false, microbreakWins)
-  breakPlanner.postponeCurrentBreak()
-  log.info('ScreenRest: postponing break')
   updateTray()
 }
 
@@ -959,10 +946,6 @@ function showNotification (text) {
     settings.get('silentNotifications')
   )
 }
-
-ipcMain.on('postpone-mini-break', function (event) {
-  postponeMicrobreak()
-})
 
 ipcMain.on('finish-mini-break', function (event, shouldPlaySound, shouldPlanNext) {
   finishMicrobreak(shouldPlaySound, shouldPlanNext)

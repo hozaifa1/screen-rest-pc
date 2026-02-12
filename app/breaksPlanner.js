@@ -128,24 +128,6 @@ class BreaksPlanner extends EventEmitter {
     this.scheduler.plan()
   }
 
-  postponeCurrentBreak () {
-    this.scheduler.cancel()
-    this.postponesNumber += 1
-    let postponeTime, eventName
-    const scheduledBreakType = this._scheduledBreakType
-    const notification = this.settings.get(`${scheduledBreakType}Notification`)
-    if (notification && this.settings.get(`${scheduledBreakType}PostponeTime`) > this.settings.get(`${scheduledBreakType}NotificationInterval`)) {
-      postponeTime = this.settings.get(`${scheduledBreakType}PostponeTime`) - this.settings.get(`${scheduledBreakType}NotificationInterval`)
-      eventName = `start${scheduledBreakType.charAt(0).toUpperCase() + scheduledBreakType.slice(1)}Notification`
-    } else {
-      postponeTime = this.settings.get(`${scheduledBreakType}PostponeTime`)
-      eventName = `start${scheduledBreakType.charAt(0).toUpperCase() + scheduledBreakType.slice(1)}`
-    }
-    this.scheduler = new Scheduler(() => this.emit(eventName), postponeTime, eventName)
-    this.scheduler.plan()
-    this.emit('updateToolTip')
-  }
-
   skipToMicrobreak (delay = 100) {
     this.scheduler.cancel()
     this.scheduler = new Scheduler(() => this.emit('startMicrobreak'), delay, 'startMicrobreak')

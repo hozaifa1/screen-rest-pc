@@ -1,7 +1,0 @@
-services:
-  web:
-    build: .
-    volumes:
-      - .:/ScreenRest
-    command: bash -c "tail -F anything"
-    network_mode: "bridge"

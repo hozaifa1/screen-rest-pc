@@ -30,7 +30,6 @@ function exposeBreaks (type) {
   contextBridge.exposeInMainWorld('breaks', {
     sendBreakData: () => ipcRenderer.invoke(`send-${type}-break-data`),
     finishBreak: () => ipcRenderer.send(`finish-${type}-break`, false),
-    postponeBreak: () => ipcRenderer.send(`postpone-${type}-break`),
     signalLoaded: () => ipcRenderer.send(`${type}-break-loaded`),
     onEnterManualAwait: (callback) => ipcRenderer.on('enter-manual-await', (_e, which) => callback(which)),
     sanitizeIdea: (value) => sanitizeIdea(value)
@@ -117,7 +116,6 @@ function exposeUtils () {
     shouldShowNotificationTitle: (platform, systemVersion) => {
       return utils.shouldShowNotificationTitle(platform, systemVersion, semver)
     },
-    canPostpone: utils.canPostpone,
     canSkip: utils.canSkip
   })
 }

@@ -2,8 +2,8 @@ import HtmlTranslate from './utils/htmlTranslate.js'
 import './platform.js'
 
 window.onload = async (event) => {
-  const [, started, duration, strictMode, postpone,
-    postponePercent, backgroundColor] = await window.breaks.sendBreakData()
+  const [, started, duration, strictMode, ,
+    , backgroundColor] = await window.breaks.sendBreakData()
 
   new HtmlTranslate(document).translate()
 
@@ -15,9 +15,6 @@ window.onload = async (event) => {
 
   document.querySelector('#close').onclick = async event =>
     await window.breaks.finishBreak()
-
-  document.querySelector('#postpone').onclick = async event =>
-    await window.breaks.postponeBreak()
 
   const customMessagesEnabled = await window.settings.get('customMessagesEnabled')
   const quranAyatEnabled = await window.settings.get('quranAyatEnabled')
@@ -93,7 +90,6 @@ window.onload = async (event) => {
 
   const progress = document.querySelector('#progress')
   const progressTime = document.querySelector('#progress-time')
-  const postponeElement = document.querySelector('#postpone')
   const closeElement = document.querySelector('#close')
   const manualFinishElement = document.querySelector('#finish')
   const mainColor = await window.settings.get('mainColor')
@@ -122,12 +118,7 @@ window.onload = async (event) => {
     if (!manualAwaiting) {
       if (passed < duration) {
         const passedPercent = passed / duration * 100
-        if (window.utils.canPostpone(postpone, passedPercent, postponePercent)) {
-          postponeElement.classList.remove('hidden')
-        } else {
-          postponeElement.classList.add('hidden')
-        }
-        if (window.utils.canSkip(strictMode, postpone, passedPercent, postponePercent)) {
+        if (window.utils.canSkip(strictMode, false, passedPercent, 0)) {
           closeElement.classList.remove('hidden')
         } else {
           closeElement.classList.add('hidden')
@@ -145,7 +136,6 @@ window.onload = async (event) => {
     manualAwaiting = true
     progress.value = 0
     progressTime.classList.remove('hidden')
-    postponeElement.classList.add('hidden')
     closeElement.classList.add('hidden')
     manualFinishElement.classList.remove('hidden')
     progressTime.innerHTML = await window.utils.formatElapsedDuration(Date.now() - started, locale)

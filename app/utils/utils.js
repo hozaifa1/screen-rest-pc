@@ -47,14 +47,8 @@ function formatUnitAndValue (unit, value, i18next) {
   }
 }
 
-// does not consider `postponesLimit`
-function canPostpone (postpone, passedPercent, postponePercent) {
-  return postpone && passedPercent <= postponePercent
-}
-
-// does not consider `postponesLimit`
 function canSkip (strictMode, postpone, passedPercent, postponePercent) {
-  return !((postpone && passedPercent <= postponePercent) || strictMode)
+  return !strictMode
 }
 
 function formatKeyboardShortcut (keyboardShortcut) {
@@ -96,7 +90,6 @@ export {
   formatElapsedDuration,
   formatTimeIn,
   formatUnitAndValue,
-  canPostpone,
   canSkip,
   formatKeyboardShortcut,
   minutesRemaining,

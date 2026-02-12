@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=ScreenRest
-Exec=run.sh %U
-Terminal=false
-Type=Application
-Icon=net.hozaifa1.ScreenRest
-StartupWMClass=ScreenRest
-Comment=The break time reminder app
-Categories=Utility;
