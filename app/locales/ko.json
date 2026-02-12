@@ -1,6 +1,6 @@
 {
   "main": {
-    "toolTipHeader": "Stretchly - 휴식 시간 알림 앱",
+    "toolTipHeader": "ScreenRest - 휴식 시간 알림 앱",
     "microbreakIn": "짧은 휴식까지 $t(utils.seconds, {'count': {{seconds}} }) 남음",
     "breakIn": "긴 휴식까지 $t(utils.seconds, {'count': {{seconds}} }) 남음",
     "resumingBreaks": "휴식 재개",
@@ -16,7 +16,7 @@
     "untilMorning": "아침까지",
     "indefinitely": "무기한",
     "resetBreaks": "휴식 재설정",
-    "quitStretchly": "Stretchly 종료",
+    "quitScreenRest": "ScreenRest 종료",
     "restoreDefaults": "기본값 복원",
     "warning": "앱 기본값이 복원되며, 모든 설정이 초기화됩니다.",
     "continue": "계속",
@@ -31,16 +31,16 @@
     "title": "휴식을 취할 시간입니다!"
   },
   "preferences": {
-    "title": "Stretchly 환경설정",
+    "title": "ScreenRest 환경설정",
     "nav": {
       "settings": "설정",
       "schedule": "일정",
       "theme": "테마",
       "about": "정보",
-      "heart": "Stretchly 사랑하기"
+      "heart": "ScreenRest 사랑하기"
     },
     "settings": {
-      "openAtLogin": "로그인 시 Stretchly 자동 시작",
+      "openAtLogin": "로그인 시 ScreenRest 자동 시작",
       "showBreaksIn": "휴식 표시 방법:",
       "window": "창",
       "fullscreen": "전체 화면",
@@ -95,7 +95,7 @@
       "version": "버전 ",
       "latestVersion": "최신 버전 ",
       "checkNewVersion": "앱 업데이트 자동 확인",
-      "learnMore": "Stretchly 기능에 대해 더 알아보거나, 튜토리얼을 보거나, 최신 버전을 다운로드하거나, 지원을 받으려면, ",
+      "learnMore": "ScreenRest 기능에 대해 더 알아보거나, 튜토리얼을 보거나, 최신 버전을 다운로드하거나, 지원을 받으려면, ",
       "ourWebsite": "저희 웹사이트를 방문하세요",
       "dot": ".",
       "developedBy": "개발:",
@@ -103,9 +103,9 @@
       "designedBy": "아이콘 및 UI 디자인: 콜린 섀넌"
     },
     "heart": {
-      "loveStretchly": "Stretchly가 마음에 드시나요?",
+      "loveScreenRest": "ScreenRest가 마음에 드시나요?",
       "desc1": "컴퓨터 사용 중 정기적인 휴식을 취하는 것은 신체적, 정신적 건강에 중요한 것으로 과학적으로 입증되었습니다.",
-      "desc2": "Stretchly는 무료입니다. 하지만 후원을 통해 저희를 지원하고 Stretchly를 계속 개선하며 다른 무료 소프트웨어를 출시하는 데 도움을 주실 수 있습니다.",
+      "desc2": "ScreenRest는 무료입니다. 하지만 후원을 통해 저희를 지원하고 ScreenRest를 계속 개선하며 다른 무료 소프트웨어를 출시하는 데 도움을 주실 수 있습니다.",
       "becomeContributor": "후원자 되기",
       "alreadyContributor": "이미 기여자입니다",
       "authenticateUsing": "인증 방법:",
@@ -170,7 +170,7 @@
     "timeToBreakInTray": "휴식까지 남은 시간",
     "showTimeToBreakInTray": "메뉴바 아이콘에 다음 휴식까지 남은 시간 표시",
     "showTrayIcon": "메뉴바 아이콘 표시",
-    "toShowTrayIcon": "메뉴바에 Stretchly 아이콘 표시",
+    "toShowTrayIcon": "메뉴바에 ScreenRest 아이콘 표시",
     "currentTimeInBreaks": "현재 시간",
     "showCurrentTimeInBreaks": "휴식 창에 현재 현지 시간 표시"
   },
@@ -188,7 +188,7 @@
     "newVersionAvailable": "새 버전이 나왔습니다!"
   },
   "welcome": {
-    "title": "Stretchly에 오신 것을 환영합니다",
+    "title": "ScreenRest에 오신 것을 환영합니다",
     "breakTimeReminderApp": "휴식 시간 알림 앱",
     "viewTutorial": "튜토리얼 보기",
     "openPreferences": "환경설정 열기",

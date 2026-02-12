@@ -52,16 +52,16 @@
       "authenticateUsing": "ยืนยันตัวตนด้วย:",
       "alreadyContributor": "ฉันร่วมสนับสนุนก่อนหน้านี้แล้ว",
       "becomeContributor": "ร่วมสนับสนุน",
-      "desc2": "Stretchly เป็นแอปฟรี แต่คุณสามารถช่วยเหลือเราได้ด้วยการบริจาค เพื่อให้เราสามารถปรับปรุง Stretchly และสร้างแอปฟรีอื่นๆ ได้เพิ่มเติม",
+      "desc2": "ScreenRest เป็นแอปฟรี แต่คุณสามารถช่วยเหลือเราได้ด้วยการบริจาค เพื่อให้เราสามารถปรับปรุง ScreenRest และสร้างแอปฟรีอื่นๆ ได้เพิ่มเติม",
       "desc1": "มีหลักฐานทางวิทยาศาสตร์ยืนยันว่าการพักเป็นประจำระหว่างการใช้งานคอมพิวเตอร์เป็นสิ่งสำคัญต่อสุขภาพร่างกายและสุขภาพจิตใจที่ดี",
-      "loveStretchly": "ชอบ Stretchly ใช่ไหม?"
+      "loveScreenRest": "ชอบ ScreenRest ใช่ไหม?"
     },
     "about": {
       "designedBy": "ออกแบบไอคอนและส่วนติดต่อผู้ใช้โดย Colin Shanley",
       "janH": "",
       "developedBy": "พัฒนาโดย",
       "ourWebsite": "เยี่ยมชมเว็บไซต์ของเรา",
-      "learnMore": "หากต้องการเรียนรู้เกี่ยวกับความสามารถของ Stretchly, ดูตัวอย่าการใช้งาน, ดาวน์โหลดแอปรุ่นล่าสุด หรือต้องการความช่วยเหลือ สามารถ ",
+      "learnMore": "หากต้องการเรียนรู้เกี่ยวกับความสามารถของ ScreenRest, ดูตัวอย่าการใช้งาน, ดาวน์โหลดแอปรุ่นล่าสุด หรือต้องการความช่วยเหลือ สามารถ ",
       "notifyNewVersion": "เตือนอัตโนมัติหากแอปมีอัปเดต",
       "latestVersion": "รุ่นล่าสุด ",
       "version": "รุ่นที่ ",
@@ -117,16 +117,16 @@
       "fullscreen": "เต็มจอ",
       "window": "หน้าต่าง",
       "showBreaksIn": "แสดงการพักในรูปแบบ:",
-      "openAtLogin": "เริ่ม Stretchly อัตโนมัติเมื่อล็อกอิน"
+      "openAtLogin": "เริ่ม ScreenRest อัตโนมัติเมื่อล็อกอิน"
     },
     "nav": {
-      "heart": "รัก Stretchly จัง",
+      "heart": "รัก ScreenRest จัง",
       "about": "เกี่ยวกับ",
       "theme": "ธีม",
       "schedule": "ตารางเวลา",
       "settings": "ตั้งค่า"
     },
-    "title": "การตั้งค่า Stretchly"
+    "title": "การตั้งค่า ScreenRest"
   },
   "break": {
     "title": "ได้เวลาพักแล้วจ้า!",
@@ -141,7 +141,7 @@
     "continue": "ต่อ",
     "warning": "ตัวเลือกนี้จะคืนค่าตั้งต้นและการตั้งค่าทั้งหมดของคุณจะถูกลบทิ้ง",
     "restoreDefaults": "คืนค่าตั้งต้น",
-    "quitStretchly": "ออกจาก Stretchly",
+    "quitScreenRest": "ออกจาก ScreenRest",
     "resetBreaks": "รีเซ็ตการพัก",
     "indefinitely": "ไม่มีกำหนด",
     "untilMorning": "จนถึงเช้า",
@@ -157,14 +157,14 @@
     "downloadLatestVersion": "ดาวน์โหลดเวอร์ชั่นล่าสุด",
     "breakIn": "พักใหญ่ใน $t(utils.seconds, {'count': {{seconds}} })",
     "microbreakIn": "พักย่อยใน $t(utils.seconds, {'count': {{seconds}} })",
-    "toolTipHeader": "Stretchly - แอปสำหรับเตือนเวลาพัก"
+    "toolTipHeader": "ScreenRest - แอปสำหรับเตือนเวลาพัก"
   },
   "welcome": {
     "getStarted": "เริ่มกันเลย",
     "breakTimeReminderApp": "แอพช่วยเตือนเมื่อถึงเวลาพัก",
     "openPreferences": "เปิดการปรับตั้งค่า",
     "viewTutorial": "ชมการใช้งาน",
-    "title": "ยินดีต้อนรับสู่ Stretchly"
+    "title": "ยินดีต้อนรับสู่ ScreenRest"
   },
   "statusMessages": {
     "indefinitely": "ไม่สิ้นสุด",

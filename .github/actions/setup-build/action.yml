@@ -1,5 +1,5 @@
 name: Setup Build Environment
-description: Setup Node.js, Python and npm dependencies for Stretchly builds
+description: Setup Node.js, Python and npm dependencies for ScreenRest builds
 
 runs:
   using: composite

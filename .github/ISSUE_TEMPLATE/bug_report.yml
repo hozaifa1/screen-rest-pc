@@ -19,7 +19,7 @@ body:
   id:            known-issues
   attributes:
     label:       Known issues
-    description: Please check [Known issues](https://github.com/hovancik/stretchly#known-issues) as it may contain a solution for your problem.
+    description: Please check [Known issues](https://github.com/hozaifa1/screenrest-pc#known-issues) as it may contain a solution for your problem.
     options:
     - label:     I've checked Known issues
       required:  true
@@ -27,7 +27,7 @@ body:
   id:            open-issues
   attributes:
     label:       Existing issues
-    description: Please check [Existing issues](https://github.com/hovancik/stretchly/issues?q=is%3Aissue) as it may contain your issue already.
+    description: Please check [Existing issues](https://github.com/hozaifa1/screenrest-pc/issues?q=is%3Aissue) as it may contain your issue already.
     options:
     - label:     I've checked Existing issues
       required:  true
@@ -35,7 +35,7 @@ body:
   id:            advanced-preferences
   attributes:
     label:       Advanced Preferences
-    description: Please check [Advanced Preferences](https://github.com/hovancik/stretchly#advanced-preferences) as it may contain a solution for your problem.
+    description: Please check [Advanced Preferences](https://github.com/hozaifa1/screenrest-pc#advanced-preferences) as it may contain a solution for your problem.
     options:
     - label:     I've checked Advanced Preferences
       required:  true
@@ -90,7 +90,7 @@ body:
     label:       Relevant log output
     description: |
       Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
-      [Learn here](https://github.com/hovancik/stretchly#debugging) how to get logs.
+      [Learn here](https://github.com/hozaifa1/screenrest-pc#debugging) how to get logs.
     render:      shell
   validations:
     required:    false
@@ -100,7 +100,7 @@ body:
     label:       Preferences
     description: |
       Please copy and paste your preferences file if you made any changes to Preferences. This will be automatically formatted into code, so no need for backticks.
-      [Learn here](https://github.com/hovancik/stretchly#debugging) how to get it.
+      [Learn here](https://github.com/hozaifa1/screenrest-pc#debugging) how to get it.
     render:      shell
   validations:
     required:    false
@@ -115,7 +115,7 @@ body:
   id:            terms
   attributes:
     label:       Code of Conduct
-    description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/hovancik/stretchly/blob/master/CODE_OF_CONDUCT.md)
+    description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/hozaifa1/screenrest-pc/blob/master/CODE_OF_CONDUCT.md)
     options:
     - label:     I agree to follow this project's Code of Conduct
       required:  true

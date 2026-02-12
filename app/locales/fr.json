@@ -1,6 +1,6 @@
 {
   "main": {
-    "toolTipHeader": "Stretchly – Application de rappel de pauses",
+    "toolTipHeader": "ScreenRest – Application de rappel de pauses",
     "microbreakIn": "Petite pause dans $t(utils.seconds, {'count': {{seconds}} })",
     "breakIn": "Grande pause dans $t(utils.seconds, {'count': {{seconds}} })",
     "resumingBreaks": "Reprise des pauses",
@@ -16,7 +16,7 @@
     "untilMorning": "Jusqu'au matin",
     "indefinitely": "Indéfiniment",
     "resetBreaks": "Réinitiliser les pauses",
-    "quitStretchly": "Quitter Stretchly",
+    "quitScreenRest": "Quitter ScreenRest",
     "restoreDefaults": "Réinitialiser",
     "warning": "Ceci va réinitialiser l'application, toutes vos préférences seront perdues.",
     "continue": "Continuer",
@@ -32,16 +32,16 @@
     "finish": "Terminer cette pause"
   },
   "preferences": {
-    "title": "Paramètres de Stretchly",
+    "title": "Paramètres de ScreenRest",
     "nav": {
       "settings": "Préférences",
       "schedule": "Planification",
       "theme": "Thème",
       "about": "À propos",
-      "heart": "J'aime Stretchly"
+      "heart": "J'aime ScreenRest"
     },
     "settings": {
-      "openAtLogin": "Démarrer Stretchly automatiquement à l'ouverture de session",
+      "openAtLogin": "Démarrer ScreenRest automatiquement à l'ouverture de session",
       "showBreaksIn": "Afficher les pauses en :",
       "window": "Fenêtre",
       "fullscreen": "Plein écran",
@@ -96,7 +96,7 @@
       "version": "Version ",
       "latestVersion": "Dernière version ",
       "notifyNewVersion": "Notifier automatiquement des dernières mises à jour",
-      "learnMore": "Pour en apprendre plus sur les fonctionnalités de Stretchly, regarder un tutoriel, télécharger la dernière version ou pour toute demande d'assistance, ",
+      "learnMore": "Pour en apprendre plus sur les fonctionnalités de ScreenRest, regarder un tutoriel, télécharger la dernière version ou pour toute demande d'assistance, ",
       "ourWebsite": "visitez notre site Web",
       "dot": ".",
       "developedBy": "Développé par",
@@ -105,9 +105,9 @@
       "checkNewVersion": "Vérifier automatiquement la présence de mise à jour"
     },
     "heart": {
-      "loveStretchly": "Vous aimez Stretchly ?",
+      "loveScreenRest": "Vous aimez ScreenRest ?",
       "desc1": "Il est scientifiquement prouvé que prendre régulièrement des pauses lorsqu'on travaille sur un ordinateur est important pour la santé et le bien-être physique et mental.",
-      "desc2": "Stretchly est gratuit, mais vous pouvez nous montrer votre soutien en faisant un don, pour nous aider à continuer à améliorer Stretchly et développer d'autres logiciels libres.",
+      "desc2": "ScreenRest est gratuit, mais vous pouvez nous montrer votre soutien en faisant un don, pour nous aider à continuer à améliorer ScreenRest et développer d'autres logiciels libres.",
       "becomeContributor": "Nous soutenir",
       "alreadyContributor": "Je suis déjà un contributeur",
       "authenticateUsing": "S'authentifier par :",
@@ -173,7 +173,7 @@
     "showTimeToBreakInTray": "Afficher l'heure jusqu'à la prochaine pause dans l'icône de la barre de menus",
     "showCurrentTimeInBreaks": "Afficher l'heure locale actuelle dans la fenêtre de pause",
     "currentTimeInBreaks": "Heure actuelle",
-    "toShowTrayIcon": "Afficher l'icône de Stretchly dans la barre de menus",
+    "toShowTrayIcon": "Afficher l'icône de ScreenRest dans la barre de menus",
     "showTrayIcon": "Afficher l'icône de la barre de menus"
   },
   "utils": {
@@ -202,7 +202,7 @@
     "newVersionAvailable": "Une nouvelle version est disponible !"
   },
   "welcome": {
-    "title": "Bienvenue sur Stretchly",
+    "title": "Bienvenue sur ScreenRest",
     "breakTimeReminderApp": "Application de rappel de pauses",
     "viewTutorial": "Voir le tutoriel",
     "openPreferences": "Ouvrir les préférences",

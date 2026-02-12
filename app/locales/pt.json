@@ -7,7 +7,7 @@
     "continue": "Continuar",
     "warning": "Isto vai restaurar as predefinições da aplicação e todas as configurações serão perdidas.",
     "restoreDefaults": "Restaurar predefinições",
-    "quitStretchly": "Sair do Stretchly",
+    "quitScreenRest": "Sair do ScreenRest",
     "resetBreaks": "Recomeçar Pausas",
     "indefinitely": "Indefinidamente",
     "untilMorning": "Até à próxima manhã",
@@ -23,7 +23,7 @@
     "resumingBreaks": "Resumindo pausas",
     "microbreakIn": "Pausa curta em $t(utils.seconds, {'count': {{seconds}} })",
     "breakIn": "Pausa longa em $t(utils.seconds, {'count': {{seconds}} })",
-    "toolTipHeader": "Stretchly - A app de lembretes para pausas"
+    "toolTipHeader": "ScreenRest - A app de lembretes para pausas"
   },
   "statusMessages": {
     "resuming": "Retomando",
@@ -42,7 +42,7 @@
     "openPreferences": "Abrir Preferências",
     "viewTutorial": "Veja o Tutorial",
     "breakTimeReminderApp": "Apps para lembrá-lo de fazer pausas",
-    "title": "Bem-vindo ao Stretchly"
+    "title": "Bem-vindo ao ScreenRest"
   },
   "process": {
     "newVersionAvailable": "Nova versão disponível!"
@@ -128,7 +128,7 @@
     "timeToBreakInTray": "Tempo para pausar",
     "showTimeToBreakInTray": "Mostrar tempo para a próxima pausa no ícone da barra de menu",
     "showTrayIcon": "Mostrar ícone da barra de menu",
-    "toShowTrayIcon": "Mostrar ícone do Stretchly na barra de menu"
+    "toShowTrayIcon": "Mostrar ícone do ScreenRest na barra de menu"
   },
   "preferences": {
     "heart": {
@@ -137,9 +137,9 @@
       "authenticateUsing": "Autenticar a usar:",
       "alreadyContributor": "Já sou um contribuidor",
       "becomeContributor": "Torne-se um Benfeitor",
-      "desc2": "Stretchly é gratuito. Mas pode dar-nos suporte a doar e nos a ajudar a continuar a aperfeiçoar o Stretchly e a lançar outro software gratuito.",
+      "desc2": "ScreenRest é gratuito. Mas pode dar-nos suporte a doar e nos a ajudar a continuar a aperfeiçoar o ScreenRest e a lançar outro software gratuito.",
       "desc1": "Fazer pausas regulares quando se está a usar um computador é cientificamente provado ser importante para o seu bem-estar físico e mental.",
-      "loveStretchly": "Ama o seu Stretchly?"
+      "loveScreenRest": "Ama o seu ScreenRest?"
     },
     "about": {
       "designedBy": "Ícone e Interface de Utilizador desenvolvidas por Colin Shanley",
@@ -147,7 +147,7 @@
       "developedBy": "Desenvolvido por",
       "dot": ".",
       "ourWebsite": "visite nosso website",
-      "learnMore": "Para aprender mais sobre características do Stretchly, veja um tutorial, descarregue a última versão ou contate-nos para suporte, ",
+      "learnMore": "Para aprender mais sobre características do ScreenRest, veja um tutorial, descarregue a última versão ou contate-nos para suporte, ",
       "latestVersion": "Última versão ",
       "version": "Versão ",
       "tagline": "App para lembrá-lo de fazer pausas",
@@ -202,16 +202,16 @@
       "fullscreen": "Ecrã Cheio",
       "window": "Janela",
       "showBreaksIn": "Mostrar as pausas em:",
-      "openAtLogin": "Iniciar Stretchly automaticamente quando fizer login"
+      "openAtLogin": "Iniciar ScreenRest automaticamente quando fizer login"
     },
     "nav": {
-      "heart": "Amo Stretchly",
+      "heart": "Amo ScreenRest",
       "about": "Sobre",
       "theme": "Tema",
       "schedule": "Agenda",
       "settings": "Configurações"
     },
-    "title": "Preferências do Stretchly"
+    "title": "Preferências do ScreenRest"
   },
   "break": {
     "title": "É hora de fazer uma pausa!",

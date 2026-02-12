@@ -1,6 +1,6 @@
 {
   "main": {
-    "toolTipHeader": "Stretchly - Taukomuistutussovellus",
+    "toolTipHeader": "ScreenRest - Taukomuistutussovellus",
     "microbreakIn": "Minitauko $t(utils.seconds, {'count': {{seconds}} }) kuluttua",
     "breakIn": "Pitkä tauko $t(utils.seconds, {'count': {{seconds}} }) kuluttua",
     "resumingBreaks": "Jatketaan taukoja",
@@ -16,7 +16,7 @@
     "untilMorning": "Aamuun saakka",
     "indefinitely": "Toistaiseksi",
     "resetBreaks": "Nollaa tauot",
-    "quitStretchly": "Lopeta Stretchly",
+    "quitScreenRest": "Lopeta ScreenRest",
     "restoreDefaults": "Palauta oletusasetukset",
     "warning": "Tämä palauttaa sovelluksen oletusasetukset ja tekemäsi muutokset menetetään.",
     "continue": "Jatka",
@@ -31,16 +31,16 @@
     "title": "Aika pitää tauko!"
   },
   "preferences": {
-    "title": "Stretchly asetukset",
+    "title": "ScreenRest asetukset",
     "nav": {
       "settings": "Asetukset",
       "schedule": "Aikataulu",
       "theme": "Teema",
-      "about": "Stretchlystä",
-      "heart": "Rakasta Stretchlyä"
+      "about": "ScreenReststä",
+      "heart": "Rakasta ScreenRestä"
     },
     "settings": {
-      "openAtLogin": "Käynnistä Stretchly automaattisesti sisäänkirjautumisen yhteydessä.",
+      "openAtLogin": "Käynnistä ScreenRest automaattisesti sisäänkirjautumisen yhteydessä.",
       "showBreaksIn": "Näytä tauot:",
       "window": "Ikkunassa",
       "fullscreen": "Koko näytöllä",
@@ -94,7 +94,7 @@
       "version": "Versio ",
       "latestVersion": "Viimeisin versio ",
       "notifyNewVersion": "Ilmoita päivityksistä automaattisesti",
-      "learnMore": "Saadaksesi lisätietoa Stretchlyn ominaisuuksista, katso tutoriaali, lataa uusin versio tai ota yhteyttä tukeen, ",
+      "learnMore": "Saadaksesi lisätietoa ScreenRestn ominaisuuksista, katso tutoriaali, lataa uusin versio tai ota yhteyttä tukeen, ",
       "ourWebsite": "vieraile nettisivuillamme",
       "dot": ".",
       "developedBy": "Kehittänyt",
@@ -103,9 +103,9 @@
       "checkNewVersion": "Tarkista päivitykset automaattisesti"
     },
     "heart": {
-      "loveStretchly": "Rakasta Stretchlyä?",
+      "loveScreenRest": "Rakasta ScreenRestä?",
       "desc1": "Säännöllisten taukojen pitäminen tietokonetta käyttäessä on tieteellisesti todistetusti tärkeää fyysisen ja henkisen hyvinvoinnin kannalta.",
-      "desc2": "Stretchly on ilmainen. Voit kuitenkin antaa tukesi lahjoittamalla tai auttamalla meitä kehittämään Stretchlyä ja julkaisemaan muita ilmaisia sovelluksia.",
+      "desc2": "ScreenRest on ilmainen. Voit kuitenkin antaa tukesi lahjoittamalla tai auttamalla meitä kehittämään ScreenRestä ja julkaisemaan muita ilmaisia sovelluksia.",
       "becomeContributor": "Ryhdy lahjoittajaksi",
       "alreadyContributor": "Olen jo tukija",
       "authenticateUsing": "Vahvista käyttäen:",
@@ -186,7 +186,7 @@
     "newVersionAvailable": "Uusi verio on saatavilla!"
   },
   "welcome": {
-    "title": "Tervetuloa Stretchlyyn",
+    "title": "Tervetuloa ScreenRestyn",
     "breakTimeReminderApp": "Taukomuistutusaplikaatio",
     "viewTutorial": "Katso tutoriaali",
     "openPreferences": "Avaa asetukset",

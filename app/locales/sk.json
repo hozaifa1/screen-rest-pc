@@ -1,6 +1,6 @@
 {
   "main": {
-    "toolTipHeader": "Stretchly - Pamätá si prestávky za vás",
+    "toolTipHeader": "ScreenRest - Pamätá si prestávky za vás",
     "microbreakIn": "Mini prestávka za $t(utils.seconds, {'count': {{seconds}} })",
     "breakIn": "Dlhá prestávka za $t(utils.seconds, {'count': {{seconds}} })",
     "resumingBreaks": "Obnovenie prestávok",
@@ -16,7 +16,7 @@
     "untilMorning": "Do rána",
     "indefinitely": "Na neurčito",
     "resetBreaks": "Resetovať prestávky",
-    "quitStretchly": "Ukončiť Stretchly",
+    "quitScreenRest": "Ukončiť ScreenRest",
     "restoreDefaults": "Obnoviť pôvodné nastavenia",
     "areYouSure": "Táto akcia obnoví pôvodné nastavenia a všetky vaše zmeny budú stratené.",
     "continue": "Pokračovať",
@@ -33,16 +33,16 @@
     "finish": "Dokončiť túto prestávku"
   },
   "preferences": {
-    "title": "Nastavenia Stretchly",
+    "title": "Nastavenia ScreenRest",
     "nav": {
       "settings": "Nastavenia",
       "schedule": "Časovanie",
       "theme": "Téma",
       "about": "Informácie",
-      "heart": "Pomôcť Stretchly"
+      "heart": "Pomôcť ScreenRest"
     },
     "settings": {
-      "openAtLogin": "Spustiť Stretchly automaticky po prihlásení",
+      "openAtLogin": "Spustiť ScreenRest automaticky po prihlásení",
       "showBreaksIn": "Ukázať prestávky ako:",
       "window": "Okno",
       "fullscreen": "Celá obrazovka",
@@ -98,7 +98,7 @@
       "version": "Verzia ",
       "latestVersion": "Najnovšia verzia ",
       "notifyNewVersion": "Automaticky ma upozorni na novú verziu",
-      "learnMore": "Ak sa chcete dozvedieť viac o funkciách Stretchly, prezrieť tutoriál, stiahnuť najnovšiu verziu alebo nás kontaktovať kvôli podpore, ",
+      "learnMore": "Ak sa chcete dozvedieť viac o funkciách ScreenRest, prezrieť tutoriál, stiahnuť najnovšiu verziu alebo nás kontaktovať kvôli podpore, ",
       "ourWebsite": "navštívte našu webstránku",
       "dot": ".",
       "developedBy": "Vyvinul",
@@ -107,9 +107,9 @@
       "checkNewVersion": "Automaticky kontrolovať aktualizácie aplikácie"
     },
     "heart": {
-      "loveStretchly": "Chcete pomôcť Stretchly?",
+      "loveScreenRest": "Chcete pomôcť ScreenRest?",
       "desc1": "Prestávky počas práce s počítačom sú vedecky overenou metódou na zlepšenie fyzického a psychického zdravia.",
-      "desc2": "Stretchly je zdarma. Môžete však darovať svoj čas alebo peniaze a pomôcť tak k zlepšeniu Stretchly a ďalších programov.",
+      "desc2": "ScreenRest je zdarma. Môžete však darovať svoj čas alebo peniaze a pomôcť tak k zlepšeniu ScreenRest a ďalších programov.",
       "becomeContributor": "Stante sa Patrónom",
       "alreadyContributor": "Už som prispel",
       "authenticateUsing": "Autentifikovať pomocou:",
@@ -176,7 +176,7 @@
     "showCurrentTimeInBreaks": "Ukázať aktuálny lokálny čas v okne Prestávky",
     "currentTimeInBreaks": "Aktuálny čas",
     "showTrayIcon": "Zobraziť ikonu",
-    "toShowTrayIcon": "Zobraziť ikonu Stretchly"
+    "toShowTrayIcon": "Zobraziť ikonu ScreenRest"
   },
   "utils": {
     "remaining": "{{count}} do konca",
@@ -205,7 +205,7 @@
     "newVersionAvailable": "Je dostupná nová verzia!"
   },
   "welcome": {
-    "title": "Vitajte v Stretchly",
+    "title": "Vitajte v ScreenRest",
     "breakTimeReminderApp": "Pamätá si prestávky za vás",
     "viewTutorial": "Prezrieť Tutoriál",
     "openPreferences": "Otvoriť Nastavenia",

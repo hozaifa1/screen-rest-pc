@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=Stretchly
+Name=ScreenRest
 Exec=run.sh %U
 Terminal=false
 Type=Application
-Icon=net.hovancik.Stretchly
-StartupWMClass=Stretchly
+Icon=net.hozaifa1.ScreenRest
+StartupWMClass=ScreenRest
 Comment=The break time reminder app
 Categories=Utility;

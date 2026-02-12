@@ -19,7 +19,7 @@ body:
   id:            open-requests
   attributes:
     label:       Existing requests
-    description: Please check [Existing requests](https://github.com/hovancik/stretchly/issues?q=is%3Aissue) as it may containt your idea already.
+    description: Please check [Existing requests](https://github.com/hozaifa1/screenrest-pc/issues?q=is%3Aissue) as it may containt your idea already.
     options:
     - label:     I've checked Existing requests
       required:  true
@@ -27,7 +27,7 @@ body:
   id:            advanced-preferences
   attributes:
     label:       Advanced Preferences
-    description: Please check [Advanced Preferences](https://github.com/hovancik/stretchly#advanced-preferences) as it may containt your idea already.
+    description: Please check [Advanced Preferences](https://github.com/hozaifa1/screenrest-pc#advanced-preferences) as it may containt your idea already.
     options:
     - label:     I've checked Advanced Preferences
       required:  true
@@ -88,7 +88,7 @@ body:
   id:            terms
   attributes:
     label:       Code of Conduct
-    description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/hovancik/stretchly/blob/master/CODE_OF_CONDUCT.md)
+    description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/hozaifa1/screenrest-pc/blob/master/CODE_OF_CONDUCT.md)
     options:
     - label:     I agree to follow this project's Code of Conduct
       required:  true

@@ -1,10 +1,10 @@
 class VersionChecker {
   latest () {
     return fetch(
-      'https://api.github.com/repos/hozaifa1/stretchly/releases/latest',
+      'https://api.github.com/repos/hozaifa1/screenrest-pc/releases/latest',
       {
         method: 'GET',
-        headers: { 'User-Agent': 'hozaifa1/stretchly' },
+        headers: { 'User-Agent': 'hozaifa1/screenrest-pc' },
         mode: 'cors',
         cache: 'default'
       })

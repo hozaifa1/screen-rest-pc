@@ -1,6 +1,6 @@
 {
   "main": {
-    "toolTipHeader": "Stretchly - prisimink pertraukėles",
+    "toolTipHeader": "ScreenRest - prisimink pertraukėles",
     "resumingBreaks": "Pertraukėlė tęsiasi",
     "downloadLatestVersion": "Atsisiųsti naujausią versiją",
     "skipToTheNext": "Praleisti iki kitos",
@@ -12,7 +12,7 @@
     "untilMorning": "iki rytojaus",
     "indefinitely": "neribotam laikui",
     "resetBreaks": "Atstatyti pertraukėles",
-    "quitStretchly": "Išjungti Stretchly",
+    "quitScreenRest": "Išjungti ScreenRest",
     "preferences": "Nuostatos",
     "syncPreferences": "Sinchronizavimo nuostatos",
     "contributorPreferences": "Nuostatos rėmėjams",
@@ -61,7 +61,7 @@
       "latestVersion": "Naujausia versija ",
       "version": "Versija ",
       "checkNewVersion": "Automatiškai tikrinti, ar yra programos atnaujinimų",
-      "learnMore": "Jei norite sužinoti daugiau apie Stretchly funkcijas, peržiūrėkite pamoką, atsisiųskite naujausią versiją arba susisiekite su mumis dėl pagalbos, "
+      "learnMore": "Jei norite sužinoti daugiau apie ScreenRest funkcijas, peržiūrėkite pamoką, atsisiųskite naujausią versiją arba susisiekite su mumis dėl pagalbos, "
     },
     "schedule": {
       "enableStrictLong": "Įjungti griežtą veikseną ilgoms pertraukoms",
@@ -108,16 +108,16 @@
       "authenticateUsing": "Tapatybės patvirtinimas naudojant:",
       "alreadyContributor": "Aš jau prisidėjau",
       "becomeContributor": "Paremti",
-      "desc2": "Stretchly yra nemokama. Tačiau galite paremti aukodami ir padėti mums toliau tobulinti Stretchly bei leisti kitą nemokamą programinę įrangą.",
+      "desc2": "ScreenRest yra nemokama. Tačiau galite paremti aukodami ir padėti mums toliau tobulinti ScreenRest bei leisti kitą nemokamą programinę įrangą.",
       "desc1": "Moksliškai įrodyta, kad reguliarios pertraukos naudojantis kompiuteriu yra svarbios jūsų fizinei ir psichinei savijautai.",
-      "loveStretchly": "Ar patinka Stretchly?"
+      "loveScreenRest": "Ar patinka ScreenRest?"
     }
   },
   "process": {
     "newVersionAvailable": "Pasiekiama nauja versija!"
   },
   "welcome": {
-    "title": "Jus sveikina Stretchly",
+    "title": "Jus sveikina ScreenRest",
     "breakTimeReminderApp": "Prisimink pertraukėles",
     "viewTutorial": "Peržiūrėti pamoką",
     "openPreferences": "Atverti nuostatas",
@@ -182,7 +182,7 @@
     "currentTimeInBreaks": "Dabartinis laikas",
     "showCurrentTimeInBreaks": "Rodyti vietinį laiką pertraukos lange",
     "showTrayIcon": "Rodyti meniu juostos ženkliuką",
-    "toShowTrayIcon": "Rodyti Stretchly ženkliuką meniu juostoje"
+    "toShowTrayIcon": "Rodyti ScreenRest ženkliuką meniu juostoje"
   },
   "statusMessages": {
     "nextLongBreak": "Kita ilgoji pertrauka",

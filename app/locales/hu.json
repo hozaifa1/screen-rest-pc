@@ -1,6 +1,6 @@
 {
   "main": {
-    "toolTipHeader": "Stretchly - A szünet emlékeztető alkalmazás",
+    "toolTipHeader": "ScreenRest - A szünet emlékeztető alkalmazás",
     "microbreakIn": "Rövid szünet $t(utils.seconds, {'count': {{seconds}} }) múlva",
     "breakIn": "Hosszú szünet $t(utils.seconds, {'count': {{seconds}} }) múlva",
     "resumingBreaks": "Szünetek folytatása",
@@ -16,7 +16,7 @@
     "untilMorning": "Reggelig",
     "indefinitely": "Határozatlan ideig",
     "resetBreaks": "Szünetek visszaállítása",
-    "quitStretchly": "Stretchly bezárása",
+    "quitScreenRest": "ScreenRest bezárása",
     "restoreDefaults": "Alapértelmezések visszaállítása",
     "warning": "Az alkalmazás alapértelmezett beállításai visszaállnak és az összes jelenlegi beállítás elvész.",
     "continue": "Folytatás",
@@ -32,16 +32,16 @@
     "finish": "Szünet befejezése"
   },
   "preferences": {
-    "title": "Stretchly Beállítások",
+    "title": "ScreenRest Beállítások",
     "nav": {
       "settings": "Beállítások",
       "schedule": "Időzítés",
       "theme": "Téma",
       "about": "Névjegy",
-      "heart": "Stretchly támogatása"
+      "heart": "ScreenRest támogatása"
     },
     "settings": {
-      "openAtLogin": "Stretchly automatikus indítása bejelentkezés után",
+      "openAtLogin": "ScreenRest automatikus indítása bejelentkezés után",
       "showBreaksIn": "Szünetek megjelenítése:",
       "window": "Ablakban",
       "fullscreen": "Teljes képernyőn",
@@ -97,7 +97,7 @@
       "version": "Verzió: ",
       "latestVersion": "Legfrissebb verzió: ",
       "notifyNewVersion": "Automatikus értesítés új verziók esetén",
-      "learnMore": "Ahhoz, hogy többet tudj meg a Stretchly funkciókról, útmutatókat nézz meg, letöltsd a legfrissebb verziót vagy, hogy írj az ügyfélszolgálatunknak, ",
+      "learnMore": "Ahhoz, hogy többet tudj meg a ScreenRest funkciókról, útmutatókat nézz meg, letöltsd a legfrissebb verziót vagy, hogy írj az ügyfélszolgálatunknak, ",
       "ourWebsite": "látogasd meg a weboldalunkat",
       "dot": ".",
       "developedBy": "Fejlesztette",
@@ -106,9 +106,9 @@
       "checkNewVersion": "Frissítés automatikus engedélyezése"
     },
     "heart": {
-      "loveStretchly": "Szereted a Stretchlyt?",
+      "loveScreenRest": "Szereted a ScreenRestt?",
       "desc1": "A számítógép használat közben tartott rendszeres szünetek tudományosan bizonyítottan fontosak a testi és szellemi jólét fenntartásához.",
-      "desc2": "A Stretchly alkalmazás ingyenes, de támogathatsz minket, hogy továbbra is fejleszteni tudjuk a Stretchly-t és egyéb ingyenes szoftvereinket.",
+      "desc2": "A ScreenRest alkalmazás ingyenes, de támogathatsz minket, hogy továbbra is fejleszteni tudjuk a ScreenRest-t és egyéb ingyenes szoftvereinket.",
       "becomeContributor": "Legyél támogató (Patreon)",
       "alreadyContributor": "Már támogató vagyok",
       "authenticateUsing": "Azonosítás a következővel:",
@@ -198,7 +198,7 @@
     "newVersionAvailable": "Új verzió érhető el!"
   },
   "welcome": {
-    "title": "Üdvözöl a Stretchly",
+    "title": "Üdvözöl a ScreenRest",
     "breakTimeReminderApp": "A szünet emlékeztető alkalmazás",
     "viewTutorial": "Útmutató megnyitása",
     "openPreferences": "Beállítások megnyitása",
@@ -465,7 +465,7 @@
     },
     "aas": {
       "title": "Ismétlés",
-      "text": "Megtaláltad már a Stretchly rutinod? Ne felejtsd el ismételni több alkalommal is, hogy a hosszantartó ülés káros hatásait megelőzd."
+      "text": "Megtaláltad már a ScreenRest rutinod? Ne felejtsd el ismételni több alkalommal is, hogy a hosszantartó ülés káros hatásait megelőzd."
     },
     "aaa": {
       "title": "Nem vagy egyedül",

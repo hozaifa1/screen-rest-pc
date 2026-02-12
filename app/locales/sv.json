@@ -1,6 +1,6 @@
 {
   "main": {
-    "toolTipHeader": "Stretchly - appen för pauspåminnelser",
+    "toolTipHeader": "ScreenRest - appen för pauspåminnelser",
     "microbreakIn": "Kort paus om $t(utils.seconds, {'count': {{seconds}} })",
     "breakIn": "Lång paus om $t(utils.seconds, {'count': {{seconds}} })",
     "resumingBreaks": "Återupptar pauser",
@@ -16,7 +16,7 @@
     "untilMorning": "Till morgonen",
     "indefinitely": "Obegränsat",
     "resetBreaks": "Återställ pauser",
-    "quitStretchly": "Avsluta Stretchly",
+    "quitScreenRest": "Avsluta ScreenRest",
     "restoreDefaults": "Återställ till standardvärden",
     "warning": "Detta återställer standardvärden för appen och alla dina inställningar går förlorade.",
     "continue": "Fortsätt",
@@ -32,16 +32,16 @@
     "finish": "Avsluta denna paus"
   },
   "preferences": {
-    "title": "Stretchly-inställningar",
+    "title": "ScreenRest-inställningar",
     "nav": {
       "settings": "Inställningar",
       "schedule": "Schema",
       "theme": "Tema",
       "about": "Om",
-      "heart": "Älska Stretchly"
+      "heart": "Älska ScreenRest"
     },
     "settings": {
-      "openAtLogin": "Starta Stretchly automatiskt när du loggar in",
+      "openAtLogin": "Starta ScreenRest automatiskt när du loggar in",
       "showBreaksIn": "Visar pauser om:",
       "window": "Fönster",
       "fullscreen": "Helskärm",
@@ -100,7 +100,7 @@
       "version": "Version ",
       "latestVersion": "Senaste version ",
       "notifyNewVersion": "Meddela automatiskt om appuppdateringar",
-      "learnMore": "För att lära dig mer om funktioner i Stretchly, se en handledning, hämta den senaste versionen eller kontakta oss för support, ",
+      "learnMore": "För att lära dig mer om funktioner i ScreenRest, se en handledning, hämta den senaste versionen eller kontakta oss för support, ",
       "ourWebsite": "besök vår hemsida",
       "dot": ".",
       "developedBy": "Utvecklad av",
@@ -109,9 +109,9 @@
       "checkNewVersion": "Sök automatiskt efter appuppdateringar"
     },
     "heart": {
-      "loveStretchly": "Älska din Stretchly?",
+      "loveScreenRest": "Älska din ScreenRest?",
       "desc1": "Att ta regelbundna pauser när du använder en dator är vetenskapligt bevisat att det är viktigt för ditt fysiska och psykiska välbefinnande.",
-      "desc2": "Stretchly är gratis. Men du kan ge ditt stöd genom att donera och hjälpa oss att fortsätta förbättra Stretchly och släppa annan gratis programvara.",
+      "desc2": "ScreenRest är gratis. Men du kan ge ditt stöd genom att donera och hjälpa oss att fortsätta förbättra ScreenRest och släppa annan gratis programvara.",
       "becomeContributor": "Bli en beskyddare",
       "alreadyContributor": "Jag är redan en bidragsgivare",
       "authenticateUsing": "Autentisera med:",
@@ -178,7 +178,7 @@
     "showCurrentTimeInBreaks": "Visa aktuell lokal tid i pausfönster",
     "showBreaksAsRegularWindowsInfo": "När det är aktiverat kommer pausfönster att bli fokuserbara, de kommer inte att vara \"Alltid överst\" längre och de kommer också att visas i aktivitetsfältet.",
     "showTrayIcon": "Visa ikon i aktivitetsfältet",
-    "toShowTrayIcon": "Visa Stretchly-ikonen i fältet"
+    "toShowTrayIcon": "Visa ScreenRest-ikonen i fältet"
   },
   "utils": {
     "none_one": "{{count}}",
@@ -201,7 +201,7 @@
     "newVersionAvailable": "Ny version är tillgänglig!"
   },
   "welcome": {
-    "title": "Välkommen till Stretchly",
+    "title": "Välkommen till ScreenRest",
     "breakTimeReminderApp": "Appen för paustidspåminnelse",
     "viewTutorial": "Visa handledning",
     "openPreferences": "Öppna inställningar",
@@ -396,7 +396,7 @@
     },
     "aas": {
       "title": "Upprepa",
-      "text": "Har du hittat din stretchly-rutin? Glöm inte att upprepa det mer än en gång för att bättre bekämpa effekterna av långvarigt sittande."
+      "text": "Har du hittat din ScreenRest-rutin? Glöm inte att upprepa det mer än en gång för att bättre bekämpa effekterna av långvarigt sittande."
     },
     "aat": {
       "title": "Handled och underarm",

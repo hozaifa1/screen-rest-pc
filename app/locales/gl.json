@@ -1,6 +1,6 @@
 {
   "main": {
-    "toolTipHeader": "Stretchly - A aplicación para lembrar acougar",
+    "toolTipHeader": "ScreenRest - A aplicación para lembrar acougar",
     "microbreakIn": "Descanso breve en $t(utils.seconds, {'count': {{seconds}} })",
     "breakIn": "Descanso longo en $t(utils.seconds, {'count': {{seconds}} })",
     "resumingBreaks": "A retomar os descansos",
@@ -16,7 +16,7 @@
     "untilMorning": "Ata mañá",
     "indefinitely": "Indefinidamente",
     "resetBreaks": "Restituír descansos",
-    "quitStretchly": "Saír de Stretchly",
+    "quitScreenRest": "Saír de ScreenRest",
     "restoreDefaults": "Restituír opcións por defecto",
     "warning": "Isto vai restituír as opcións por defecto da aplicación e perderás as que teñas configuradas.",
     "continue": "Continuar",
@@ -31,16 +31,16 @@
     "title": "Tempo de acougar!"
   },
   "preferences": {
-    "title": "Configuración de Stretchly",
+    "title": "Configuración de ScreenRest",
     "nav": {
       "settings": "Configuración",
       "schedule": "Horario",
       "theme": "Tema",
       "about": "Sobre",
-      "heart": "Encántame Stretchly"
+      "heart": "Encántame ScreenRest"
     },
     "settings": {
-      "openAtLogin": "Abrir Stretchly automáticamente ao iniciar sesión",
+      "openAtLogin": "Abrir ScreenRest automáticamente ao iniciar sesión",
       "showBreaksIn": "Amosar descansos:",
       "window": "Nunha ventá",
       "fullscreen": "A pantalla completa",
@@ -94,7 +94,7 @@
       "version": "Versión ",
       "latestVersion": "Última versión ",
       "checkNewVersion": "Comprobar actualizacións de maneira automática",
-      "learnMore": "Para aprender acerca das funcións de Stretchly, ver un titorial, descargar a última versión ou contactar connosco para obter axuda, ",
+      "learnMore": "Para aprender acerca das funcións de ScreenRest, ver un titorial, descargar a última versión ou contactar connosco para obter axuda, ",
       "ourWebsite": "visita a nosa web",
       "dot": ".",
       "developedBy": "Desenvolto por",
@@ -102,9 +102,9 @@
       "designedBy": "Deseño da icona e da interfaz de usuario por Colin Shanley"
     },
     "heart": {
-      "loveStretchly": "¿Engaioloute Stretchly?",
+      "loveScreenRest": "¿Engaioloute ScreenRest?",
       "desc1": "Comprobouse con método científico que acougar con regularidade cando usas un computador é importante para o benestar físico e mental.",
-      "desc2": "Stretchly é gratuito. Podes apoiar o proxecto donando e axudándonos a continuar mellorando Stretchly e lanzando outro software gratuíto.",
+      "desc2": "ScreenRest é gratuito. Podes apoiar o proxecto donando e axudándonos a continuar mellorando ScreenRest e lanzando outro software gratuíto.",
       "becomeContributor": "Convírtete en patrocinador",
       "alreadyContributor": "Xa son colaborador",
       "authenticateUsing": "Autenticar usando:",
@@ -191,7 +191,7 @@
     "newVersionAvailable": "Nova versión dispoñíbel!"
   },
   "welcome": {
-    "title": "Benvido a Stretchly",
+    "title": "Benvido a ScreenRest",
     "breakTimeReminderApp": "A aplicación para lembrar acougar",
     "viewTutorial": "Ver titorial",
     "openPreferences": "Configurar",

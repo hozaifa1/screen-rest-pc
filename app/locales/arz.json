@@ -1,6 +1,6 @@
 {
   "main": {
-    "toolTipHeader": "Stretchly - تطبيق تذكير وقت الراحة",
+    "toolTipHeader": "ScreenRest - تطبيق تذكير وقت الراحة",
     "microbreakIn": "استراحة قصيرة خلال $t(utils.seconds, {'count': {{seconds}} })",
     "breakIn": "استراحة طويلة خلال$t(utils.seconds, {'count': {{seconds}} })",
     "resumingBreaks": "استئناف الاستراحات",

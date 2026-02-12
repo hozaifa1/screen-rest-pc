@@ -1,6 +1,6 @@
 {
   "main": {
-    "toolTipHeader": "Stretchly - Mola hatırlatıcı uygulama",
+    "toolTipHeader": "ScreenRest - Mola hatırlatıcı uygulama",
     "resumingBreaks": "Molalara devam ediliyor",
     "downloadLatestVersion": "Son sürümü indir",
     "skipToTheNext": "Bir sonrakine geç",
@@ -12,7 +12,7 @@
     "untilMorning": "Sabaha kadar",
     "indefinitely": "Sonsuza kadar",
     "resetBreaks": "Molaları sıfırla",
-    "quitStretchly": "Stretchly'den çık",
+    "quitScreenRest": "ScreenRest'den çık",
     "preferences": "Tercihler",
     "syncPreferences": "Ayarları Eşzamanla",
     "contributorPreferences": "Destekçi Ayarları",
@@ -69,20 +69,20 @@
       "fullscreen": "Tam Ekran",
       "window": "Pencere",
       "showBreaksIn": "Molaları Gör:",
-      "openAtLogin": "Giriş yapıldığında Stretchly'i otomatik başlat",
+      "openAtLogin": "Giriş yapıldığında ScreenRest'i otomatik başlat",
       "language": "Dili seç:",
       "restoreDefaults": "Varsayılanı geri yükle",
       "monitorDnd": "Rahatsız Etme modundayken de molaları göster",
       "monitorIdleTime": "Sistemin boşta olduğu zamanı gözlemle (sistem boşta iken molalar durdurulur)."
     },
     "nav": {
-      "heart": "Stretchly'i Seviyor Musun",
+      "heart": "ScreenRest'i Seviyor Musun",
       "about": "Hakkında",
       "theme": "Tema",
       "schedule": "Zamanla",
       "settings": "Ayarlar"
     },
-    "title": "Stretchly Ayarları",
+    "title": "ScreenRest Ayarları",
     "schedule": {
       "miniBreaksInfo": "Mini Molalar, esneme ve rahatlama şansı vermek için düzenli olarak yapılan kısa molalardır.",
       "enableMiniBreaks": "Mini Molaları Etkinleştir",
@@ -108,16 +108,16 @@
       "authenticateUsing": "Tasdik etme yöntemi:",
       "alreadyContributor": "Zaten katkıda bulunuyorum",
       "becomeContributor": "Destekçi ol",
-      "desc2": "Stretchly ücretsiz. Ama Stretchly'i geliştirmeye devam etmemiz veya diğer özgür yazılımları geliştirmemize katkı sağlamak için bize bağış yapabilirsiniz.",
+      "desc2": "ScreenRest ücretsiz. Ama ScreenRest'i geliştirmeye devam etmemiz veya diğer özgür yazılımları geliştirmemize katkı sağlamak için bize bağış yapabilirsiniz.",
       "desc1": "Bilgisayar kullanırken düzenli mola vermenin fiziksel ve zihinsel iyiliğiniz için yararlı olduğu bilimsel olarak kanıtlanmıştır.",
-      "loveStretchly": "Strechly'i seviyor musunuz?"
+      "loveScreenRest": "Strechly'i seviyor musunuz?"
     }
   },
   "process": {
     "newVersionAvailable": "Yeni sürüm çıktı!"
   },
   "welcome": {
-    "title": "Stretchly'ye hoş geldiniz",
+    "title": "ScreenRest'ye hoş geldiniz",
     "breakTimeReminderApp": "Mola hatırlatıcı uygulama",
     "viewTutorial": "Kılavuzu Aç",
     "openPreferences": "Seçenekleri aç",
@@ -182,7 +182,7 @@
     "currentTimeInBreaks": "Geçerli saat",
     "showCurrentTimeInBreaks": "Mola penceresinde geçerli yerel saati göster",
     "showTrayIcon": "Menü çubuğu simgesini göster",
-    "toShowTrayIcon": "Menü çubuğunda Stretchly simgesini göster"
+    "toShowTrayIcon": "Menü çubuğunda ScreenRest simgesini göster"
   },
   "utils": {
     "none_one": "{{count}}",

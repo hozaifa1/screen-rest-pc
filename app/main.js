@@ -40,7 +40,7 @@ process.on('uncaughtException', (err, _) => {
   }
   dialog.showMessageBox(dialogOpts).then((returnValue) => {
     if (returnValue.response === 0) {
-      shell.openExternal('https://github.com/hozaifa1/stretchly/issues')
+      shell.openExternal('https://github.com/hozaifa1/screenrest-pc/issues')
     }
     app.quit()
   })

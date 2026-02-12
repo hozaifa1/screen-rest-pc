@@ -294,7 +294,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - advanced option not to reset breaks on Suspend/Lock
-- Stretchly doesn't need to restart after Restoring remote settings
+- ScreenRest doesn't need to restart after Restoring remote settings
 - Updated many translations
 
 ### Changed
@@ -311,7 +311,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Finnish translations
 - Indonesian translations
 - Latvian translations
-- Contributor preference option to make Stretchly act as a regular window (to make use of other apps during breaks easier)
+- Contributor preference option to make ScreenRest act as a regular window (to make use of other apps during breaks easier)
 - Advanced preferences for app exclusions (resume/pause when specific app is/not running)
 
 ### Changed
@@ -414,7 +414,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - new Icon
 
 ### Changed
-- changed app name from `stretchly` to `Stretchly`
+- changed app name from `ScreenRest` to `ScreenRest`
   - this might change location of preferences file, so you might need to set up your preferences again or copy the file
 - don't hide dock icon on macOS
 - updated some translations
@@ -465,7 +465,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Contributor settings to set Dark/Light/System mode for color mode
 
 ### Changed
-- changed app name from `stretchly` to `Stretchly`
+- changed app name from `ScreenRest` to `ScreenRest`
   - this will change location of preferences file, so you will need to set up your preferences again or copy the file
 
 ## [0.99.2] - 2020-04-27 Patreon
@@ -536,7 +536,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - new break ideas
 - pause breaks when screen is locked (Windows, macOS)
-- change tray icon when stretchly is paused
+- change tray icon when ScreenRest is paused
 - allow to use inverted (white) monochrome tray icon (Linux, Windows)
 - Danish translations
 
@@ -599,7 +599,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Ability to postpone breaks/microbreaks in non-strict mode
 - more data for debug information in About window
 - user can disable monitoring of DND mode
-- stretchly supporters can access extra settings
+- ScreenRest supporters can access extra settings
 
 ## [0.18.0] - 2018-10-21
 ### Added
@@ -633,7 +633,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 - closes running break window when skipping to the another one
-- download link from github's releases to hovancik.net/stretchly/downloads
+- download link from github's releases to github.com/hozaifa1/screenrest-pc/downloads
 
 ## [0.16.0] - 2018-03-17
 ### Added
@@ -642,7 +642,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - upper limit of microbreak duration set to 60 seconds
-- download link from github's releases to hovancik.net/stretchly/downloads
+- download link from github's releases to github.com/hozaifa1/screenrest-pc/downloads
 
 ### Fixed
 - notifications not working on latest Windows 10
@@ -692,7 +692,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - breaks wont resume with indefinite pause after system resume
 
 ### Added
-- monitoring of system idle time for natural breaks (when user leaves and after return idle time is greater then break duration, *stretchly* will reset breaks)
+- monitoring of system idle time for natural breaks (when user leaves and after return idle time is greater then break duration, *ScreenRest* will reset breaks)
 - menu link to Patreon
 
 ### Changed
@@ -707,7 +707,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - `Ctrl/Cmd + d` shortcut in About window to show debug information
 - monitoring suspend/resume (alfa, electron has bugs)
-- link to my.stretchly.net in menu
+- link to my.ScreenRest.net in menu
 
 ### Fixed
 - break is not skippable via shortcut in strict mode
@@ -760,7 +760,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - app windows are shown on the monitor where the mouse is (Windows, macOS, some Linux DEs)
 - reminders can be full screen
 - About and Settings windows are not resizable and not always on top
-- `Quit` -> `Quit stretchly` menu item text
+- `Quit` -> `Quit ScreenRest` menu item text
 - replaced `splash of cappuccino` with `graphite crystal` theme
 
 ### Added
@@ -831,7 +831,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.1.0] - 2016-09-26
 ### Added
 - update npm packages
-- rename strechly to stretchly (grammar, yay!)
+- rename strechly to ScreenRest (grammar, yay!)
 - allows only one instance of app
 - settings for microbreak (duration, interval)
 - 5 color scheme
@@ -844,67 +844,67 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - resume/pause functionality for reminder
 - scripts for creating installers for OS X, Windows, Linux
 
-[Unreleased]: https://github.com/hovancik/stretchly/compare/v1.20.0...HEAD
-[1.20.0]: https://github.com/hovancik/stretchly/compare/v1.19.0...v1.20.0
-[1.19.0]: https://github.com/hovancik/stretchly/compare/v1.18.1...v1.19.0
-[1.18.1]: https://github.com/hovancik/stretchly/compare/v1.18.0...v1.18.1
-[1.18.0]: https://github.com/hovancik/stretchly/compare/v1.17.2...v1.18.0
-[1.17.2]: https://github.com/hovancik/stretchly/compare/v1.17.1...v1.17.2
-[1.17.1]: https://github.com/hovancik/stretchly/compare/v1.17.0...v1.17.1
-[1.17.0]: https://github.com/hovancik/stretchly/compare/v1.16.0...v1.17.0
-[1.16.0]: https://github.com/hovancik/stretchly/compare/v1.15.1...v1.16.0
-[1.15.1]: https://github.com/hovancik/stretchly/compare/v1.15.0...v1.15.1
-[1.15.0]: https://github.com/hovancik/stretchly/compare/v1.14.1...v1.15.0
-[1.14.1]: https://github.com/hovancik/stretchly/compare/v1.14.0...v1.14.1
-[1.14.0]: https://github.com/hovancik/stretchly/compare/v1.13.1...v1.14.0
-[1.13.1]: https://github.com/hovancik/stretchly/compare/v1.13.0...v1.13.1
-[1.13.0]: https://github.com/hovancik/stretchly/compare/v1.12.0...v1.13.0
-[1.12.0]: https://github.com/hovancik/stretchly/compare/v1.11.0...v1.12.0
-[1.11.0]: https://github.com/hovancik/stretchly/compare/v1.10.0...v1.11.0
-[1.10.0]: https://github.com/hovancik/stretchly/compare/v1.9.0...v1.10.0
-[1.9.0]: https://github.com/hovancik/stretchly/compare/v1.8.1...v1.9.0
-[1.8.1]: https://github.com/hovancik/stretchly/compare/v1.8.0...v1.8.1
-[1.8.0]: https://github.com/hovancik/stretchly/compare/v1.7.0...v1.8.0
-[1.7.0]: https://github.com/hovancik/stretchly/compare/v1.6.0...v1.7.0
-[1.6.0]: https://github.com/hovancik/stretchly/compare/v1.5.0...v1.6.0
-[1.5.0]: https://github.com/hovancik/stretchly/compare/v1.4.0...v1.5.0
-[1.4.0]: https://github.com/hovancik/stretchly/compare/v1.3.0...v1.4.0
-[1.3.0]: https://github.com/hovancik/stretchly/compare/v1.2.0...v1.3.0
-[1.2.0]: https://github.com/hovancik/stretchly/compare/v1.1.0...v1.2.0
-[1.1.0]: https://github.com/hovancik/stretchly/compare/v1.0.0...v1.1.0
-[1.0.0]: https://github.com/hovancik/stretchly/compare/v0.99.5...v1.0.0
-[0.99.5]: https://github.com/hovancik/stretchly/compare/v0.99.4...v0.99.5
-[0.99.4]: https://github.com/hovancik/stretchly/compare/v0.99.3...v0.99.4
-[0.99.3]: https://github.com/hovancik/stretchly/compare/v0.99.2...v0.99.3
-[0.99.2]: https://github.com/hovancik/stretchly/compare/v0.99.1...v0.99.2
-[0.99.1]: https://github.com/hovancik/stretchly/compare/v0.99.0...v0.99.1
-[0.99.0]: https://github.com/hovancik/stretchly/compare/v0.21.1...v0.99.0
-[0.21.1]: https://github.com/hovancik/stretchly/compare/v0.21.0...v0.21.1
-[0.21.0]: https://github.com/hovancik/stretchly/compare/v0.20.1...v0.21.0
-[0.20.1]: https://github.com/hovancik/stretchly/compare/v0.20.0...v0.20.1
-[0.20.0]: https://github.com/hovancik/stretchly/compare/v0.19.1...v0.20.0
-[0.19.1]: https://github.com/hovancik/stretchly/compare/v0.19.0...v0.19.1
-[0.19.0]: https://github.com/hovancik/stretchly/compare/v0.18.0...v0.19.0
-[0.18.0]: https://github.com/hovancik/stretchly/compare/v0.17.0...v0.18.0
-[0.17.0]: https://github.com/hovancik/stretchly/compare/v0.16.0...v0.17.0
-[0.16.0]: https://github.com/hovancik/stretchly/compare/v0.15.0...v0.16.0
-[0.15.0]: https://github.com/hovancik/stretchly/compare/v0.14.0...v0.15.0
-[0.14.0]: https://github.com/hovancik/stretchly/compare/v0.13.0...v0.14.0
-[0.13.0]: https://github.com/hovancik/stretchly/compare/v0.12.0...v0.13.0
-[0.12.0]: https://github.com/hovancik/stretchly/compare/v0.11.0...v0.12.0
-[0.11.0]: https://github.com/hovancik/stretchly/compare/v0.10.0...v0.11.0
-[0.10.0]: https://github.com/hovancik/stretchly/compare/v0.9.0...v0.10.0
-[0.9.0]: https://github.com/hovancik/stretchly/compare/v0.8.1...v0.9.0
-[0.8.1]: https://github.com/hovancik/stretchly/compare/v0.8.0...v0.8.1
-[0.8.0]: https://github.com/hovancik/stretchly/compare/v0.7.0...v0.8.0
-[0.7.0]: https://github.com/hovancik/stretchly/compare/v0.6.0...v0.7.0
-[0.6.0]: https://github.com/hovancik/stretchly/compare/v0.5.1...v0.6.0
-[0.5.1]: https://github.com/hovancik/stretchly/compare/v0.5.0...v0.5.1
-[0.5.0]: https://github.com/hovancik/stretchly/compare/v0.4.0...v0.5.0
-[0.4.0]: https://github.com/hovancik/stretchly/compare/v0.3.0...v0.4.0
-[0.3.0]: https://github.com/hovancik/stretchly/compare/v0.2.1...v0.3.0
-[0.2.1]: https://github.com/hovancik/stretchly/compare/v0.2.0...v0.2.1
-[0.2.0]: https://github.com/hovancik/stretchly/compare/v0.1.1...v0.2.0
-[0.1.1]: https://github.com/hovancik/stretchly/compare/v0.1.0...v0.1.1
-[0.1.0]: https://github.com/hovancik/stretchly/compare/v0.0.1...v0.1.0
-[0.0.1]: https://github.com/hovancik/stretchly/compare/1a4817679dc840716ae7694c1bbb1f357a571097...v0.0.1
+[Unreleased]: https://github.com/hozaifa1/screenrest-pc/compare/v1.20.0...HEAD
+[1.20.0]: https://github.com/hozaifa1/screenrest-pc/compare/v1.19.0...v1.20.0
+[1.19.0]: https://github.com/hozaifa1/screenrest-pc/compare/v1.18.1...v1.19.0
+[1.18.1]: https://github.com/hozaifa1/screenrest-pc/compare/v1.18.0...v1.18.1
+[1.18.0]: https://github.com/hozaifa1/screenrest-pc/compare/v1.17.2...v1.18.0
+[1.17.2]: https://github.com/hozaifa1/screenrest-pc/compare/v1.17.1...v1.17.2
+[1.17.1]: https://github.com/hozaifa1/screenrest-pc/compare/v1.17.0...v1.17.1
+[1.17.0]: https://github.com/hozaifa1/screenrest-pc/compare/v1.16.0...v1.17.0
+[1.16.0]: https://github.com/hozaifa1/screenrest-pc/compare/v1.15.1...v1.16.0
+[1.15.1]: https://github.com/hozaifa1/screenrest-pc/compare/v1.15.0...v1.15.1
+[1.15.0]: https://github.com/hozaifa1/screenrest-pc/compare/v1.14.1...v1.15.0
+[1.14.1]: https://github.com/hozaifa1/screenrest-pc/compare/v1.14.0...v1.14.1
+[1.14.0]: https://github.com/hozaifa1/screenrest-pc/compare/v1.13.1...v1.14.0
+[1.13.1]: https://github.com/hozaifa1/screenrest-pc/compare/v1.13.0...v1.13.1
+[1.13.0]: https://github.com/hozaifa1/screenrest-pc/compare/v1.12.0...v1.13.0
+[1.12.0]: https://github.com/hozaifa1/screenrest-pc/compare/v1.11.0...v1.12.0
+[1.11.0]: https://github.com/hozaifa1/screenrest-pc/compare/v1.10.0...v1.11.0
+[1.10.0]: https://github.com/hozaifa1/screenrest-pc/compare/v1.9.0...v1.10.0
+[1.9.0]: https://github.com/hozaifa1/screenrest-pc/compare/v1.8.1...v1.9.0
+[1.8.1]: https://github.com/hozaifa1/screenrest-pc/compare/v1.8.0...v1.8.1
+[1.8.0]: https://github.com/hozaifa1/screenrest-pc/compare/v1.7.0...v1.8.0
+[1.7.0]: https://github.com/hozaifa1/screenrest-pc/compare/v1.6.0...v1.7.0
+[1.6.0]: https://github.com/hozaifa1/screenrest-pc/compare/v1.5.0...v1.6.0
+[1.5.0]: https://github.com/hozaifa1/screenrest-pc/compare/v1.4.0...v1.5.0
+[1.4.0]: https://github.com/hozaifa1/screenrest-pc/compare/v1.3.0...v1.4.0
+[1.3.0]: https://github.com/hozaifa1/screenrest-pc/compare/v1.2.0...v1.3.0
+[1.2.0]: https://github.com/hozaifa1/screenrest-pc/compare/v1.1.0...v1.2.0
+[1.1.0]: https://github.com/hozaifa1/screenrest-pc/compare/v1.0.0...v1.1.0
+[1.0.0]: https://github.com/hozaifa1/screenrest-pc/compare/v0.99.5...v1.0.0
+[0.99.5]: https://github.com/hozaifa1/screenrest-pc/compare/v0.99.4...v0.99.5
+[0.99.4]: https://github.com/hozaifa1/screenrest-pc/compare/v0.99.3...v0.99.4
+[0.99.3]: https://github.com/hozaifa1/screenrest-pc/compare/v0.99.2...v0.99.3
+[0.99.2]: https://github.com/hozaifa1/screenrest-pc/compare/v0.99.1...v0.99.2
+[0.99.1]: https://github.com/hozaifa1/screenrest-pc/compare/v0.99.0...v0.99.1
+[0.99.0]: https://github.com/hozaifa1/screenrest-pc/compare/v0.21.1...v0.99.0
+[0.21.1]: https://github.com/hozaifa1/screenrest-pc/compare/v0.21.0...v0.21.1
+[0.21.0]: https://github.com/hozaifa1/screenrest-pc/compare/v0.20.1...v0.21.0
+[0.20.1]: https://github.com/hozaifa1/screenrest-pc/compare/v0.20.0...v0.20.1
+[0.20.0]: https://github.com/hozaifa1/screenrest-pc/compare/v0.19.1...v0.20.0
+[0.19.1]: https://github.com/hozaifa1/screenrest-pc/compare/v0.19.0...v0.19.1
+[0.19.0]: https://github.com/hozaifa1/screenrest-pc/compare/v0.18.0...v0.19.0
+[0.18.0]: https://github.com/hozaifa1/screenrest-pc/compare/v0.17.0...v0.18.0
+[0.17.0]: https://github.com/hozaifa1/screenrest-pc/compare/v0.16.0...v0.17.0
+[0.16.0]: https://github.com/hozaifa1/screenrest-pc/compare/v0.15.0...v0.16.0
+[0.15.0]: https://github.com/hozaifa1/screenrest-pc/compare/v0.14.0...v0.15.0
+[0.14.0]: https://github.com/hozaifa1/screenrest-pc/compare/v0.13.0...v0.14.0
+[0.13.0]: https://github.com/hozaifa1/screenrest-pc/compare/v0.12.0...v0.13.0
+[0.12.0]: https://github.com/hozaifa1/screenrest-pc/compare/v0.11.0...v0.12.0
+[0.11.0]: https://github.com/hozaifa1/screenrest-pc/compare/v0.10.0...v0.11.0
+[0.10.0]: https://github.com/hozaifa1/screenrest-pc/compare/v0.9.0...v0.10.0
+[0.9.0]: https://github.com/hozaifa1/screenrest-pc/compare/v0.8.1...v0.9.0
+[0.8.1]: https://github.com/hozaifa1/screenrest-pc/compare/v0.8.0...v0.8.1
+[0.8.0]: https://github.com/hozaifa1/screenrest-pc/compare/v0.7.0...v0.8.0
+[0.7.0]: https://github.com/hozaifa1/screenrest-pc/compare/v0.6.0...v0.7.0
+[0.6.0]: https://github.com/hozaifa1/screenrest-pc/compare/v0.5.1...v0.6.0
+[0.5.1]: https://github.com/hozaifa1/screenrest-pc/compare/v0.5.0...v0.5.1
+[0.5.0]: https://github.com/hozaifa1/screenrest-pc/compare/v0.4.0...v0.5.0
+[0.4.0]: https://github.com/hozaifa1/screenrest-pc/compare/v0.3.0...v0.4.0
+[0.3.0]: https://github.com/hozaifa1/screenrest-pc/compare/v0.2.1...v0.3.0
+[0.2.1]: https://github.com/hozaifa1/screenrest-pc/compare/v0.2.0...v0.2.1
+[0.2.0]: https://github.com/hozaifa1/screenrest-pc/compare/v0.1.1...v0.2.0
+[0.1.1]: https://github.com/hozaifa1/screenrest-pc/compare/v0.1.0...v0.1.1
+[0.1.0]: https://github.com/hozaifa1/screenrest-pc/compare/v0.0.1...v0.1.0
+[0.0.1]: https://github.com/hozaifa1/screenrest-pc/compare/1a4817679dc840716ae7694c1bbb1f357a571097...v0.0.1

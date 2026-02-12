@@ -68,7 +68,7 @@
     "continue": "Turpināt",
     "warning": "Šī rīcība atgriezīs aplikācijas noklusējuma iestatījumus un visi jūsu iestatījumi tiks zaudēti.",
     "restoreDefaults": "Atgriezt noklusējuma iestādījumus",
-    "quitStretchly": "Aizvērt Stretchly",
+    "quitScreenRest": "Aizvērt ScreenRest",
     "untilMorning": "Līdz rītam",
     "for5Hours": "5 stundas",
     "for2Hours": "2 stundas",
@@ -82,7 +82,7 @@
     "resumingBreaks": "Pārtraukumi tiek atsākti",
     "breakIn": "Garais pārtraukums pēc $t(utils.seconds, {'count': {{seconds}} })",
     "microbreakIn": "Mazais pārtraukums pēc $t(utils.seconds, {'count': {{seconds}} })",
-    "toolTipHeader": "Stretchly - Pārtraukumu atgādinātājs"
+    "toolTipHeader": "ScreenRest - Pārtraukumu atgādinātājs"
   },
   "statusMessages": {
     "resuming": "Atsāk Pārtraukumus",
@@ -123,7 +123,7 @@
     "openPreferences": "Atvērt Iestatījumus",
     "viewTutorial": "Skatīt pamācību",
     "breakTimeReminderApp": "Pārtraukumu atgādinātājs",
-    "title": "Laipni lūgts Stretchly"
+    "title": "Laipni lūgts ScreenRest"
   },
   "process": {
     "newVersionAvailable": "Pieejama jauna versija!"
@@ -150,7 +150,7 @@
     },
     "nav": {
       "theme": "Izskats",
-      "heart": "Mīlu Stretchly",
+      "heart": "Mīlu ScreenRest",
       "about": "Par",
       "schedule": "Grafiks",
       "settings": "Iestatījumi"
@@ -159,10 +159,10 @@
       "contributorPreferences": "Atbalstītāju Iestatījumi",
       "authenticateUsing": "Autentificēties ar:",
       "becomeContributor": "Kļūt par atbalstītāju",
-      "alreadyContributor": "Jau atbalstu stretchly",
-      "desc2": "Stretchly ir bezmaksas. Jūs variet atbalstīt mūs ar ziedojumiem, kuri palīdzēs mums turpināt uzlabot Stretchly un būvēt citus bezmaksas rīkus.",
+      "alreadyContributor": "Jau atbalstu ScreenRest",
+      "desc2": "ScreenRest ir bezmaksas. Jūs variet atbalstīt mūs ar ziedojumiem, kuri palīdzēs mums turpināt uzlabot ScreenRest un būvēt citus bezmaksas rīkus.",
       "desc1": "Regulāri pārtraukumi, lietojot datoru, ir zinātniski pierādīti kā svarīgi, lai uzturētu gan fizisko, gan garīgo labkājību.",
-      "loveStretchly": "Mīli savu Stretchly?",
+      "loveScreenRest": "Mīli savu ScreenRest?",
       "syncPreferences": "Iestatījumu Sinhronizācija"
     },
     "about": {
@@ -171,7 +171,7 @@
       "developedBy": "Izstrādājis",
       "dot": ".",
       "ourWebsite": "apmeklē mūsu mājaslapu",
-      "learnMore": "Lai uzzinātu vairāk par Stretchly, skatītos pamācības, lejupielādētu jaunāko versiju vai sazinātos ar mums, ",
+      "learnMore": "Lai uzzinātu vairāk par ScreenRest, skatītos pamācības, lejupielādētu jaunāko versiju vai sazinātos ar mums, ",
       "notifyNewVersion": "Automātiski ziņot par aplikācijas atjauninājumiem",
       "latestVersion": "Jaunākā versija ",
       "version": "Versija ",
@@ -207,9 +207,9 @@
       "fullscreen": "Pa visu ekrānu",
       "window": "Logā",
       "showBreaksIn": "Parādīt pātraukumus:",
-      "openAtLogin": "Ieslēgt Stretchly automātiski"
+      "openAtLogin": "Ieslēgt ScreenRest automātiski"
     },
-    "title": "Stretchly Iestatījumi"
+    "title": "ScreenRest Iestatījumi"
   },
   "break": {
     "title": "Laiks pārtraukumam!",

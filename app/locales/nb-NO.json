@@ -73,21 +73,21 @@
     "showTimeToBreakInTray": "Vis tid igjen til neste pause i menylinjeikonet",
     "currentTimeInBreaks": "Nåværende tid",
     "showCurrentTimeInBreaks": "Vis nåværende lokal tid i pausevindu",
-    "toShowTrayIcon": "Vis ikon for Stretchly i menylinjen"
+    "toShowTrayIcon": "Vis ikon for ScreenRest i menylinjen"
   },
   "preferences": {
     "heart": {
-      "desc2": "Stretchly er gratis. Men du kan støtte oss ved å gi penger og hjelpe oss å forbedre Stretchly og å gi ut annen fri programvare.",
+      "desc2": "ScreenRest er gratis. Men du kan støtte oss ved å gi penger og hjelpe oss å forbedre ScreenRest og å gi ut annen fri programvare.",
       "desc1": "Det er vitenskapelig bevist at det er sunt for kropp og sjel å ta regelmessige pauser fra datamaskinen.",
       "contributorPreferences": "Innstillinger for bidragsytere",
       "syncPreferences": "Synkroniseringsinnstillinger",
       "authenticateUsing": "Legitimer deg med:",
       "alreadyContributor": "Jeg er allerede en bidragsyter",
       "becomeContributor": "Bli en kroneruller",
-      "loveStretchly": "Elsker du Stretchly?"
+      "loveScreenRest": "Elsker du ScreenRest?"
     },
     "about": {
-      "learnMore": "For å lære mer om funksjonene i Stretchly, få en gjennomgang, laste ned nyeste versjon eller kontakte oss for brukerstøtte, ",
+      "learnMore": "For å lære mer om funksjonene i ScreenRest, få en gjennomgang, laste ned nyeste versjon eller kontakte oss for brukerstøtte, ",
       "notifyNewVersion": "Gi varsling om nye versjoner automatisk",
       "version": "Versjon ",
       "tagline": "Pausepåminnelsesprogrammet",
@@ -148,16 +148,16 @@
       "fullscreen": "Fullskjerm",
       "window": "Vindu",
       "showBreaksIn": "Viser pauser i:",
-      "openAtLogin": "Start Stretchly automatisk ved innlogging"
+      "openAtLogin": "Start ScreenRest automatisk ved innlogging"
     },
     "nav": {
-      "heart": "Elsker Stretchly",
+      "heart": "Elsker ScreenRest",
       "about": "Om",
       "theme": "Drakt",
       "schedule": "Timeplan",
       "settings": "Innstillinger"
     },
-    "title": "Stretchly-innstillinger"
+    "title": "ScreenRest-innstillinger"
   },
   "statusMessages": {
     "afterMiniBreak_one": "etter {{count}} minipause",
@@ -175,7 +175,7 @@
     "openPreferences": "Åpne innstillinger",
     "viewTutorial": "Vis veiledning",
     "breakTimeReminderApp": "Pausepåminnelsesprogrammet",
-    "title": "Velkommen til Stretchly"
+    "title": "Velkommen til ScreenRest"
   },
   "process": {
     "newVersionAvailable": "Ny versjon tilgjengelig!"
@@ -193,7 +193,7 @@
     "continue": "Fortsett",
     "warning": "Dette vil gjenopprette programforvalgene og alle dine innstillinger vil gå tapt.",
     "restoreDefaults": "Tilbakestill forvalg",
-    "quitStretchly": "Avslutt Stretchly",
+    "quitScreenRest": "Avslutt ScreenRest",
     "resetBreaks": "Tilbakestill pauser",
     "indefinitely": "På ubestemt tid",
     "forHour": "Én time",
@@ -209,7 +209,7 @@
     "resumingBreaks": "Gjenopptar pauser",
     "breakIn": "Lang pause om $t(utils.seconds, {'count': {{seconds}} })",
     "microbreakIn": "Minipause om $t(utils.seconds, {'count': {{seconds}} })",
-    "toolTipHeader": "Stretchly - Pausepåminnelsesprogrammet"
+    "toolTipHeader": "ScreenRest - Pausepåminnelsesprogrammet"
   },
   "miniBreakIdeas": {
     "aao": {

@@ -1,6 +1,6 @@
 {
   "main": {
-    "toolTipHeader": "Stretchly - застосунок для нагадування про перерви",
+    "toolTipHeader": "ScreenRest - застосунок для нагадування про перерви",
     "microbreakIn": "Маленька перерва за $t(utils.seconds, {'count': {{seconds}} })",
     "breakIn": "Довга перерва за $t(utils.seconds, {'count': {{seconds}} })",
     "resumingBreaks": "Роботу відновлено",
@@ -14,7 +14,7 @@
     "untilMorning": "до ранку",
     "indefinitely": "на невизначений термін",
     "resetBreaks": "Скинути перерви",
-    "quitStretchly": "Вихід з Stretchly",
+    "quitScreenRest": "Вихід з ScreenRest",
     "preferences": "Налаштування",
     "restoreDefaults": "Скинути налаштування",
     "syncPreferences": "Синхронізація налаштувань",
@@ -58,7 +58,7 @@
       "developedBy": "Розробник",
       "dot": ".",
       "ourWebsite": "відвідайте наш веб-сайт",
-      "learnMore": "Щоб дізнатися більше про функції Stretchly, переглянути документацію, завантажити свіжу версію або звернутися за підтримкою, ",
+      "learnMore": "Щоб дізнатися більше про функції ScreenRest, переглянути документацію, завантажити свіжу версію або звернутися за підтримкою, ",
       "notifyNewVersion": "Оповіщувати про оновлення",
       "latestVersion": "Найновіша версія ",
       "version": "Версія ",
@@ -89,9 +89,9 @@
       "authenticateUsing": "Ввійти за допомогою:",
       "alreadyContributor": "Я вже долучився",
       "becomeContributor": "Підтримати",
-      "desc2": "Stretchly - безкоштовна програма. Але ви можете підтримати проєкт, що допоможе нам покращити Stretchly та випускати інше вільне ПЗ.",
+      "desc2": "ScreenRest - безкоштовна програма. Але ви можете підтримати проєкт, що допоможе нам покращити ScreenRest та випускати інше вільне ПЗ.",
       "desc1": "Науково доведено, що регулярні перерви при використанні комп'ютера важливі для вашого фізичного та психічного здоров'я.",
-      "loveStretchly": "Сподобався Stretchly?"
+      "loveScreenRest": "Сподобався ScreenRest?"
     },
     "settings": {
       "restoreDefaults": "Скинути налаштування",
@@ -103,16 +103,16 @@
       "fullscreen": "На повний екран",
       "window": "Вікні",
       "showBreaksIn": "Показувати перерви у:",
-      "openAtLogin": "Запускати Stretchly при вході в систему"
+      "openAtLogin": "Запускати ScreenRest при вході в систему"
     },
     "nav": {
-      "heart": "Підтримати Stretchly",
+      "heart": "Підтримати ScreenRest",
       "about": "Про програму",
       "theme": "Тема",
       "schedule": "Розклад",
       "settings": "Налаштування"
     },
-    "title": "Налаштування Stretchly"
+    "title": "Налаштування ScreenRest"
   },
   "process": {
     "newVersionAvailable": "Доступна нова версія!"
@@ -122,7 +122,7 @@
     "getStarted": "Почати",
     "openPreferences": "Відкрити налаштування",
     "viewTutorial": "Переглянути інструкцію",
-    "title": "Вітаємо в Stretchly"
+    "title": "Вітаємо в ScreenRest"
   },
   "contributorPreferences": {
     "0": "Перший монітор",
@@ -183,7 +183,7 @@
     "currentTimeInBreaks": "Поточний час",
     "showCurrentTimeInBreaks": "Показати поточний місцевий час у вікні перерви",
     "showTrayIcon": "Показати піктограму в меню",
-    "toShowTrayIcon": "Показати піктограму Stretchly на панелі меню"
+    "toShowTrayIcon": "Показати піктограму ScreenRest на панелі меню"
   },
   "statusMessages": {
     "resuming": "Продовжуємо",

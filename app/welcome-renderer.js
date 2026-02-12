@@ -81,7 +81,7 @@ window.onload = async (event) => {
         window.settings.saveSettings('isFirstRun', false)
         switch (button.getAttribute('data-location')) {
           case 'tutorial':
-            window.electronApi.openExternal('https://github.com/hozaifa1/stretchly')
+            window.electronApi.openExternal('https://github.com/hozaifa1/screenrest-pc')
             break
           case 'preferences':
             window.screenrest.openPreferences()

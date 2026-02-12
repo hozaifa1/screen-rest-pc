@@ -1,6 +1,6 @@
 {
   "main": {
-    "toolTipHeader": "Stretchly - Pauze herinnering app",
+    "toolTipHeader": "ScreenRest - Pauze herinnering app",
     "microbreakIn": "Mini Pauze in $t(utils.seconds, {'count': {{seconds}} })",
     "breakIn": "Lange Pauze in $t(utils.seconds, {'count': {{seconds}} })",
     "resumingBreaks": "Pauzes hervatten",
@@ -16,7 +16,7 @@
     "untilMorning": "voor morgen",
     "indefinitely": "voor onbepaalde tijd",
     "resetBreaks": "Reset pauzes",
-    "quitStretchly": "Stop Stretchly",
+    "quitScreenRest": "Stop ScreenRest",
     "warning": "Dit zal de standaardinstellingen herstellen en al je wijzigingen gaan verloren.",
     "continue": "Doorgaan",
     "cancel": "Annuleer",
@@ -31,16 +31,16 @@
     "title": "Tijd voor een pauze!"
   },
   "preferences": {
-    "title": "Stretchly Instellingen",
+    "title": "ScreenRest Instellingen",
     "nav": {
       "settings": "Instellingen",
       "schedule": "Schema",
       "theme": "Thema",
       "about": "Over",
-      "heart": "Waardeer Stretchly"
+      "heart": "Waardeer ScreenRest"
     },
     "settings": {
-      "openAtLogin": "Start Stretchly automatisch tijdens het inloggen",
+      "openAtLogin": "Start ScreenRest automatisch tijdens het inloggen",
       "showBreaksIn": "Toon pauzes in:",
       "window": "Venster",
       "fullscreen": "Volledig Scherm",
@@ -95,7 +95,7 @@
       "version": "Versie ",
       "latestVersion": "Laatste versie ",
       "notifyNewVersion": "Automatisch informeren wanneer er een app update beschikbaar is",
-      "learnMore": "Om meer te leren over de mogelijkheden van Stretchly, een tutorial te bekijken, de nieuwste versie te downloaden of om contact met ons op te nemen, ",
+      "learnMore": "Om meer te leren over de mogelijkheden van ScreenRest, een tutorial te bekijken, de nieuwste versie te downloaden of om contact met ons op te nemen, ",
       "ourWebsite": "bezoek onze website",
       "dot": ".",
       "developedBy": "Ontwikkeld door",
@@ -104,9 +104,9 @@
       "checkNewVersion": "Controleer automatisch voor updates"
     },
     "heart": {
-      "loveStretchly": "Hou je van Stretchly?",
+      "loveScreenRest": "Hou je van ScreenRest?",
       "desc1": "Het is wetenschappelijk bewezen dat regelmatig pauzes nemen tijdens het gebruik van een computer belangrijk is voor je fysieke en mentale welzijn.",
-      "desc2": "Stretchly is gratis. Maar je kan ons ondersteunen door te doneren en ons daarmee te helpen om Stretchly te verbeteren en andere gratis software uit te brengen.",
+      "desc2": "ScreenRest is gratis. Maar je kan ons ondersteunen door te doneren en ons daarmee te helpen om ScreenRest te verbeteren en andere gratis software uit te brengen.",
       "becomeContributor": "Word een Patron",
       "alreadyContributor": "Ik ben al een bijdrager",
       "authenticateUsing": "Authenticeren met:",
@@ -173,7 +173,7 @@
     "currentTimeInBreaks": "Huidige tijd",
     "showCurrentTimeInBreaks": "Toon huidige tijd in pauze scherm",
     "showTrayIcon": "Laat een icoon in het menu zien",
-    "toShowTrayIcon": "Laat het Stretchly icoon in de menubar zien"
+    "toShowTrayIcon": "Laat het ScreenRest icoon in de menubar zien"
   },
   "utils": {
     "none_one": "{{count}}",
@@ -195,7 +195,7 @@
     "newVersionAvailable": "Nieuwe versie beschikbaar!"
   },
   "welcome": {
-    "title": "Welkom bij Stretchly",
+    "title": "Welkom bij ScreenRest",
     "breakTimeReminderApp": "Pauze herinnering app",
     "viewTutorial": "Bekijk Tutorial",
     "openPreferences": "Open Instellingen",

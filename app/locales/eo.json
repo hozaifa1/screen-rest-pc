@@ -1,6 +1,6 @@
 {
   "main": {
-    "toolTipHeader": "Stretchly - La aplikaĵo por memorigi pri paŭzoj",
+    "toolTipHeader": "ScreenRest - La aplikaĵo por memorigi pri paŭzoj",
     "microbreakIn": "Paŭzeto post $t(utils.seconds, {'count': {{seconds}} })",
     "breakIn": "Longa Paŭzo post $t(utils.seconds, {'count': {{seconds}} })",
     "resumingBreaks": "Daŭrigi paŭzojn",
@@ -16,7 +16,7 @@
     "untilMorning": "Ĝis mateno",
     "indefinitely": "Senfine",
     "resetBreaks": "Restarigi Paŭzojn",
-    "quitStretchly": "Forlasi Stretchly",
+    "quitScreenRest": "Forlasi ScreenRest",
     "restoreDefaults": "Restaŭri la defaŭltojn",
     "warning": "Ĉi tiu restaŭros la defaŭltojn de la aplikaĵo kaj ĉiuj viaj agordoj perdiĝos.",
     "continue": "Daŭrigi",
@@ -31,16 +31,16 @@
     "title": "Tempo por paŭzi!"
   },
   "preferences": {
-    "title": "Agordoj de Stretchly",
+    "title": "Agordoj de ScreenRest",
     "nav": {
       "settings": "Agordoj",
       "schedule": "Horaro",
       "theme": "Etoso",
       "about": "Pri",
-      "heart": "Ami Stretchly"
+      "heart": "Ami ScreenRest"
     },
     "settings": {
-      "openAtLogin": "Aŭtolanĉi Stretchly kiam vi ensalutas",
+      "openAtLogin": "Aŭtolanĉi ScreenRest kiam vi ensalutas",
       "showBreaksIn": "Montri paŭzojn:",
       "window": "En fenestro",
       "fullscreen": "Tutekrane",
@@ -95,7 +95,7 @@
       "version": "Versio ",
       "latestVersion": "Plej freŝa versio ",
       "notifyNewVersion": "Aŭtomate sciigi kiam ĝisdatiginta",
-      "learnMore": "Por lerni pli pri ebloj de Stretchly, spekti instruilon, elŝuti la plej freŝan version, aŭ kontakti nin por subteno, ",
+      "learnMore": "Por lerni pli pri ebloj de ScreenRest, spekti instruilon, elŝuti la plej freŝan version, aŭ kontakti nin por subteno, ",
       "ourWebsite": "visitu nian retejon",
       "dot": ".",
       "developedBy": "Programis de",
@@ -104,9 +104,9 @@
       "checkNewVersion": "Aŭtomate kontroli ĝisdatigojn de la programo"
     },
     "heart": {
-      "loveStretchly": "Ĉu vi amas vian Stretchly?",
+      "loveScreenRest": "Ĉu vi amas vian ScreenRest?",
       "desc1": "Fari oftajn paŭzojn dum vi uzas komputilon estas science montrata importi por via korpa kaj mensa sano.",
-      "desc2": "Stretchly estas senpaga. Sed, vi povas asisti per donaci kaj helpi nin daŭrigi plibonigi Stretchly kaj eldoni aliajn senpagajn aplikaĵojn.",
+      "desc2": "ScreenRest estas senpaga. Sed, vi povas asisti per donaci kaj helpi nin daŭrigi plibonigi ScreenRest kaj eldoni aliajn senpagajn aplikaĵojn.",
       "becomeContributor": "Iĝi Patron",
       "alreadyContributor": "Mi jam estas kontribuanto",
       "authenticateUsing": "Aŭtentigi per:",
@@ -171,7 +171,7 @@
     "timeToBreakInTray": "Tempo por paŭzi",
     "showTimeToBreakInTray": "Montri tempon al la sekva paŭzo en menuzono-ikono",
     "showTrayIcon": "Montri menuzono-ikonon",
-    "toShowTrayIcon": "Montri Stretchly-ikonon en la menuzono",
+    "toShowTrayIcon": "Montri ScreenRest-ikonon en la menuzono",
     "currentTimeInBreaks": "Nuna horo",
     "showCurrentTimeInBreaks": "Montri nunan lokan horon en la paŭzfenestro"
   },
@@ -195,7 +195,7 @@
     "newVersionAvailable": "Freŝa versio haveblas!"
   },
   "welcome": {
-    "title": "Bonvenon al Stretchly",
+    "title": "Bonvenon al ScreenRest",
     "breakTimeReminderApp": "La aplikaĵo por memorigi pri paŭzoj",
     "viewTutorial": "Spekti instruilon",
     "openPreferences": "Malfermi Agordojn",

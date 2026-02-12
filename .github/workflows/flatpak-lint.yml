@@ -17,6 +17,6 @@ jobs:
       - name: Install the required packages
         run: sudo apt -y install appstream-util desktop-file-utils
       - name: Verify the AppStream metadata file
-        run: appstream-util validate net.hovancik.Stretchly.metainfo.xml
+        run: appstream-util validate net.hozaifa1.ScreenRest.metainfo.xml
       - name: Verify the desktop file
-        run: desktop-file-validate net.hovancik.Stretchly.desktop
+        run: desktop-file-validate net.hozaifa1.ScreenRest.desktop

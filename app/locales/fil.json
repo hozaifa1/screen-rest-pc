@@ -17,9 +17,9 @@
     "indefinitely": "Walang Katapusan",
     "continue": "Ipagpatuloy",
     "skipToTheNext": "Lumaktaw sa susunod",
-    "toolTipHeader": "Stretchly - Ang app para sa pagpapaalala ng pagpahinga",
+    "toolTipHeader": "ScreenRest - Ang app para sa pagpapaalala ng pagpahinga",
     "cancel": "Bawiin",
-    "quitStretchly": "Itigil ang Stretchly",
+    "quitScreenRest": "Itigil ang ScreenRest",
     "downloadLatestVersion": "I-download ang kasalukuyang version",
     "preferences": "Mga Kagustuhan",
     "contributorPreferences": "Mga Kagustuhan para sa Contributor",
@@ -30,7 +30,7 @@
       "latestVersion": "Pinakabagong version ",
       "version": "Version ",
       "checkNewVersion": "Awtomatikong mag tsek ng mga update ng app",
-      "learnMore": "Para matuto pa tungkol sa mga feature ng Stretchly, manuod ng tutorial, i-download ang pinakabagong version o makipag-ugnayan sa amin para sa suporta. ",
+      "learnMore": "Para matuto pa tungkol sa mga feature ng ScreenRest, manuod ng tutorial, i-download ang pinakabagong version o makipag-ugnayan sa amin para sa suporta. ",
       "ourWebsite": "bisitahin ang aming website",
       "dot": ".",
       "developedBy": "Binuo ni",
@@ -59,7 +59,7 @@
     },
     "settings": {
       "monitorIdleTime": "Subaybayan ang nakatigil na oras ng system (naka-pause ang mga pahinga kung nakatigil ang system).",
-      "openAtLogin": "Awtomatikong simulan ang stretchly kapag naglogin",
+      "openAtLogin": "Awtomatikong simulan ang ScreenRest kapag naglogin",
       "fullscreen": "Buong screen",
       "showIdeas": "Ipakita ang mga tip sa pag ehersisyo kapag nasa pahinga",
       "allScreens": "Ipakita ang pahinga sa lahat na mga monitor",
@@ -70,14 +70,14 @@
       "window": "Bintana"
     },
     "heart": {
-      "loveStretchly": "Mahal mo ang iyong Stretchly?",
+      "loveScreenRest": "Mahal mo ang iyong ScreenRest?",
       "becomeContributor": "Maging isang Patron",
       "alreadyContributor": "Contributor na ako",
       "authenticateUsing": "Patotohanan gamit ang:",
       "contributorPreferences": "Mga Kagustuhan sa Contributor",
       "syncPreferences": "Mga Kagustuhan sa Pag-sync",
       "desc1": "Ang regular na pahinga kapag gumagamit ng computer ay napatunaya sa siyentipikong paraan na mahalaga para sa iyong pisikal at mental na kagalingan.",
-      "desc2": "Libre ang stretchly. Ngunit maaari mong ipahiram ang iyong suporta sa pamamagitan ng pagbibigay ng donasyon at tulungan kaming patuloy na mapabuti ang Stretchly at maglabas ng iba pang libreng software."
+      "desc2": "Libre ang ScreenRest. Ngunit maaari mong ipahiram ang iyong suporta sa pamamagitan ng pagbibigay ng donasyon at tulungan kaming patuloy na mapabuti ang ScreenRest at maglabas ng iba pang libreng software."
     },
     "schedule": {
       "enableMiniBreaks": "Paganahin ang Mabilisang Pahinga",
@@ -98,10 +98,10 @@
       "longBreaksInfo": "Ang Matagalang Pahinga ay minsan lang ginagawa, pero ng matagalan, na nagpapahintulot sa iyo ng matagalang pahinga sa trabaho.",
       "enablePostponeLong": "Paganahin ang Pagpapaliban para sa Matagalang Pahinga"
     },
-    "title": "Mga Kagustuhan para sa Stretchly",
+    "title": "Mga Kagustuhan para sa ScreenRest",
     "nav": {
       "theme": "Tema",
-      "heart": "Mahalin ang Stretchly",
+      "heart": "Mahalin ang ScreenRest",
       "settings": "Mga Setting",
       "schedule": "Talakdaan",
       "about": "Tungkol"
@@ -186,7 +186,7 @@
     "newVersionAvailable": "Bagong bersyon ay magagamit!"
   },
   "welcome": {
-    "title": "Welcome sa Stretchly",
+    "title": "Welcome sa ScreenRest",
     "breakTimeReminderApp": "Ang app ng paalala sa oras ng pahinga",
     "viewTutorial": "Tingnan ang Tutorial",
     "openPreferences": "Buksan ang Mga Kagustuhan",

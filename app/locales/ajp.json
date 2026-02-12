@@ -6,13 +6,13 @@
     "for5Hours": "5 ساعات",
     "untilMorning": "حتى الصباح",
     "resetBreaks": "إستعادة ضبط الإستراحات",
-    "quitStretchly": "خروج",
+    "quitScreenRest": "خروج",
     "restoreDefaults": "إستعادة الضبط الإفتراضي",
     "continue": "تابع",
     "cancel": "إلغاء",
     "syncPreferences": "مزامنة التفضيلات",
     "toBreak": "إستراحة مطوّلة",
-    "toolTipHeader": "Stretchly - تطبيق التذكير لأخذ الإستراحات",
+    "toolTipHeader": "ScreenRest - تطبيق التذكير لأخذ الإستراحات",
     "breakIn": "إستراحة مطوّلة خلال $t(utils.seconds, {'count': {{seconds}} })",
     "resumingBreaks": "إستكمال الإستراحة",
     "downloadLatestVersion": "تحميل أحدث إصدار",
@@ -70,15 +70,15 @@
       "latestVersion": "أحدث إصدار ",
       "checkNewVersion": "تفحّص من التحديثات تلقائياً",
       "ourWebsite": "زيارة الموقع",
-      "learnMore": "لمعرفة المزيد حول ميزات Stretchly أو عرض برنامج تعليمي أو تنزيل أحدث إصدار أو اتصل بنا للحصول على الدعم. ",
+      "learnMore": "لمعرفة المزيد حول ميزات ScreenRest أو عرض برنامج تعليمي أو تنزيل أحدث إصدار أو اتصل بنا للحصول على الدعم. ",
       "developedBy": "قام بالتطوير",
       "janH": "جان هوفانتشيك",
       "designedBy": "قام بتصميم الأيقونة و تجربة المستخدم",
       "dot": "."
     },
     "heart": {
-      "loveStretchly": "هل تحب Stretchly؟",
-      "desc2": "تطبيق Stretchly هو مجاني، لكن يمكن تقديم المساعدة لنا لكي نحافظ عليه ونطوّره.",
+      "loveScreenRest": "هل تحب ScreenRest؟",
+      "desc2": "تطبيق ScreenRest هو مجاني، لكن يمكن تقديم المساعدة لنا لكي نحافظ عليه ونطوّره.",
       "becomeContributor": "كن راعياً",
       "alreadyContributor": "أنا مساهم بالفعل",
       "authenticateUsing": "التوثيق بإستخدام:",
@@ -86,16 +86,16 @@
       "contributorPreferences": "تفضيلات المساهم",
       "syncPreferences": "تفضيلات المزامنة"
     },
-    "title": "تفضيلات Stretchly",
+    "title": "تفضيلات ScreenRest",
     "nav": {
       "settings": "الإعدادات",
       "schedule": "تحديد موعد",
       "about": "معلومات عنّا",
-      "heart": "حب Stretchly",
+      "heart": "حب ScreenRest",
       "theme": "السمة"
     },
     "settings": {
-      "openAtLogin": "بدء تشغيل Stretchly تلقائياً عند الدخول للنظام",
+      "openAtLogin": "بدء تشغيل ScreenRest تلقائياً عند الدخول للنظام",
       "showBreaksIn": "إظهار الإستراحة خلال:",
       "showIdeas": "إظهار معلومات عن تمارين خلال الإستراحات",
       "allScreens": "إظهار الإستراحات على جميع الشاشات",
@@ -185,7 +185,7 @@
     "inAbout": "في حوالي {{count}}"
   },
   "welcome": {
-    "title": "مرحبا بك في Stretchly",
+    "title": "مرحبا بك في ScreenRest",
     "breakTimeReminderApp": "تطبيق التذكير لأخذ الإستراحات",
     "viewTutorial": "عرض البرنامج التعليمي",
     "openPreferences": "افتح التفضيلات",

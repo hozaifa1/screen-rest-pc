@@ -35,7 +35,7 @@
       "becomeContributor": "Постаните спонзор",
       "authenticateUsing": "Пријавите се помоћу:",
       "alreadyContributor": "Већ подржавам пројекат",
-      "loveStretchly": "Свиђа вам се Stretchly?"
+      "loveScreenRest": "Свиђа вам се ScreenRest?"
     },
     "theme": {
       "transparentMode": "Прозирност",
@@ -53,11 +53,11 @@
       "appearance": "Изглед:",
       "sounds": "Звукови:"
     },
-    "title": "Подешавања Stretchly-ја"
+    "title": "Подешавања ScreenRest-ја"
   },
   "main": {
     "preferences": "Подешавања",
-    "quitStretchly": "Изађи",
+    "quitScreenRest": "Изађи",
     "resetBreaks": "Ресетуј паузе",
     "breakIn": "Дуга пауза за $t(utils.seconds, {'count': {{seconds}} })",
     "forHour": "1 сат",
@@ -67,7 +67,7 @@
     "skipToTheNext": "Прескочи на следећу",
     "toMicrobreak": "кратку паузу",
     "toBreak": "дугу паузу",
-    "toolTipHeader": "Stretchly – подсетник за паузу",
+    "toolTipHeader": "ScreenRest – подсетник за паузу",
     "microbreakIn": "Кратка пауза за $t(utils.seconds, {'count': {{seconds}} })",
     "untilMorning": "до јутра",
     "indefinitely": "до даљњег",

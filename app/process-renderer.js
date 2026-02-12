@@ -57,6 +57,6 @@ window.onload = async (e) => {
       silent,
       icon: '../build/icon.ico'
     })
-    notification.onclick = () => window.electronApi.openExternal('https://github.com/hozaifa1/stretchly/releases')
+    notification.onclick = () => window.electronApi.openExternal('https://github.com/hozaifa1/screenrest-pc/releases')
   }
 }

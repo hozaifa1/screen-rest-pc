@@ -54,7 +54,7 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: stretchly-${{ matrix.os }}-${{ github.run_id }}
+        name: screenrest-pc-${{ matrix.os }}-${{ github.run_id }}
         path: dist/*.*
         retention-days: ${{ env.RETENTION_DAYS }}
 
@@ -75,7 +75,7 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: stretchly-snap-${{ github.run_id }}
+        name: screenrest-pc-snap-${{ github.run_id }}
         path: dist/*.snap
         retention-days: ${{ env.RETENTION_DAYS }}
 
@@ -107,6 +107,6 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: stretchly-arm-${{ github.run_id }}
+        name: screenrest-pc-arm-${{ github.run_id }}
         path: dist/*.*
         retention-days: ${{ env.RETENTION_DAYS }}

@@ -1,6 +1,6 @@
 {
   "main": {
-    "toolTipHeader": "Stretchly - Przerwo-przypominajka",
+    "toolTipHeader": "ScreenRest - Przerwo-przypominajka",
     "microbreakIn": "Mikroprzerwa za $t(utils.seconds, {'count': {{seconds}} })",
     "breakIn": "Długa przerwa za $t(utils.seconds, {'count': {{seconds}} })",
     "resumingBreaks": "Wznawiam przerwy",
@@ -16,7 +16,7 @@
     "untilMorning": "do rana",
     "indefinitely": "do odwołania",
     "resetBreaks": "Zresetuj przerwy",
-    "quitStretchly": "Zamknij Stretchly",
+    "quitScreenRest": "Zamknij ScreenRest",
     "restoreDefaults": "Przywróć domyślne",
     "warning": "To przywróci ustawienia domyślne i skasuje twoje zmiany.",
     "continue": "Kontynuuj",
@@ -31,16 +31,16 @@
     "title": "Czas na przerwę!"
   },
   "preferences": {
-    "title": "Ustawienia Stretchly",
+    "title": "Ustawienia ScreenRest",
     "nav": {
       "settings": "Ustawienia",
       "schedule": "Harmonogram",
       "theme": "Motyw",
-      "about": "O Stretchly",
-      "heart": "Pokochaj Stretchly"
+      "about": "O ScreenRest",
+      "heart": "Pokochaj ScreenRest"
     },
     "settings": {
-      "openAtLogin": "Uruchom Stretchly automatycznie po zalogowaniu",
+      "openAtLogin": "Uruchom ScreenRest automatycznie po zalogowaniu",
       "showBreaksIn": "Pokaż przerwy za:",
       "window": "Okno",
       "fullscreen": "Pełny ekran",
@@ -95,7 +95,7 @@
       "version": "Wersja ",
       "latestVersion": "Najnowsza wersja ",
       "notifyNewVersion": "Automatycznie powiadamiaj o aktualizacjach aplikacji",
-      "learnMore": "Aby dowiedzieć się więcej o funkjach Stretchly, zobacz wprowadzenie, pobierz najnowszą wersję lub skontaktuj się z nami po wsparcie, ",
+      "learnMore": "Aby dowiedzieć się więcej o funkjach ScreenRest, zobacz wprowadzenie, pobierz najnowszą wersję lub skontaktuj się z nami po wsparcie, ",
       "ourWebsite": "odwiedź naszą stronę",
       "dot": ".",
       "developedBy": "Stworzona przez",
@@ -104,9 +104,9 @@
       "checkNewVersion": "Automatycznie sprawdzaj aktualizacje"
     },
     "heart": {
-      "loveStretchly": "Kochasz Stretchly?",
+      "loveScreenRest": "Kochasz ScreenRest?",
       "desc1": "Stosowanie długich przerw podczas korzystania z komputera jest ważne dla twojego fizycznego i umysłowego zdrowia, co zostało dowiedzione naukowo.",
-      "desc2": "Stretchly jest darmowe. Możesz jednak je wesprzeć poprzez dotację, aby pomóc nam ulepszać Stretchly i tworzyć inne darmowe oprogramowanie.",
+      "desc2": "ScreenRest jest darmowe. Możesz jednak je wesprzeć poprzez dotację, aby pomóc nam ulepszać ScreenRest i tworzyć inne darmowe oprogramowanie.",
       "becomeContributor": "Zostań Patronem",
       "alreadyContributor": "Już jestem wspierającym",
       "authenticateUsing": "Uwierzytelnij się używając:",
@@ -172,7 +172,7 @@
     "currentTimeInBreaks": "Aktualny czas",
     "showCurrentTimeInBreaks": "Pokaż aktualną godzinę w okienku przerwy",
     "showTimeToBreakInTray": "Pokaż czas pozostały do następnej przerwy w ikonie paska zadań",
-    "toShowTrayIcon": "Pokaż ikonę Stretchly w pasku menu",
+    "toShowTrayIcon": "Pokaż ikonę ScreenRest w pasku menu",
     "showTrayIcon": "Pokaż ikonę na pasku menu"
   },
   "utils": {
@@ -201,7 +201,7 @@
     "newVersionAvailable": "Dostępna nowa wersja!"
   },
   "welcome": {
-    "title": "Witaj w Stretchly",
+    "title": "Witaj w ScreenRest",
     "breakTimeReminderApp": "Przerwo-przypominajka",
     "viewTutorial": "Zobacz wprowadzenie",
     "openPreferences": "Otwórz ustawienia",

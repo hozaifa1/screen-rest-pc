@@ -1,6 +1,6 @@
 {
   "main": {
-    "toolTipHeader": "Stretchly - Aplicația care-ți aduce aminte să iei o pauză",
+    "toolTipHeader": "ScreenRest - Aplicația care-ți aduce aminte să iei o pauză",
     "resumingBreaks": "Reluarea pauzelor",
     "downloadLatestVersion": "Descarcă noua versiune",
     "skipToTheNext": "Sari la următoarea",
@@ -12,7 +12,7 @@
     "untilMorning": "Pânā dimineaţă",
     "indefinitely": "Nelimitat",
     "resetBreaks": "Resetează pauzele",
-    "quitStretchly": "Ieși din Stretchly",
+    "quitScreenRest": "Ieși din ScreenRest",
     "preferences": "Preferințe",
     "syncPreferences": "Sincronizează preferințele",
     "cancel": "Anulează",
@@ -61,28 +61,28 @@
       "dot": ".",
       "checkNewVersion": "Verificați automat actualizările aplicației",
       "janH": "",
-      "learnMore": "Pentru a afla mai multe despre funcțiile Stretchly, vizualizați un tutorial, descărcați cea mai recentă versiune sau contactați-ne pentru asistență, "
+      "learnMore": "Pentru a afla mai multe despre funcțiile ScreenRest, vizualizați un tutorial, descărcați cea mai recentă versiune sau contactați-ne pentru asistență, "
     },
     "heart": {
-      "loveStretchly": "Îți place Stretchly?",
+      "loveScreenRest": "Îți place ScreenRest?",
       "becomeContributor": "Deveniți un Patron",
       "alreadyContributor": "Sunt deja un colaborator",
       "authenticateUsing": "Autentificare folosind:",
       "contributorPreferences": "Preferințele colaboratorilor",
       "syncPreferences": "Sincronizați preferințele",
       "desc1": "Este dovedit științific că luarea pauzelor regulate atunci când utilizați un computer este important pentru bunăstare fizică și mentală.",
-      "desc2": "Stretchly este gratuit. Dar vă puteți oferi sprijinul donând și ajutându-ne să continuăm să îmbunătățim Stretchly și să lansăm alte programe gratuite."
+      "desc2": "ScreenRest este gratuit. Dar vă puteți oferi sprijinul donând și ajutându-ne să continuăm să îmbunătățim ScreenRest și să lansăm alte programe gratuite."
     },
-    "title": "Preferințele Stretchly",
+    "title": "Preferințele ScreenRest",
     "nav": {
       "settings": "Setări",
       "schedule": "Program",
       "theme": "Temă",
       "about": "Despre",
-      "heart": "Iubește Stretchly"
+      "heart": "Iubește ScreenRest"
     },
     "settings": {
-      "openAtLogin": "Porniți Stretchly automat când vă conectați",
+      "openAtLogin": "Porniți ScreenRest automat când vă conectați",
       "showBreaksIn": "Arată pauzele in:",
       "window": "Fereastră",
       "fullscreen": "Ecran complet",
@@ -121,7 +121,7 @@
     "viewTutorial": "Vezi tutorialul",
     "openPreferences": "Deschide preferințele",
     "getStarted": "Start",
-    "title": "Bun venit la Stretchly"
+    "title": "Bun venit la ScreenRest"
   },
   "contributorPreferences": {
     "title": "Preferințele colaboratorilor",
@@ -180,7 +180,7 @@
     "dark": "Întunecat",
     "system": "Rețea",
     "showTrayIcon": "Afișează pictograma meniului",
-    "toShowTrayIcon": "Afișează pictograma Stretchly in bara de meniu",
+    "toShowTrayIcon": "Afișează pictograma ScreenRest in bara de meniu",
     "currentTimeInBreaks": "Timpul actual",
     "showCurrentTimeInBreaks": "Arată timpul actual in fereastra de pauză"
   },

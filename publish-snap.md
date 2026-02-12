@@ -15,7 +15,7 @@ Github action
 1. Download snap from Github
 2. `docker-compose up`
 3. `docker-compose exec web snapcraft login`
-4. `docker-compose exec web snapcraft upload --release=stable Stretchly_1.2.0_amd64.snap`
+4. `docker-compose exec web snapcraft upload --release=stable ScreenRest_1.2.0_amd64.snap`
 5. Or without `--release` and manage on website
 
 ### TODO

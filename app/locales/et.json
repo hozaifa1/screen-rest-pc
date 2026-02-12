@@ -203,16 +203,16 @@
       "checkNewVersion": "Rakenduse uuenduste automaatne kontroll",
       "version": "Versioon ",
       "latestVersion": "Uusim versioon ",
-      "learnMore": "Et rohkem teada saada Stretchly funktsioonidest, vaata õpetust, laadi alla uusim versioon või võta meiega ühendust toe saamiseks, ",
+      "learnMore": "Et rohkem teada saada ScreenRest funktsioonidest, vaata õpetust, laadi alla uusim versioon või võta meiega ühendust toe saamiseks, ",
       "janH": ""
     },
-    "title": "Stretchly Seaded",
+    "title": "ScreenRest Seaded",
     "heart": {
       "becomeContributor": "Hakka toetajaks",
       "desc1": "On teaduslikult tõestatud, et arvutit kasutades on regulaarsed pausid olulised nii sinu füüsilise kui ka vaimse heaolu jaoks.",
       "authenticateUsing": "Autentimine toimub kasutades:",
-      "loveStretchly": "Kas armastad oma Stretchlyt?",
-      "desc2": "Stretchly on tasuta. Kuid sa saad toetada meie arendust, tehes annetuse ja aidates meil jätkata Stretchly täiustamist ning välja anda teisi tasuta tarkvaratooteid.",
+      "loveScreenRest": "Kas armastad oma ScreenRestt?",
+      "desc2": "ScreenRest on tasuta. Kuid sa saad toetada meie arendust, tehes annetuse ja aidates meil jätkata ScreenRest täiustamist ning välja anda teisi tasuta tarkvaratooteid.",
       "contributorPreferences": "Kaasautori seaded",
       "alreadyContributor": "Olen juba kaasautor",
       "syncPreferences": "Sünkroniseerimise seaded"
@@ -224,7 +224,7 @@
       "allScreens": "Kuvab pause kõigil ekraanidel",
       "restoreDefaults": "Taasta vaikeseaded",
       "monitorIdleTime": "Monitoorib süsteemi passiivset aega (pausid on peatatud, kui süsteem on passiivne).",
-      "openAtLogin": "Käivita Stretchly automaatselt sisselogimisel",
+      "openAtLogin": "Käivita ScreenRest automaatselt sisselogimisel",
       "showIdeas": "Näita pauside ajal harjutuste soovitusi",
       "fullscreen": "Täisekraanil",
       "showBreaksIn": "Pause näidatakse:"
@@ -232,7 +232,7 @@
     "nav": {
       "theme": "Kujundus",
       "schedule": "Ajakava",
-      "heart": "Armastan Stretchlyt",
+      "heart": "Armastan ScreenRestt",
       "settings": "Seaded",
       "about": "Info"
     }
@@ -257,7 +257,7 @@
     "dark": "Tume",
     "2": "Kolmas monitor",
     "longBreaks": "Suured pausid:",
-    "toShowTrayIcon": "Kuva menüüribal Stretchly ikoon",
+    "toShowTrayIcon": "Kuva menüüribal ScreenRest ikoon",
     "naturalBreaksInfo": "Kui peamistes eelistustes on süsteemi passiivsuse jälgimine lubatud, saate määrata, mis aja möödudes pausid peatada.",
     "timeToBreakInTray": "Aeg paus teha",
     "3": "Neljas monitor",
@@ -470,8 +470,8 @@
     "cancel": "Katkesta",
     "toMicrobreak": "Väike paus",
     "contributorPreferences": "Kaasautorite eelistused",
-    "quitStretchly": "Sulge Stretchly",
-    "toolTipHeader": "Stretchly - Puhkehetkede meeldetuletusrakendus",
+    "quitScreenRest": "Sulge ScreenRest",
+    "toolTipHeader": "ScreenRest - Puhkehetkede meeldetuletusrakendus",
     "breakIn": "Suure pausini $t(utils.seconds, {'count': {{seconds}} })",
     "resetBreaks": "Lähtesta pausid",
     "resumingBreaks": "Pauside jätkamine",
@@ -495,7 +495,7 @@
   },
   "welcome": {
     "getStarted": "Alusta",
-    "title": "Teretulemast Stretchlysse",
+    "title": "Teretulemast ScreenRestsse",
     "viewTutorial": "Vaata õpetust",
     "breakTimeReminderApp": "Puhkepauside meeldetuletuse rakendus",
     "openPreferences": "Ava seaded"

@@ -1,6 +1,6 @@
 <!--
 
-Have you read Code of Conduct? By filing an Pull Request, you are expected to comply with it, including treating everyone with respect: https://github.com/hovancik/stretchly/blob/master/CODE_OF_CONDUCT.md
+Have you read Code of Conduct? By filing an Pull Request, you are expected to comply with it, including treating everyone with respect: https://github.com/hozaifa1/screenrest-pc/blob/master/CODE_OF_CONDUCT.md
 
 -->
 
