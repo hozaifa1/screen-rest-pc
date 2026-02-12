@@ -24,42 +24,16 @@ window.onload = async (event) => {
 
   let displayMessage = ''
 
-  async function fetchOnlineAyat () {
-    try {
-      const maxAttempts = 3
-      for (let i = 0; i < maxAttempts; i++) {
-        const randomAyah = Math.floor(Math.random() * 6236) + 1
-        const resp = await fetch(`https://api.alquran.cloud/v1/ayah/${randomAyah}/en.hilali`)
-        if (resp.ok) {
-          const data = await resp.json()
-          if (data && data.data && data.data.text.length <= 150) {
-            return `"${data.data.text}" — Quran ${data.data.surah.englishName} ${data.data.surah.number}:${data.data.numberInSurah}`
-          }
-        }
-      }
-    } catch (e) { /* offline, use stored */ }
-    return null
-  }
-
   const pool = []
   if (customMessagesEnabled && customMessageList.length > 0) {
-    pool.push(...customMessageList.map(m => ({ type: 'custom', text: m })))
+    pool.push(...customMessageList.map(m => m))
   }
   if (quranAyatEnabled && storedQuranAyats.length > 0) {
-    pool.push(...storedQuranAyats.map(a => ({ type: 'quran', text: a })))
+    pool.push(...storedQuranAyats.map(a => a))
   }
 
   if (pool.length > 0) {
-    const picked = pool[Math.floor(Math.random() * pool.length)]
-    if (picked.type === 'quran') {
-      const online = await fetchOnlineAyat()
-      displayMessage = online || picked.text
-    } else {
-      displayMessage = picked.text
-    }
-  } else if (quranAyatEnabled) {
-    const online = await fetchOnlineAyat()
-    displayMessage = online || ''
+    displayMessage = pool[Math.floor(Math.random() * pool.length)]
   }
 
   if (displayMessage) {
