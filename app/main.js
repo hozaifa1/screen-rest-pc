@@ -239,19 +239,21 @@ async function initialize (isAppStart = true) {
     settings
   })
 
+  // Force these settings — options removed from preferences
+  settings.set('fullscreen', true)
+  settings.set('allScreens', true)
+  settings.set('openAtLogin', true)
+
   if (!settings.get('_migratedOpenAtLogin')) {
-    // one time migration with 1.20 or after
-    settings.set('openAtLogin', await autostartManager.autoLaunchStatus())
     settings.set('_migratedOpenAtLogin', true)
     log.info('ScreenRest: Migrated to openAtLogin')
   }
 
   const currentAutostartValue = await autostartManager.autoLaunchStatus()
-  const openAtLogin = settings.get('openAtLogin')
-  if (openAtLogin !== currentAutostartValue) {
-    autostartManager.setAutostartEnabled(openAtLogin)
+  if (!currentAutostartValue) {
+    autostartManager.setAutostartEnabled(true)
   }
-  log.info(`ScreenRest: attempting to set autostart to ${openAtLogin}`)
+  log.info('ScreenRest: autostart is always enabled')
 
   const imagesDir = join(app.getPath('userData'), 'images')
   if (!existsSync(imagesDir)) {
@@ -454,6 +456,8 @@ function createWelcomeWindow (isAppStart = true) {
     })
     welcomeWin.once('closed', () => {
       welcomeWin = null
+      // Show preferences immediately after welcome so app doesn't sit silently in taskbar
+      createPreferencesWindow()
     })
   }
 }

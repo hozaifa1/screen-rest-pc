@@ -63,7 +63,7 @@ export default {
   hidePreferencesFileLocation: false,
   hideStrictModePreferences: false,
   miniBreakManualFinish: false,
-  openAtLogin: false,
+  openAtLogin: true,
   _migratedOpenAtLogin: false,
   customBreakMessage: '',
   customMessageList: defaultCustomMessages,
