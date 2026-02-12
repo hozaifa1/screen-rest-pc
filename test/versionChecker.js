@@ -18,10 +18,10 @@ describe('VersionChecker', () => {
 
       expect(result).to.equal(tagName)
       expect(fetch.mock.calls[0]).toEqual([
-        'https://api.github.com/repos/hovancik/stretchly/releases/latest',
+        'https://api.github.com/repos/hozaifa1/stretchly/releases/latest',
         {
           method: 'GET',
-          headers: { 'User-Agent': 'hovancik/stretchly' },
+          headers: { 'User-Agent': 'hozaifa1/stretchly' },
           mode: 'cors',
           cache: 'default'
         }
