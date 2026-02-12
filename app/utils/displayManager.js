@@ -34,7 +34,7 @@ class DisplayManager {
     if (displayID === -1) {
       targetScreen = screen.getDisplayNearestPoint(screen.getCursorScreenPoint())
     } else if (displayID >= this.getDisplayCount() || displayID < 0) {
-      log.warn(`Stretchly: invalid displayID ${displayID}, falling back to cursor display`)
+      log.warn(`ScreenRest: invalid displayID ${displayID}, falling back to cursor display`)
       targetScreen = screen.getDisplayNearestPoint(screen.getCursorScreenPoint())
     } else {
       const screens = screen.getAllDisplays()

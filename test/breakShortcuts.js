@@ -83,7 +83,7 @@ describe('pauseBreaksShortcut', () => {
           log
         })
 
-        expect(log.info).toHaveBeenCalledWith('Stretchly: skipping to next scheduled break by shortcut')
+        expect(log.info).toHaveBeenCalledWith('ScreenRest: skipping to next scheduled break by shortcut')
         expect(skipToBreak).toHaveBeenCalled()
         expect(skipToMicrobreak).not.toHaveBeenCalled()
         expect(pauseBreaks).not.toHaveBeenCalled()
@@ -104,7 +104,7 @@ describe('pauseBreaksShortcut', () => {
           log
         })
 
-        expect(log.info).toHaveBeenCalledWith('Stretchly: skipping to next scheduled break by shortcut')
+        expect(log.info).toHaveBeenCalledWith('ScreenRest: skipping to next scheduled break by shortcut')
         expect(skipToBreak).not.toHaveBeenCalled()
         expect(skipToMicrobreak).toHaveBeenCalled()
         expect(pauseBreaks).not.toHaveBeenCalled()
@@ -125,7 +125,7 @@ describe('pauseBreaksShortcut', () => {
           log
         })
 
-        expect(log.info).toHaveBeenCalledWith('Stretchly: resetting breaks by shortcut')
+        expect(log.info).toHaveBeenCalledWith('ScreenRest: resetting breaks by shortcut')
         expect(resetBreaks).toHaveBeenCalled()
         expect(pauseBreaks).not.toHaveBeenCalled()
       })
@@ -145,7 +145,7 @@ describe('pauseBreaksShortcut', () => {
           log
         })
 
-        expect(log.info).toHaveBeenCalledWith('Stretchly: skipping to next Long break by shortcut')
+        expect(log.info).toHaveBeenCalledWith('ScreenRest: skipping to next Long break by shortcut')
         expect(skipToBreak).toHaveBeenCalled()
         expect(pauseBreaks).not.toHaveBeenCalled()
       })
@@ -165,7 +165,7 @@ describe('pauseBreaksShortcut', () => {
           log
         })
 
-        expect(log.info).toHaveBeenCalledWith('Stretchly: skipping to next Mini break by shortcut')
+        expect(log.info).toHaveBeenCalledWith('ScreenRest: skipping to next Mini break by shortcut')
         expect(skipToMicrobreak).toHaveBeenCalled()
         expect(pauseBreaks).not.toHaveBeenCalled()
       })
@@ -223,7 +223,7 @@ describe('pauseBreaksShortcut', () => {
       expect(globalShortcut.register).toHaveBeenCalledWith('Ctrl+Shift+P', expect.any(Function))
       globalShortcut.register.mock.calls[0][1]()
       expect(pauseBreaks).toHaveBeenCalledWith(30 * 60 * 1000)
-      expect(log.info).toHaveBeenCalledWith('Stretchly: pauseBreaksFor30MinutesShortcut registration successful (Ctrl+Shift+P)')
+      expect(log.info).toHaveBeenCalledWith('ScreenRest: pauseBreaksFor30MinutesShortcut registration successful (Ctrl+Shift+P)')
     })
 
     it('should log a warning if shortcut registration fails', () => {
@@ -241,7 +241,7 @@ describe('pauseBreaksShortcut', () => {
         functions: { pauseBreaks }
       })
 
-      expect(log.warn).toHaveBeenCalledWith('Stretchly: pauseBreaksFor30MinutesShortcut registration failed')
+      expect(log.warn).toHaveBeenCalledWith('ScreenRest: pauseBreaksFor30MinutesShortcut registration failed')
     })
   })
 
@@ -311,7 +311,7 @@ describe('pauseBreaksShortcut', () => {
       expect(globalShortcut.register).toHaveBeenCalledTimes(1)
       expect(globalShortcut.register).toHaveBeenCalledWith('key', expect.any(Function))
       expect(log.info).toHaveBeenCalledTimes(1)
-      expect(log.info).toHaveBeenCalledWith('Stretchly: pauseBreaksFor30MinutesShortcut registration successful (key)')
+      expect(log.info).toHaveBeenCalledWith('ScreenRest: pauseBreaksFor30MinutesShortcut registration successful (key)')
     })
   })
 })

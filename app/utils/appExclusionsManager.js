@@ -27,7 +27,7 @@ class AppExclusionsManager extends EventEmitter {
 
   start () {
     this._checkRunningExceptions()
-    log.info('Stretchly: starting App exclusions monitoring')
+    log.info('ScreenRest: starting App exclusions monitoring')
   }
 
   reset () {

@@ -24,7 +24,7 @@ class UntilMorning {
       nextMornigDt = nextMornigDt.plus({ days: 1 })
     }
 
-    log.info(`Stretchly: got ${nextMornigDt.toLocaleString(DateTime.DATETIME_FULL)} as sunrise time for ${dt.toLocaleString(DateTime.DATETIME_FULL)}`)
+    log.info(`ScreenRest: got ${nextMornigDt.toLocaleString(DateTime.DATETIME_FULL)} as sunrise time for ${dt.toLocaleString(DateTime.DATETIME_FULL)}`)
     return nextMornigDt.diff(dt).toObject().milliseconds
   }
 }

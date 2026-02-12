@@ -19,15 +19,15 @@ class AutostartManager {
       this.nativeAutoLauncher = new AutoLaunch({ name: 'stretchly' })
     } else if (this.isWindowsStore) {
       this.windowsStoreAutoLauncher = new AutoLaunch({
-        name: 'Stretchly',
-        path: '33881JanHovancik.stretchly_24fg4m0zq65je!Stretchly',
+        name: 'ScreenRest',
+        path: '33881JanHovancik.stretchly_24fg4m0zq65je!ScreenRest',
         isHidden: true
       })
     }
   }
 
   async setAutostartEnabled (value) {
-    log.info(`Stretchly: setting autostart to ${value} on ${process.platform}${this.isWindowsStore ? ' (Windows Store)' : ''}${this.isFlatpak ? ' (Flatpak)' : ''}`)
+    log.info(`ScreenRest: setting autostart to ${value} on ${process.platform}${this.isWindowsStore ? ' (Windows Store)' : ''}${this.isFlatpak ? ' (Flatpak)' : ''}`)
 
     if (this.isFlatpak) {
       await (value ? this.flatpakPortalManager.enableAutostart() : this.flatpakPortalManager.disableAutostart())

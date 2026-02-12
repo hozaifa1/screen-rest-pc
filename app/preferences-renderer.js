@@ -1,28 +1,15 @@
-import VersionChecker from './utils/versionChecker.js'
 import { setSameWidths } from './utils/sameWidths.js'
 import HtmlTranslate from './utils/htmlTranslate.js'
 
 import './platform.js'
 
-const versionChecker = new VersionChecker()
 let eventsAttached = false
 
 window.onload = async (e) => {
   const bounds = await window.stretchly.getWindowBounds()
   const settings = await window.settings.currentSettings()
-  if (settings.disableAppUpdateFeatures) {
-    document.querySelector('#checkNewVersion').closest('div').classList.add('hidden')
-  }
-
   if (settings.hideStrictModePreferences) {
     document.querySelectorAll('[data-strict-mode]').forEach(element => {
-      element.classList.add('hidden')
-    })
-    document.querySelector('#enablePostponeLong').closest('div').style.marginBottom = '56px'
-  }
-
-  if (settings.hidePreferencesFileLocation) {
-    document.querySelectorAll('[data-preferences-file]').forEach(element => {
       element.classList.add('hidden')
     })
   }
@@ -68,91 +55,10 @@ window.onload = async (e) => {
   document.ondrop = event =>
     event.preventDefault()
 
-  document.onkeydown = async event => {
-    if (event.key === 'd' && (event.ctrlKey || event.metaKey)) {
-      const [
-        reference, timeleft, breaknumber,
-        postponesnumber, settingsfile, logsfile, doNotDisturb, imagesfolder
-      ] = await window.stretchly.showDebug()
-      const debugInfo = document.querySelector('.debug > :first-child')
-      if (!debugInfo.classList.contains('hidden')) {
-        debugInfo.classList.add('hidden')
-      } else {
-        debugInfo.classList.remove('hidden')
-        document.querySelector('#reference').innerHTML = reference
-        document.querySelector('#timeleft').innerHTML = timeleft
-        document.querySelector('#breakNumber').innerHTML = breaknumber
-        document.querySelector('#postponesNumber').innerHTML = postponesnumber
-        document.querySelector('#settingsfile').innerHTML = settingsfile
-        document.querySelector('#logsfile').innerHTML = logsfile
-        document.querySelector('#imagesfolder').innerHTML = imagesfolder
-        document.querySelector('#donotdisturb').innerHTML = doNotDisturb
-        document.querySelector('#node').innerHTML = await window.runtime.node()
-        document.querySelector('#chrome').innerHTML = await window.runtime.chrome()
-        document.querySelector('#electron').innerHTML = await window.runtime.electron()
-        document.querySelector('#platform').innerHTML = await window.runtime.platform()
-        document.querySelector('#windowsStore').innerHTML = await window.runtime.windowsStore() || false
-        document.querySelector('#windowsPortable').innerHTML = await window.runtime.windowsPortable() || false
-      }
-      setWindowHeight()
-    }
-  }
-
   window.stretchly.onTranslate(async () => {
     new HtmlTranslate(document).translate()
-    document.querySelectorAll('input[type="range"]').forEach(async range => {
-      const settings = await window.settings.currentSettings()
-      const divisor = range.dataset.divisor
-      const output = range.closest('div').querySelector('output')
-      range.value = settings[range.name] / divisor
-      const unit = output.dataset.unit
-      output.innerHTML = await window.utils.formatUnitAndValue(unit, range.value)
-      document.querySelector('#longBreakEvery').closest('div').querySelector('output')
-        .innerHTML = await window.i18next.t('utils.minutes', { count: parseInt(realBreakInterval()) })
-    })
     setWindowHeight()
   })
-
-  window.stretchly.onEnableContributorPreferences(() => {
-    showContributorPreferencesButton()
-  })
-
-  const showContributorPreferencesButton = () => {
-    document.querySelectorAll('.contributor').forEach((item) => {
-      item.classList.remove('hidden')
-    })
-    document.querySelectorAll('.become').forEach((item) => {
-      item.classList.add('hidden')
-    })
-    document.querySelectorAll('.authenticate').forEach((item) => {
-      item.classList.add('hidden')
-    })
-    setWindowHeight()
-  }
-
-  if (await window.global.getValue('isContributor')) {
-    showContributorPreferencesButton()
-  }
-
-  document.querySelector('[name="contributorPreferences"]').onclick = (event) => {
-    event.preventDefault()
-    window.stretchly.openContributorPreferences()
-  }
-
-  document.querySelector('[name="syncPreferences"]').onclick = (event) => {
-    event.preventDefault()
-    window.stretchly.openSyncPreferences()
-  }
-
-  document.querySelector('.debug button').onclick = async (event) => {
-    event.preventDefault()
-    const toCopy = document.querySelector('#to-copy')
-    await navigator.clipboard.writeText(toCopy.textContent)
-    const copiedEl = document.createElement('span')
-    copiedEl.innerHTML = ' copied!'
-    event.target.parentNode.appendChild(copiedEl)
-    setTimeout(() => copiedEl.remove(), 1275)
-  }
 
   document.querySelectorAll('.navigation a').forEach(element => {
     element.onclick = event => {
@@ -222,35 +128,75 @@ window.onload = async (e) => {
     }
   }
 
-  document.querySelector('#customMessage').value = settings.customBreakMessage || ''
+  // Custom message list popup logic
+  const currentMessageList = settings.customMessageList || []
+
+  function renderMessageList () {
+    const container = document.querySelector('#messageListContainer')
+    container.innerHTML = ''
+    currentMessageList.forEach((msg, index) => {
+      const item = document.createElement('div')
+      item.className = 'message-item'
+      const span = document.createElement('span')
+      span.textContent = msg
+      const btn = document.createElement('button')
+      btn.textContent = 'Remove'
+      btn.onclick = () => {
+        currentMessageList.splice(index, 1)
+        window.settings.saveSettings('customMessageList', currentMessageList)
+        renderMessageList()
+      }
+      item.appendChild(span)
+      item.appendChild(btn)
+      container.appendChild(item)
+    })
+  }
+
   if (!eventsAttached) {
-    document.querySelector('#customMessage').oninput = (event) => {
-      window.settings.saveSettings('customBreakMessage', event.target.value)
+    document.querySelector('#openCustomMessageList').onclick = () => {
+      document.querySelector('#customMessageModal').classList.remove('hidden')
+      renderMessageList()
+    }
+    document.querySelector('#closeMessageModal').onclick = () => {
+      document.querySelector('#customMessageModal').classList.add('hidden')
+    }
+    document.querySelector('#addMessageBtn').onclick = () => {
+      const input = document.querySelector('#newMessageInput')
+      const val = input.value.trim()
+      if (val) {
+        currentMessageList.push(val)
+        window.settings.saveSettings('customMessageList', currentMessageList)
+        input.value = ''
+        renderMessageList()
+      }
+    }
+    document.querySelector('#newMessageInput').onkeydown = (e) => {
+      if (e.key === 'Enter') document.querySelector('#addMessageBtn').click()
     }
   }
 
-  document.querySelectorAll('input[type="range"]').forEach(async range => {
-    const divisor = range.dataset.divisor
-    const output = range.closest('div').querySelector('output')
-    range.value = settings[range.name] / divisor
-    const unit = output.dataset.unit
-    output.innerHTML = await window.utils.formatUnitAndValue(unit, range.value)
-    document.querySelector('#longBreakEvery').closest('div').querySelector('output')
-      .innerHTML = await window.i18next.t('utils.minutes', { count: parseInt(realBreakInterval()) })
+  const breakDurationInput = document.querySelector('#breakDurationInput')
+  const breakIntervalInput = document.querySelector('#breakIntervalInput')
+  if (breakDurationInput) {
+    breakDurationInput.value = Math.round(settings.microbreakDuration / 1000)
     if (!eventsAttached) {
-      range.onchange = async event => {
-        output.innerHTML = await window.utils.formatUnitAndValue(unit, range.value)
-        document.querySelector('#longBreakEvery').closest('div').querySelector('output')
-          .innerHTML = await window.i18next.t('utils.minutes', { count: parseInt(realBreakInterval()) })
-        window.settings.saveSettings(range.name, range.value * divisor)
-      }
-      range.oninput = async event => {
-        output.innerHTML = await window.utils.formatUnitAndValue(unit, range.value)
-        document.querySelector('#longBreakEvery').closest('div').querySelector('output')
-          .innerHTML = await window.i18next.t('utils.minutes', { count: parseInt(realBreakInterval()) })
+      breakDurationInput.onchange = (event) => {
+        const val = Math.max(5, Math.min(3600, parseInt(event.target.value) || 20))
+        event.target.value = val
+        window.settings.saveSettings('microbreakDuration', val * 1000)
       }
     }
-  })
+  }
+  if (breakIntervalInput) {
+    breakIntervalInput.value = Math.round(settings.microbreakInterval / 60000)
+    if (!eventsAttached) {
+      breakIntervalInput.onchange = (event) => {
+        const val = Math.max(1, Math.min(480, parseInt(event.target.value) || 10))
+        event.target.value = val
+        window.settings.saveSettings('microbreakInterval', val * 60000)
+      }
+    }
+  }
 
   document.querySelectorAll('.sounds img').forEach(preview => {
     if (!eventsAttached) {
@@ -261,64 +207,11 @@ window.onload = async (e) => {
 
   setWindowHeight()
 
-  document.querySelectorAll('.enabletype').forEach((element) => {
-    element.onclick = async (event) => {
-      const enabletypeChecked = document.querySelectorAll('.enabletype:checked')
-      if (enabletypeChecked.length === 0) {
-        element.checked = true
-        window.settings.saveSettings(element.value, element.checked)
-        window.alert(await window.i18next.t('preferences.schedule.cantDisableBoth'))
-      }
-    }
-  })
-
   document.querySelector('.settings > div > button').onclick = (event) => {
     window.stretchly.restoreDefaults()
   }
 
-  document.querySelectorAll('.about a').forEach((item) => {
-    item.onclick = (event) => {
-      event.preventDefault()
-      if (event.target.classList.contains('file')) {
-        window.electronApi.openPath(event.target.innerHTML)
-      } else {
-        window.electronApi.openExternal(event.target.href)
-      }
-    }
-  })
-
-  document.querySelector('[name="becomeContributor"]').onclick = () => {
-    window.electronApi.openExternal('https://hovancik.net/stretchly/sponsor')
-  }
-
-  document.querySelector('[name="alreadyContributor"]').onclick = () => {
-    document.querySelectorAll('.become').forEach((item) => {
-      item.classList.add('hidden')
-    })
-    document.querySelectorAll('.authenticate').forEach((item) => {
-      item.classList.remove('hidden')
-    })
-    setWindowHeight()
-  }
-
-  document.querySelectorAll('.authenticate a').forEach((button) => {
-    button.onclick = (event) => {
-      event.preventDefault()
-      window.stretchly.openContributorAuth(button.dataset.provider)
-    }
-  })
-
   document.querySelector('.version').innerHTML = await window.stretchly.getVersion()
-  if (!settings.disableAppUpdateFeatures) {
-    versionChecker.latest()
-      .then(version => {
-        document.querySelector('.latestVersion').innerHTML = version.replace('v', '')
-      })
-      .catch(exception => {
-        console.error(exception)
-        document.querySelector('.latestVersion').innerHTML = 'N/A'
-      })
-  }
 
   function setWindowHeight () {
     const classes = document.querySelector('body').classList
@@ -341,11 +234,5 @@ window.onload = async (e) => {
     if (height) {
       window.stretchly.setWindowSize(bounds.width, height)
     }
-  }
-
-  function realBreakInterval () {
-    const microbreakInterval = document.querySelector('#miniBreakEvery').value * 1
-    const breakInterval = document.querySelector('#longBreakEvery').value * 1
-    return microbreakInterval * (breakInterval + 1)
   }
 }

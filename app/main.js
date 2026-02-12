@@ -4,7 +4,7 @@ import {
   powerMonitor
 } from 'electron'
 import { EventEmitter } from 'node:events'
-import { readFile, writeFile, existsSync, mkdirSync } from 'node:fs'
+import { existsSync, mkdirSync } from 'node:fs'
 import { dirname, join } from 'path'
 import { resolveLocalImage } from './utils/imageResolver.js'
 import { fileURLToPath } from 'url'
@@ -13,7 +13,6 @@ import Backend from 'i18next-fs-backend'
 import log from 'electron-log/main.js'
 import Store from 'electron-store'
 import humanizeDuration from 'humanize-duration'
-import { DateTime } from 'luxon'
 
 import {
   canPostpone, canSkip, formatTimeRemaining,
@@ -24,7 +23,6 @@ import BreaksPlanner from './breaksPlanner.js'
 import AppIcon from './utils/appIcon.js'
 import { UntilMorning } from './utils/untilMorning.js'
 import AutostartManager from './utils/autostartManager.js'
-import Command from './utils/commands.js'
 import { registerBreakShortcuts } from './utils/breakShortcuts.js'
 import defaultSettings from './utils/defaultSettings.js'
 import StatusMessages from './utils/statusMessages.js'
@@ -37,13 +35,13 @@ process.on('uncaughtException', (err, _) => {
   log.error(err)
   const dialogOpts = {
     type: 'error',
-    title: 'Stretchly',
-    message: 'An error occured while running Stretchly and it will now quit. To report the issue, click Report.',
+    title: 'ScreenRest',
+    message: 'An error occured while running ScreenRest and it will now quit. To report the issue, click Report.',
     buttons: ['Report', 'OK']
   }
   dialog.showMessageBox(dialogOpts).then((returnValue) => {
     if (returnValue.response === 0) {
-      shell.openExternal('https://github.com/hovancik/stretchly/issues')
+      shell.openExternal('https://github.com/hozaifa1/stretchly/issues')
     }
     app.quit()
   })
@@ -57,23 +55,17 @@ nativeTheme.on('updated', function theThemeHasChanged () {
 })
 
 let microbreakIdeas
-let breakIdeas
+let breakIdeas // eslint-disable-line no-unused-vars
 let breakPlanner
 let appIcon = null
 let autostartManager = null
 let displayManager = null
 let processWin = null
 let microbreakWins = null
-let breakWins = null
 let preferencesWin = null
 let welcomeWin = null
-let contributorPreferencesWin = null
-let syncPreferencesWin = null
-let myStretchlyWin = null
 let settings
 let pausedForSuspendOrLock = false
-let nextIdea = null
-let updateChecker
 let currentTrayIconPath = null
 let currentTrayMenuTemplate = null
 let trayUpdateIntervalObj = null
@@ -90,103 +82,17 @@ log.initialize({ preload: true })
 
 // https://stackoverflow.com/questions/65859634/notification-from-electron-shows-electron-app-electron/65863174#65863174
 if (process.platform === 'win32') {
-  app.setAppUserModelId('Stretchly')
+  app.setAppUserModelId('ScreenRest')
 }
 
-const global = {
-  isNewVersion: false,
-  isContributor: false
-}
-
-ipcMain.on('set-global-value', (event, name, value) => {
-  global[name] = value
-})
-
-ipcMain.handle('get-global-value', (event, name) => {
-  return global[name]
-})
-
-const commandLineArguments = process.argv
-  .slice(app.isPackaged ? 1 : 2)
-
-const gotTheLock = app.requestSingleInstanceLock(commandLineArguments)
+const gotTheLock = app.requestSingleInstanceLock()
 
 if (!gotTheLock) {
-  const cmd = new Command(commandLineArguments, app.getVersion(), false)
-  cmd.runOrForward()
   app.quit()
 } else {
-  app.on('second-instance', (event, commandLine, workingDirectory, commandLineArguments) => {
-    log.info(`Stretchly: arguments received from second instance: ${commandLineArguments}`)
-    const cmd = new Command(commandLineArguments, app.getVersion())
-
-    if (!cmd.hasSupportedCommand) {
-      return
-    }
-
-    if (!cmd.checkInMain()) {
-      log.info(`Stretchly: command '${cmd.command}' executed in second instance, dropped in main instance`)
-      return
-    }
-
-    switch (cmd.command) {
-      case 'reset':
-        log.info('Stretchly: resetting breaks (requested by second instance)')
-        resetBreaks()
-        break
-
-      case 'mini': {
-        log.info('Stretchly: skip to Mini break (requested by second instance)')
-        const delay = cmd.waitToMs()
-        if (delay === -1) {
-          log.error('Stretchly: error parsing wait interval to ms because of invalid value')
-          return
-        }
-        if (cmd.options.title) nextIdea = [cmd.options.title]
-        if (!cmd.options.noskip || delay) skipToMicrobreak(delay)
-        break
-      }
-
-      case 'long': {
-        log.info('Stretchly: skip to Long break (requested by second instance)')
-        const delay = cmd.waitToMs()
-        if (delay === -1) {
-          log.error('Stretchly: error parsing wait interval to ms because of invalid value')
-          return
-        }
-        nextIdea = [cmd.options.title ? cmd.options.title : null, cmd.options.text ? cmd.options.text : null]
-        if (!cmd.options.noskip || delay) skipToBreak(delay)
-        break
-      }
-
-      case 'resume':
-        log.info('Stretchly: resume Breaks (requested by second instance)')
-        if (breakPlanner.isPaused) resumeBreaks(false)
-        break
-
-      case 'toggle':
-        log.info('Stretchly: toggle Breaks (requested by second instance)')
-        if (breakPlanner.isPaused) resumeBreaks(false)
-        else pauseBreaks(1)
-        break
-
-      case 'pause': {
-        log.info('Stretchly: pause Breaks (requested by second instance)')
-        const duration = cmd.durationToMs(settings)
-        // -1 indicates an invalid value
-        if (duration === -1) {
-          log.error('Stretchly: error when parsing duration to ms because of invalid value')
-          return
-        }
-        pauseBreaks(duration)
-        break
-      }
-
-      case 'preferences':
-        log.info('Stretchly: open Preferences window (requested by second instance)')
-        createPreferencesWindow()
-        break
-    }
+  app.on('second-instance', () => {
+    log.info('ScreenRest: second instance detected, showing preferences')
+    createPreferencesWindow()
   })
 }
 
@@ -195,10 +101,8 @@ app.on('window-all-closed', () => {
   // do nothing, so app wont get closed
 })
 app.on('before-quit', (event) => {
-  if ((breakPlanner.scheduler.reference === 'finishMicrobreak' && settings.get('microbreakStrictMode')) ||
-      (breakPlanner.scheduler.reference === 'finishBreak' && settings.get('breakStrictMode'))
-  ) {
-    log.info('Stretchly: preventing app closure (in break with strict mode)')
+  if (breakPlanner.scheduler.reference === 'finishMicrobreak' && settings.get('microbreakStrictMode')) {
+    log.info('ScreenRest: preventing app closure (in break with strict mode)')
     event.preventDefault()
   } else {
     globalShortcut.unregisterAll()
@@ -215,45 +119,45 @@ async function initialize (isAppStart = true) {
     return
   }
   // TODO maybe we should not reinitialize but handle everything when we save new values for preferences
-  log.info(`Stretchly: ${isAppStart ? '' : 're'}initializing...`)
+  log.info(`ScreenRest: ${isAppStart ? '' : 're'}initializing...`)
 
   EventEmitter.setMaxListeners(200) // for watching Store changes
   if (!settings) {
     settings = new Store({
       defaults: defaultSettings,
       beforeEachMigration: (store, context) => {
-        log.info(`Stretchly: migrating preferences from Stretchly v${context.fromVersion} to v${context.toVersion}`)
+        log.info(`ScreenRest: migrating preferences from ScreenRest v${context.fromVersion} to v${context.toVersion}`)
       },
       migrations: {
         '1.13.0': store => {
           if (store.has('pauseBreaksShortcut')) {
             store.set('pauseBreaksToggleShortcut', store.get('pauseBreaksShortcut'))
-            log.info(`Stretchly: settings pauseBreaksToggleShortcut to "${store.get('pauseBreaksShortcut')}"`)
+            log.info(`ScreenRest: settings pauseBreaksToggleShortcut to "${store.get('pauseBreaksShortcut')}"`)
             store.delete('pauseBreaksShortcut')
-            log.info('Stretchly: removing pauseBreaksShortcut')
+            log.info('ScreenRest: removing pauseBreaksShortcut')
           } else {
-            log.info('Stretchly: not migrating pauseBreaksShortcut')
+            log.info('ScreenRest: not migrating pauseBreaksShortcut')
           }
           if (store.has('pauseBreaksShortcut')) {
             store.delete('resumeBreaksShortcut')
-            log.info('Stretchly: removing resumeBreaksShortcut')
+            log.info('ScreenRest: removing resumeBreaksShortcut')
           }
         },
         '1.17.0': store => {
           if (store.has('showBreakActionsInStrictMode')) {
             store.set('showTrayMenuInStrictMode', store.get('showBreakActionsInStrictMode'))
-            log.info(`Stretchly: settings showTrayMenuInStrictMode to "${store.get('showBreakActionsInStrictMode')}"`)
+            log.info(`ScreenRest: settings showTrayMenuInStrictMode to "${store.get('showBreakActionsInStrictMode')}"`)
             store.delete('showBreakActionsInStrictMode')
-            log.info('Stretchly: removing showBreakActionsInStrictMode')
+            log.info('ScreenRest: removing showBreakActionsInStrictMode')
           } else {
-            log.info('Stretchly: not migrating showBreakActionsInStrictMode')
+            log.info('ScreenRest: not migrating showBreakActionsInStrictMode')
           }
         },
         '1.18.2': store => {
           if (insideFlatpak() || insideWindowsStore() || insideSnap()) {
             if (!store.get('disableAppUpdateFeatures')) {
               store.set('disableAppUpdateFeatures', true)
-              log.info('Stretchly: setting disableAppUpdateFeatures to true because we are in Flatpak/Windows Store/Snap build')
+              log.info('ScreenRest: setting disableAppUpdateFeatures to true because we are in Flatpak/Windows Store/Snap build')
             }
           }
         },
@@ -261,39 +165,39 @@ async function initialize (isAppStart = true) {
           if (store.has('audio')) {
             const legacyAudio = store.get('audio')
             store.set('longBreakAudio', legacyAudio)
-            log.info(`Stretchly: migrating audio to longBreakAudio with value "${legacyAudio}"`)
+            log.info(`ScreenRest: migrating audio to longBreakAudio with value "${legacyAudio}"`)
             store.delete('audio')
-            log.info('Stretchly: removing audio')
+            log.info('ScreenRest: removing audio')
           } else {
-            log.info('Stretchly: not migrating audio to longBreakAudio')
+            log.info('ScreenRest: not migrating audio to longBreakAudio')
           }
           if (store.has('microbreakStartSoundPlaying')) {
             const val = store.get('microbreakStartSoundPlaying') ? store.get('miniBreakAudio') : 'silence'
             store.set('miniBreakStartSound', val)
-            log.info(`Stretchly: migrating microbreakStartSoundPlaying to miniBreakStartSound with value "${val}"`)
+            log.info(`ScreenRest: migrating microbreakStartSoundPlaying to miniBreakStartSound with value "${val}"`)
             store.delete('microbreakStartSoundPlaying')
-            log.info('Stretchly: removing microbreakStartSoundPlaying')
+            log.info('ScreenRest: removing microbreakStartSoundPlaying')
           } else {
-            log.info('Stretchly: not migrating microbreakStartSoundPlaying')
+            log.info('ScreenRest: not migrating microbreakStartSoundPlaying')
           }
           if (store.has('breakStartSoundPlaying')) {
             const val = store.get('breakStartSoundPlaying') ? store.get('longBreakAudio') : 'silence'
             store.set('longBreakStartSound', val)
-            log.info(`Stretchly: migrating breakStartSoundPlaying to longBreakStartSound with value "${val}"`)
+            log.info(`ScreenRest: migrating breakStartSoundPlaying to longBreakStartSound with value "${val}"`)
             store.delete('breakStartSoundPlaying')
-            log.info('Stretchly: removing breakStartSoundPlaying')
+            log.info('ScreenRest: removing breakStartSoundPlaying')
           } else {
-            log.info('Stretchly: not migrating breakStartSoundPlaying')
+            log.info('ScreenRest: not migrating breakStartSoundPlaying')
           }
         },
         '1.20.0': store => {
           if (store.has('timeToBreakInTray')) {
             if (store.get('timeToBreakInTray')) {
               store.set('trayIconStyle', 'time')
-              log.info('Stretchly: migrating timeToBreakInTray to trayIconStyle="time"')
+              log.info('ScreenRest: migrating timeToBreakInTray to trayIconStyle="time"')
             } else {
               store.set('trayIconStyle', 'default')
-              log.info('Stretchly: migrating tray settings to trayIconStyle="default"')
+              log.info('ScreenRest: migrating tray settings to trayIconStyle="default"')
             }
             store.delete('timeToBreakInTray')
           }
@@ -301,11 +205,11 @@ async function initialize (isAppStart = true) {
       },
       watch: true
     })
-    log.info('Stretchly: loading preferences')
+    log.info('ScreenRest: loading preferences')
     Store.initRenderer()
     Object.entries(settings.store).forEach(([key, _]) => {
       settings.onDidChange(key, (newValue, oldValue) => {
-        log.info(`Stretchly: setting '${key}' to '${JSON.stringify(newValue)}' (was '${JSON.stringify(oldValue)}')`)
+        log.info(`ScreenRest: setting '${key}' to '${JSON.stringify(newValue)}' (was '${JSON.stringify(oldValue)}')`)
       })
     })
   }
@@ -313,7 +217,6 @@ async function initialize (isAppStart = true) {
     breakPlanner = new BreaksPlanner(settings)
     breakPlanner.nextBreak()
     breakPlanner.on('startMicrobreakNotification', () => { startMicrobreakNotification() })
-    breakPlanner.on('startBreakNotification', () => { startBreakNotification() })
     breakPlanner.on('startMicrobreak', () => { startMicrobreak() })
     breakPlanner.on('finishMicrobreak', (shouldPlaySound, shouldPlanNext) => {
       if (settings.get('miniBreakManualFinish')) {
@@ -321,14 +224,6 @@ async function initialize (isAppStart = true) {
         return
       }
       finishMicrobreak(shouldPlaySound, shouldPlanNext)
-    })
-    breakPlanner.on('startBreak', () => { startBreak() })
-    breakPlanner.on('finishBreak', (shouldPlaySound, shouldPlanNext) => {
-      if (settings.get('longBreakManualFinish')) {
-        enterLongBreakManualContinuation(shouldPlaySound)
-        return
-      }
-      finishBreak(shouldPlaySound, shouldPlanNext)
     })
     breakPlanner.on('resumeBreaks', () => { resumeBreaks() })
     breakPlanner.on('updateToolTip', function () {
@@ -351,7 +246,7 @@ async function initialize (isAppStart = true) {
     // one time migration with 1.20 or after
     settings.set('openAtLogin', await autostartManager.autoLaunchStatus())
     settings.set('_migratedOpenAtLogin', true)
-    log.info('Stretchly: Migrated to openAtLogin')
+    log.info('ScreenRest: Migrated to openAtLogin')
   }
 
   const currentAutostartValue = await autostartManager.autoLaunchStatus()
@@ -359,20 +254,20 @@ async function initialize (isAppStart = true) {
   if (openAtLogin !== currentAutostartValue) {
     autostartManager.setAutostartEnabled(openAtLogin)
   }
-  log.info(`Stretchly: attempting to set autostart to ${openAtLogin}`)
+  log.info(`ScreenRest: attempting to set autostart to ${openAtLogin}`)
 
   const imagesDir = join(app.getPath('userData'), 'images')
   if (!existsSync(imagesDir)) {
     try {
       mkdirSync(imagesDir, { recursive: true })
     } catch (error) {
-      log.error('Stretchly: error creating images directory', error)
+      log.error('ScreenRest: error creating images directory', error)
     }
   }
   // Initialize portal early for Flatpak so it's ready when user opens preferences
   if (insideFlatpak()) {
     autostartManager.flatpakPortalManager.initialize().catch(err => {
-      log.error('Stretchly: Failed to initialize portal manager during startup:', err)
+      log.error('ScreenRest: Failed to initialize portal manager during startup:', err)
     })
   }
 
@@ -383,28 +278,12 @@ async function initialize (isAppStart = true) {
   createWelcomeWindow()
   nativeTheme.themeSource = settings.get('themeSource')
 
-  readFile(join(app.getPath('userData'), 'stamp'), 'utf8', (err, data) => {
-    if (err) {
-      return
-    }
-    if (DateTime.fromISO(data).month === DateTime.now().month) {
-      global.isContributor = true
-      log.info('Stretchly: Thanks for your contributions!')
-      if (preferencesWin) {
-        preferencesWin.webContents.send('enable-contributor-preferences')
-      }
-      updateTray()
-    }
-  })
   startPowerMonitoring()
   if (preferencesWin) {
     preferencesWin.webContents.send('renderSettings', settings.store)
   }
   if (welcomeWin) {
     welcomeWin.webContents.send('renderSettings', settings.store)
-  }
-  if (contributorPreferencesWin) {
-    contributorPreferencesWin.webContents.send('renderSettings', settings.store)
   }
   globalShortcut.unregisterAll()
 
@@ -454,14 +333,14 @@ function onSuspendOrLock () {
     if (breakPlanner.isPaused || breakPlanner.dndManager.isOnDnd ||
       breakPlanner.naturalBreaksManager.isSchedulerCleared ||
       breakPlanner.appExclusionsManager.isSchedulerCleared) {
-      log.info('Stretchly: not pausing for suspendOrLock because paused already')
+      log.info('ScreenRest: not pausing for suspendOrLock because paused already')
     } else {
       pausedForSuspendOrLock = true
       pauseBreaks(1)
       updateTray()
     }
   } else {
-    log.info('Stretchly: not pausing for suspendOrLock because setting is disabled')
+    log.info('ScreenRest: not pausing for suspendOrLock because setting is disabled')
   }
 }
 
@@ -492,7 +371,6 @@ function closeWindows (windowArray) {
 
     window.hide()
     if (windowArray[0] === window) {
-      ipcMain.removeHandler('send-long-break-data')
       ipcMain.removeHandler('send-mini-break-data')
     }
 
@@ -540,7 +418,6 @@ function windowIconPath () {
 
 function startProcessWin () {
   if (processWin) {
-    planVersionCheck()
     return
   }
   const modalPath = 'file://' + join(__dirname, '/process.html')
@@ -555,9 +432,6 @@ function startProcessWin () {
     }
   })
   processWin.webContents.loadURL(modalPath)
-  processWin.webContents.once('ready-to-show', () => {
-    planVersionCheck()
-  })
 }
 
 function createWelcomeWindow (isAppStart = true) {
@@ -588,99 +462,9 @@ function createWelcomeWindow (isAppStart = true) {
   }
 }
 
-function createContributorSettingsWindow () {
-  if (contributorPreferencesWin) {
-    contributorPreferencesWin.show()
-    return
-  }
-  const modalPath = 'file://' + join(__dirname, '/contributor-preferences.html')
-  contributorPreferencesWin = new BrowserWindow({
-    x: displayManager.getDisplayX(-1, 735),
-    y: displayManager.getDisplayY(),
-    width: 735,
-    show: false,
-    autoHideMenuBar: true,
-    icon: windowIconPath(),
-    backgroundColor: 'EDEDED',
-    webPreferences: {
-      preload: join(__dirname, './contributor-preferences-preload.mjs'),
-      sandbox: false
-    }
-  })
-  contributorPreferencesWin.webContents.loadURL(modalPath)
-  contributorPreferencesWin.once('ready-to-show', () => {
-    contributorPreferencesWin.center()
-    contributorPreferencesWin.show()
-  })
-  contributorPreferencesWin.once('closed', () => {
-    contributorPreferencesWin = null
-  })
-}
-
-function createSyncPreferencesWindow () {
-  if (syncPreferencesWin) {
-    syncPreferencesWin.show()
-    return
-  }
-
-  const syncPreferencesUrl = 'https://my.stretchly.net/app/v1/sync'
-  syncPreferencesWin = new BrowserWindow({
-    show: false,
-    autoHideMenuBar: true,
-    width: 1000,
-    height: 700,
-    icon: windowIconPath(),
-    x: displayManager.getDisplayX(),
-    y: displayManager.getDisplayY(),
-    backgroundColor: 'whitesmoke',
-    webPreferences: {
-      preload: join(__dirname, './electron-bridge.mjs'),
-      sandbox: false
-    }
-  })
-  syncPreferencesWin.webContents.loadURL(syncPreferencesUrl)
-
-  syncPreferencesWin.once('closed', () => {
-    syncPreferencesWin = null
-  })
-
-  syncPreferencesWin.once('ready-to-show', () => {
-    syncPreferencesWin.center()
-    syncPreferencesWin.show()
-  })
-}
-
-function planVersionCheck (seconds = 1) {
-  if (settings.get('disableAppUpdateFeatures')) return
-  if (updateChecker) {
-    clearInterval(updateChecker)
-    updateChecker = null
-  }
-  updateChecker = setTimeout(checkVersion, seconds * 1000)
-}
-
-function checkVersion () {
-  if (settings.get('disableAppUpdateFeatures')) return
-  if (settings.get('checkNewVersion')) {
-    processWin.webContents.send('check-version',
-      `v${app.getVersion()}`,
-      settings.get('notifyNewVersion'),
-      settings.get('silentNotifications')
-    )
-    planVersionCheck(3600 * 48)
-  }
-}
-
 function startMicrobreakNotification () {
   showNotification(i18next.t('main.microbreakIn', { seconds: settings.get('microbreakNotificationInterval') / 1000 }))
-  log.info('Stretchly: showing Mini break notification')
-  breakPlanner.nextBreakAfterNotification()
-  updateTray()
-}
-
-function startBreakNotification () {
-  showNotification(i18next.t('main.breakIn', { seconds: settings.get('breakNotificationInterval') / 1000 }))
-  log.info('Stretchly: showing Long break notification')
+  log.info('ScreenRest: showing Mini break notification')
   breakPlanner.nextBreakAfterNotification()
   updateTray()
 }
@@ -704,7 +488,7 @@ function getBlurredBackgroundWindowOptions () {
 function startMicrobreak () {
   // don't start another break if break running
   if (microbreakWins) {
-    log.warn('Stretchly: Mini break already running, not starting Mini break')
+    log.warn('ScreenRest: Mini break already running, not starting Mini break')
     return
   }
 
@@ -719,8 +503,7 @@ function startMicrobreak () {
   const modalPath = 'file://' + join(__dirname, '/microbreak.html')
   microbreakWins = []
 
-  const idea = nextIdea || (settings.get('ideas') ? microbreakIdeas.randomElement : [''])
-  nextIdea = null
+  const idea = settings.get('ideas') ? microbreakIdeas.randomElement : ['']
 
   if (!settings.get('silentNotifications')) {
     const sound = settings.get('miniBreakStartSound')
@@ -768,7 +551,7 @@ function startMicrobreak () {
       focusable: showBreaksAsRegularWindows,
       alwaysOnTop: !showBreaksAsRegularWindows,
       hasShadow: false,
-      title: 'Stretchly',
+      title: 'ScreenRest',
       titleBarStyle: process.platform === 'darwin' ? (showBreaksAsRegularWindows ? 'default' : 'hidden') : undefined,
       titleBarOverlay: process.platform === 'darwin' ? !showBreaksAsRegularWindows : undefined,
       webPreferences: {
@@ -792,18 +575,18 @@ function startMicrobreak () {
     microbreakWinLocal.setSize(windowOptions.width, windowOptions.height)
 
     microbreakWinLocal.once('ready-to-show', () => {
-      log.info('Stretchly: ready-to-show fired')
+      log.info('ScreenRest: ready-to-show fired')
     })
 
     ipcMain.once('mini-break-loaded', () => {
-      log.info('Stretchly: Mini break window loaded')
+      log.info('ScreenRest: Mini break window loaded')
       if (showBreaksAsRegularWindows) {
         microbreakWinLocal.show()
       } else {
         microbreakWinLocal.showInactive()
       }
 
-      log.info(`Stretchly: showing window ${localDisplayId + 1} of ${displayManager.getDisplayCount()}`)
+      log.info(`ScreenRest: showing window ${localDisplayId + 1} of ${displayManager.getDisplayCount()}`)
       if (process.platform === 'darwin') {
         if (showBreaksAsRegularWindows) {
           microbreakWinLocal.setFullScreen(settings.get('fullscreen'))
@@ -815,7 +598,7 @@ function startMicrobreak () {
       }
       if (localDisplayId === 0) {
         breakPlanner.emit('microbreakStarted', true)
-        log.info('Stretchly: starting Mini break')
+        log.info('ScreenRest: starting Mini break')
       }
       if (!settings.get('fullscreen') && process.platform !== 'darwin') {
         setTimeout(() => {
@@ -831,7 +614,7 @@ function startMicrobreak () {
     if (microbreakWinLocal) {
       microbreakWinLocal.on('close', (e) => {
         if (breakPlanner.scheduler.timeLeft > 0 && settings.get('microbreakStrictMode')) {
-          log.info('Stretchly: preventing closing break window as in strict mode')
+          log.info('ScreenRest: preventing closing break window as in strict mode')
           e.preventDefault()
         }
       })
@@ -843,7 +626,7 @@ function startMicrobreak () {
 
     if (!settings.get('allScreens')) {
       if (displayManager.getDisplayCount() > 1) {
-        log.info('Stretchly: not showing on more Monitors as it is disabled.')
+        log.info('ScreenRest: not showing on more Monitors as it is disabled.')
       }
       break
     }
@@ -855,212 +638,37 @@ function startMicrobreak () {
   }
 }
 
-function startBreak () {
-  if (breakWins) {
-    log.warn('Stretchly: Long break already running, not starting Long break')
-    return
-  }
-
-  const breakDuration = settings.get('breakDuration')
-  const strictMode = settings.get('breakStrictMode')
-  const postponesLimit = settings.get('breakPostponesLimit')
-  const postponableDurationPercent = settings.get('breakPostponableDurationPercent')
-  const postponable = settings.get('breakPostpone') &&
-    breakPlanner.postponesNumber < postponesLimit && postponesLimit > 0
-  const showBreaksAsRegularWindows = settings.get('showBreaksAsRegularWindows')
-
-  const modalPath = 'file://' + join(__dirname, '/break.html')
-  breakWins = []
-
-  const defaultNextIdea = settings.get('ideas') ? breakIdeas.randomElement : ['', '']
-  const idea = nextIdea ? (nextIdea.map((val, index) => val || defaultNextIdea[index])) : defaultNextIdea
-  nextIdea = null
-
-  if (!settings.get('silentNotifications')) {
-    const sound = settings.get('longBreakStartSound')
-    if (sound !== 'silence') {
-      processWin.webContents.send('play-sound', sound, settings.get('volume'))
-    }
-  }
-
-  ipcMain.handle('send-long-break-data', (event) => {
-    const startTime = Date.now()
-    const shortcut = settings.get('endBreakShortcut')
-    if (shortcut) {
-      globalShortcut.register(shortcut, () => {
-        const passedPercent = (Date.now() - startTime) / breakDuration * 100
-        if (passedPercent >= 100) {
-          finishBreak(false)
-          return
-        }
-        if (canPostpone(postponable, passedPercent, postponableDurationPercent)) {
-          postponeBreak()
-        } else if (canSkip(strictMode, postponable, passedPercent, postponableDurationPercent)) {
-          finishBreak(false)
-        }
-      })
-    }
-    return [idea, startTime, breakDuration, strictMode,
-      postponable, postponableDurationPercent,
-      calculateBackgroundColor(settings.get('mainColor'))]
-  })
-
-  for (let localDisplayId = 0; localDisplayId < displayManager.getDisplayCount(); localDisplayId++) {
-    const windowOptions = {
-      width: Math.floor(displayManager.getDisplayWidth(localDisplayId) * settings.get('breakWindowWidth')),
-      height: Math.floor(displayManager.getDisplayHeight(localDisplayId) * settings.get('breakWindowHeight')),
-      autoHideMenuBar: true,
-      icon: windowIconPath(),
-      resizable: false,
-      frame: showBreaksAsRegularWindows,
-      show: false,
-      backgroundThrottling: false,
-      transparent: !showBreaksAsRegularWindows,
-      ...getBlurredBackgroundWindowOptions(),
-      backgroundColor: calculateBackgroundColor(settings.get('mainColor')),
-      skipTaskbar: !showBreaksAsRegularWindows,
-      focusable: showBreaksAsRegularWindows,
-      alwaysOnTop: !showBreaksAsRegularWindows,
-      hasShadow: false,
-      title: 'Stretchly',
-      titleBarStyle: process.platform === 'darwin' ? (showBreaksAsRegularWindows ? 'default' : 'hidden') : undefined,
-      titleBarOverlay: process.platform === 'darwin' ? !showBreaksAsRegularWindows : undefined,
-      webPreferences: {
-        preload: join(__dirname, './break-preload.mjs'),
-        sandbox: false
-      }
-    }
-
-    if (settings.get('fullscreen') && process.platform !== 'darwin') {
-      windowOptions.width = displayManager.getDisplayWidth(localDisplayId)
-      windowOptions.height = displayManager.getDisplayHeight(localDisplayId)
-      windowOptions.x = displayManager.getDisplayX(localDisplayId, 0, true)
-      windowOptions.y = displayManager.getDisplayY(localDisplayId, 0, true)
-    } else if (!(settings.get('fullscreen') && process.platform === 'win32')) {
-      windowOptions.x = displayManager.getDisplayX(localDisplayId, windowOptions.width, false)
-      windowOptions.y = displayManager.getDisplayY(localDisplayId, windowOptions.height, false)
-    }
-
-    let breakWinLocal = new BrowserWindow(windowOptions)
-    // seems to help with multiple-displays problems
-    breakWinLocal.setSize(windowOptions.width, windowOptions.height)
-
-    breakWinLocal.once('ready-to-show', () => {
-      log.info('Stretchly: ready-to-show fired')
-    })
-
-    ipcMain.once('long-break-loaded', () => {
-      log.info('Stretchly: Long break window loaded')
-      if (showBreaksAsRegularWindows) {
-        breakWinLocal.show()
-      } else {
-        breakWinLocal.showInactive()
-      }
-
-      log.info(`Stretchly: showing window ${localDisplayId + 1} of ${displayManager.getDisplayCount()}`)
-      if (process.platform === 'darwin') {
-        if (showBreaksAsRegularWindows) {
-          breakWinLocal.setFullScreen(settings.get('fullscreen'))
-        } else {
-          breakWinLocal.setMinimizable(false)
-          breakWinLocal.setClosable(false)
-          breakWinLocal.setKiosk(settings.get('fullscreen'))
-        }
-      }
-      if (localDisplayId === 0) {
-        breakPlanner.emit('breakStarted', true)
-        log.info('Stretchly: starting Long break')
-      }
-
-      if (!settings.get('fullscreen') && process.platform !== 'darwin') {
-        setTimeout(() => {
-          breakWinLocal.center()
-        }, 0)
-      }
-      updateTray()
-    })
-
-    breakWinLocal.loadURL(modalPath)
-    breakWinLocal.setVisibleOnAllWorkspaces(true)
-    breakWinLocal.setAlwaysOnTop(!showBreaksAsRegularWindows, 'pop-up-menu')
-    if (breakWinLocal) {
-      breakWinLocal.on('close', (e) => {
-        if (breakPlanner.scheduler.timeLeft > 0 && settings.get('breakStrictMode')) {
-          log.info('Stretchly: preventing closing break window as in strict mode')
-          e.preventDefault()
-        }
-      })
-      breakWinLocal.once('closed', () => {
-        breakWinLocal = null
-      })
-    }
-    breakWins.push(breakWinLocal)
-
-    if (!settings.get('allScreens')) {
-      if (displayManager.getDisplayCount() > 1) {
-        log.info('Stretchly: not showing on more Monitors as it is disabled.')
-      }
-      break
-    }
-  }
-  if (process.platform === 'darwin') {
-    if (app.dock.isVisible) {
-      app.dock.hide()
-    }
-  }
-}
-
-function breakComplete (shouldPlaySound, windows, breakType) {
+function breakComplete (shouldPlaySound, windows) {
   if (settings.get('endBreakShortcut') && globalShortcut.isRegistered(settings.get('endBreakShortcut'))) {
     globalShortcut.unregister(settings.get('endBreakShortcut'))
   }
   if (shouldPlaySound && !settings.get('silentNotifications')) {
-    const audio = breakType === 'mini' ? 'miniBreakAudio' : 'longBreakAudio'
-    processWin.webContents.send('play-sound', settings.get(audio), settings.get('volume'))
+    processWin.webContents.send('play-sound', settings.get('miniBreakAudio'), settings.get('volume'))
   }
   if (process.platform === 'darwin') {
-    // get focus on the last app
     Menu.sendActionToFirstResponder('hide:')
   }
   return closeWindows(windows)
 }
 
-function enterManualAwaitPhase (type, shouldPlaySound) {
-  const isMini = type === 'mini'
-  const manualSettingKey = isMini ? 'miniBreakManualFinish' : 'longBreakManualFinish'
-  if (!settings.get(manualSettingKey)) return
+function enterMiniBreakManualContinuation (shouldPlaySound) {
+  if (!settings.get('miniBreakManualFinish')) return
   if (shouldPlaySound && !settings.get('silentNotifications')) {
-    const audioKey = isMini ? 'miniBreakAudio' : 'longBreakAudio'
-    processWin.webContents.send('play-sound', settings.get(audioKey), settings.get('volume'))
+    processWin.webContents.send('play-sound', settings.get('miniBreakAudio'), settings.get('volume'))
   }
-  const wins = isMini ? microbreakWins : breakWins
-  if (wins) {
-    wins.forEach(w => {
+  if (microbreakWins) {
+    microbreakWins.forEach(w => {
       if (w && !w.isDestroyed()) {
-        w.webContents.send('enter-manual-await', isMini ? 'microbreak' : 'break')
+        w.webContents.send('enter-manual-await', 'microbreak')
       }
     })
   }
-  log.info('Stretchly: entering manual finish phase (' + (isMini ? 'Mini' : 'Long') + ' break)')
+  log.info('ScreenRest: entering manual finish phase (break)')
 }
-
-const enterMiniBreakManualContinuation = (shouldPlaySound) => enterManualAwaitPhase('mini', shouldPlaySound)
-const enterLongBreakManualContinuation = (shouldPlaySound) => enterManualAwaitPhase('long', shouldPlaySound)
 
 function finishMicrobreak (shouldPlaySound = true, shouldPlanNext = true) {
-  microbreakWins = breakComplete(shouldPlaySound, microbreakWins, 'mini')
-  log.info(`Stretchly: finishing Mini break (shouldPlanNext: ${shouldPlanNext})`)
-  if (shouldPlanNext) {
-    breakPlanner.nextBreak()
-  } else {
-    breakPlanner.clear()
-  }
-  updateTray()
-}
-
-function finishBreak (shouldPlaySound = true, shouldPlanNext = true) {
-  breakWins = breakComplete(shouldPlaySound, breakWins, 'long')
-  log.info(`Stretchly: finishing Long break (shouldPlanNext: ${shouldPlanNext})`)
+  microbreakWins = breakComplete(shouldPlaySound, microbreakWins)
+  log.info(`ScreenRest: finishing break (shouldPlanNext: ${shouldPlanNext})`)
   if (shouldPlanNext) {
     breakPlanner.nextBreak()
   } else {
@@ -1070,16 +678,9 @@ function finishBreak (shouldPlaySound = true, shouldPlanNext = true) {
 }
 
 function postponeMicrobreak () {
-  microbreakWins = breakComplete(false, microbreakWins, 'mini')
+  microbreakWins = breakComplete(false, microbreakWins)
   breakPlanner.postponeCurrentBreak()
-  log.info('Stretchly: postponing Mini break')
-  updateTray()
-}
-
-function postponeBreak () {
-  breakWins = breakComplete(false, breakWins, 'long')
-  breakPlanner.postponeCurrentBreak()
-  log.info('Stretchly: postponing Long break')
+  log.info('ScreenRest: postponing break')
   updateTray()
 }
 
@@ -1087,45 +688,26 @@ function skipToMicrobreak (delay) {
   if (microbreakWins) {
     microbreakWins = breakComplete(false, microbreakWins)
   }
-  if (breakWins) {
-    breakWins = breakComplete(false, breakWins)
-  }
   if (delay) {
     breakPlanner.skipToMicrobreak(delay)
-    log.info(`Stretchly: skipping to Mini break in ${delay}ms`)
+    log.info(`ScreenRest: skipping to break in ${delay}ms`)
   } else {
     breakPlanner.skipToMicrobreak()
-    log.info('Stretchly: skipping to Mini break')
+    log.info('ScreenRest: skipping to break')
   }
   updateTray()
 }
 
 function skipToBreak (delay) {
-  if (microbreakWins) {
-    microbreakWins = breakComplete(false, microbreakWins)
-  }
-  if (breakWins) {
-    breakWins = breakComplete(false, breakWins)
-  }
-  if (delay) {
-    breakPlanner.skipToBreak(delay)
-    log.info(`Stretchly: skipping to Long break in ${delay}ms`)
-  } else {
-    breakPlanner.skipToBreak()
-    log.info('Stretchly: skipping to Long break')
-  }
-  updateTray()
+  skipToMicrobreak(delay)
 }
 
 function resetBreaks () {
   if (microbreakWins) {
     microbreakWins = breakComplete(false, microbreakWins)
   }
-  if (breakWins) {
-    breakWins = breakComplete(false, breakWins)
-  }
   breakPlanner.reset()
-  log.info('Stretchly: resetting breaks')
+  log.info('ScreenRest: resetting breaks')
   updateTray()
 }
 
@@ -1143,7 +725,7 @@ function loadIdeas () {
   if (settings.get('useIdeasFromSettings')) {
     longBreakIdeasData = settings.get('breakIdeas')
     miniBreakIdeasData = settings.get('microbreakIdeas')
-    log.info('Stretchly: loading custom break ideas from preferences file')
+    log.info('ScreenRest: loading custom break ideas from preferences file')
   } else {
     const t = i18next.getFixedT('en')
     miniBreakIdeasData = Object.keys(t('miniBreakIdeas',
@@ -1157,7 +739,7 @@ function loadIdeas () {
       .map((item) => {
         return { data: [i18next.t(`longBreakIdeas.${item}.title`), i18next.t(`longBreakIdeas.${item}.text`)], enabled: true }
       })
-    log.info('Stretchly: loading default break ideas')
+    log.info('ScreenRest: loading default break ideas')
   }
 
   breakIdeas = new IdeasLoader(longBreakIdeasData).ideas()
@@ -1168,20 +750,17 @@ function pauseBreaks (milliseconds) {
   if (microbreakWins) {
     finishMicrobreak(false)
   }
-  if (breakWins) {
-    finishBreak(false)
-  }
   breakPlanner.pause(milliseconds)
-  log.info(`Stretchly: pausing breaks for ${milliseconds}ms`)
+  log.info(`ScreenRest: pausing breaks for ${milliseconds}ms`)
   updateTray()
 }
 
 function resumeBreaks (notify = true) {
   if (breakPlanner.dndManager.isOnDnd) {
-    log.info('Stretchly: not resuming breaks because in Do Not Disturb')
+    log.info('ScreenRest: not resuming breaks because in Do Not Disturb')
   } else {
     breakPlanner.resume()
-    log.info('Stretchly: resuming breaks')
+    log.info('ScreenRest: resuming breaks')
     if (notify) {
       showNotification(i18next.t('main.resumingBreaks'))
     }
@@ -1269,17 +848,6 @@ function updateTray () {
 function getTrayMenuTemplate () {
   const trayMenu = []
 
-  if (!settings.get('disableAppUpdateFeatures') && global.isNewVersion) {
-    trayMenu.push({
-      label: i18next.t('main.downloadLatestVersion'),
-      click: function () {
-        shell.openExternal('https://hovancik.net/stretchly/downloads')
-      }
-    }, {
-      type: 'separator'
-    })
-  }
-
   const statusMessage = new StatusMessages({
     breakPlanner,
     settings,
@@ -1301,33 +869,17 @@ function getTrayMenuTemplate () {
     })
   }
 
-  if ((breakPlanner.scheduler.reference === 'finishMicrobreak' && settings.get('microbreakStrictMode') &&
-        !settings.get('showTrayMenuInStrictMode')) ||
-      (breakPlanner.scheduler.reference === 'finishBreak' && settings.get('breakStrictMode') &&
-      !settings.get('showTrayMenuInStrictMode'))
-  ) {
+  if (breakPlanner.scheduler.reference === 'finishMicrobreak' && settings.get('microbreakStrictMode') &&
+        !settings.get('showTrayMenuInStrictMode')) {
     // empty menu, we are in strict mode
     return trayMenu
   }
 
   if (!(breakPlanner.isPaused || breakPlanner.dndManager.isOnDnd || breakPlanner.appExclusionsManager.isSchedulerCleared)) {
-    let submenu = []
     if (settings.get('microbreak')) {
-      submenu = submenu.concat([{
-        label: i18next.t('main.toMicrobreak'),
-        click: () => skipToMicrobreak()
-      }])
-    }
-    if (settings.get('break')) {
-      submenu = submenu.concat([{
-        label: i18next.t('main.toBreak'),
-        click: () => skipToBreak()
-      }])
-    }
-    if (settings.get('break') || settings.get('microbreak')) {
       trayMenu.push({
         label: i18next.t('main.skipToTheNext'),
-        submenu
+        click: () => skipToMicrobreak()
       })
     }
   }
@@ -1399,24 +951,10 @@ function getTrayMenuTemplate () {
     }
   })
 
-  if (global.isContributor) {
-    trayMenu.push({
-      label: i18next.t('main.contributorPreferences'),
-      click: function () {
-        createContributorSettingsWindow()
-      }
-    }, {
-      label: i18next.t('main.syncPreferences'),
-      click: function () {
-        createSyncPreferencesWindow()
-      }
-    })
-  }
-
   trayMenu.push({
     type: 'separator'
   }, {
-    label: i18next.t('main.quitStretchly'),
+    label: i18next.t('main.quitScreenRest'),
     role: 'quit',
     click: function () {
       app.quit()
@@ -1453,16 +991,8 @@ ipcMain.on('postpone-mini-break', function (event) {
   postponeMicrobreak()
 })
 
-ipcMain.on('postpone-long-break', function (event) {
-  postponeBreak()
-})
-
 ipcMain.on('finish-mini-break', function (event, shouldPlaySound, shouldPlanNext) {
   finishMicrobreak(shouldPlaySound, shouldPlanNext)
-})
-
-ipcMain.on('finish-long-break', function (event, shouldPlaySound, shouldPlanNext) {
-  finishBreak(shouldPlaySound, shouldPlanNext)
 })
 
 ipcMain.on('save-setting', function (event, key, value) {
@@ -1524,7 +1054,7 @@ ipcMain.on('restore-defaults', (event) => {
   }
   dialog.showMessageBox(dialogOpts).then(async (returnValue) => {
     if (returnValue.response === 0) {
-      log.info('Stretchly: restoring default settings')
+      log.info('ScreenRest: restoring default settings')
       settings.store = Object.assign(defaultSettings, { isFirstRun: false, __internal__: settings.get('__internal__') })
       initialize(false)
       event.sender.reload()
@@ -1549,9 +1079,9 @@ ipcMain.handle('show-debug', (event) => {
   let logsFile = log.transports.file.getFile().path
   let imagesFolder = join(app.getPath('userData'), 'images')
   if (insideWindowsStore()) {
-    settingsFile = settingsFile.replace('Roaming', 'Local\\Packages\\33881JanHovancik.stretchly_24fg4m0zq65je\\LocalCache\\Roaming')
-    logsFile = logsFile.replace('Roaming', 'Local\\Packages\\33881JanHovancik.stretchly_24fg4m0zq65je\\LocalCache\\Roaming')
-    imagesFolder = imagesFolder.replace('Roaming', 'Local\\Packages\\33881JanHovancik.stretchly_24fg4m0zq65je\\LocalCache\\Roaming')
+    settingsFile = settingsFile.replace('Roaming', 'Local\\Packages\\ScreenRest\\LocalCache\\Roaming')
+    logsFile = logsFile.replace('Roaming', 'Local\\Packages\\ScreenRest\\LocalCache\\Roaming')
+    imagesFolder = imagesFolder.replace('Roaming', 'Local\\Packages\\ScreenRest\\LocalCache\\Roaming')
   }
   return [
     reference,
@@ -1569,66 +1099,8 @@ ipcMain.on('open-preferences', function (event) {
   createPreferencesWindow()
 })
 
-ipcMain.on('set-contributor', function (event) {
-  const dir = app.getPath('userData')
-  const contributorStampFile = `${dir}/stamp`
-  writeFile(contributorStampFile, DateTime.now().toString(), () => { })
-  global.isContributor = true
-  log.info('Stretchly: Logged in. Thanks for your contributions!')
-  if (preferencesWin) {
-    preferencesWin.webContents.send('enable-contributor-preferences')
-  }
-  updateTray()
-})
-
-ipcMain.on('open-contributor-preferences', function () {
-  createContributorSettingsWindow()
-})
-
-ipcMain.on('open-contributor-auth', function (event, provider) {
-  if (myStretchlyWin) {
-    myStretchlyWin.show()
-    return
-  }
-  const myStretchlyUrl = `https://my.stretchly.net/app/v1?provider=${provider}`
-  myStretchlyWin = new BrowserWindow({
-    autoHideMenuBar: true,
-    show: false,
-    width: 1000,
-    height: 700,
-    icon: windowIconPath(),
-    x: displayManager.getDisplayX(),
-    y: displayManager.getDisplayY(),
-    backgroundColor: 'whitesmoke',
-    webPreferences: {
-      preload: join(__dirname, './electron-bridge.mjs'),
-      sandbox: false
-    }
-  })
-  myStretchlyWin.webContents.loadURL(myStretchlyUrl)
-
-  myStretchlyWin.once('closed', () => {
-    myStretchlyWin = null
-  })
-
-  myStretchlyWin.once('ready-to-show', () => {
-    myStretchlyWin.center()
-    myStretchlyWin.show()
-  })
-})
-
-ipcMain.on('open-sync-preferences', () => {
-  createSyncPreferencesWindow()
-})
-
 ipcMain.handle('current-settings', (event) => {
   return settings.store
-})
-
-ipcMain.handle('restore-remote-settings', (event, remoteSettings) => {
-  log.info('Stretchly: restoring remote settings')
-  settings.store = remoteSettings
-  initialize(false)
 })
 
 ipcMain.handle('i18next-translate', (event, key, options) => {

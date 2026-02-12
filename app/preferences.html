@@ -40,12 +40,6 @@
         <span data-i18next="preferences.nav.about"></span>
       </div>
     </a>
-    <a href="#" data-section="heart">
-      <div>
-        <img src="images/preferences/heart.svg">
-        <span data-i18next="preferences.nav.heart"></span>
-      </div>
-    </a>
   </nav>
   <div class="settings">
     <div class="store-hidden portable-hidden">
@@ -81,16 +75,36 @@
       <hr />
     </div>
     <div>
-      <label data-i18next="preferences.settings.customMessage" for="customMessage"></label>
-      <input type="text" name="customBreakMessage" id="customMessage" placeholder="Enter your custom break message...">
+      <input type="checkbox" value="customMessagesEnabled" id="customMessagesEnabled">
+      <label for="customMessagesEnabled">Enable custom messages during breaks</label>
+    </div>
+    <div>
+      <button type="button" id="openCustomMessageList" class="push">Custom Message List</button>
+    </div>
+    <div>
+      <input type="checkbox" value="quranAyatEnabled" id="quranAyatEnabled">
+      <label for="quranAyatEnabled">Enable Quran Ayat during breaks</label>
     </div>
     <div>
       <p style="font-size: 0.9em; color: #888; margin-top: -10px;">
-        <span data-i18next="preferences.settings.customMessageInfo"></span>
+        When both are enabled, break screens will randomly show either a custom message or a Quran Ayat.
       </p>
     </div>
     <div>
       <hr />
+    </div>
+    <div id="customMessageModal" class="modal-overlay hidden">
+      <div class="modal-content">
+        <h3>Custom Message List</h3>
+        <div id="messageListContainer" style="max-height: 300px; overflow-y: auto; margin-bottom: 10px;"></div>
+        <div style="display: flex; gap: 6px;">
+          <input type="text" id="newMessageInput" placeholder="Add a new message..." style="flex: 1;">
+          <button type="button" id="addMessageBtn" class="push">Add</button>
+        </div>
+        <div style="margin-top: 10px; text-align: right;">
+          <button type="button" id="closeMessageModal">Close</button>
+        </div>
+      </div>
     </div>
     <div>
       <label data-i18next="preferences.settings.language" for="language"></label>
@@ -160,133 +174,44 @@
   </div>
   <div class="schedule hidden">
     <div>
-      <span data-i18next="preferences.schedule.miniBreaks">
-      </span>
+      <span>Break Schedule:</span>
     </div>
     <div>
-      <p data-i18next="preferences.schedule.miniBreaksInfo">
-      </p>
+      <p>Configure how often and how long your breaks should be.</p>
     </div>
     <div>
-      <input type="checkbox" class="enabletype" value="microbreak" id="enableMiniBreaks">
-      <label data-i18next="preferences.schedule.enableMiniBreaks" for="enableMiniBreaks"></label>
+      <label for="breakDurationInput">Break duration:</label>
+      <input type="number" id="breakDurationInput" min="5" max="3600" step="5" style="width:70px; margin: 0 8px;">
+      <span>seconds</span>
     </div>
     <div>
-      <label data-i18next="preferences.schedule.breakFor" data-same-width-label for="miniBreakFor"></label>
-      <input type="range" min="10" max="600" step="10" list="tickmarksMiniBreakFor" name="microbreakDuration"
-        data-divisor="1000" id="miniBreakFor">
-      <datalist id="tickmarksMiniBreakFor">
-        <option value="10"></option>
-        <option value="20"></option>
-        <option value="30"></option>
-        <option value="40"></option>
-        <option value="50"></option>
-        <option value="60"></option>
-        <option value="80"></option>
-        <option value="120"></option>
-        <option value="180"></option>
-        <option value="240"></option>
-        <option value="300"></option>
-        <option value="360"></option>
-        <option value="420"></option>
-        <option value="480"></option>
-        <option value="540"></option>
-        <option value="600"></option>
-      </datalist>
-      <output data-unit="seconds"></output>
-    </div>
-    <div>
-      <label data-i18next="preferences.schedule.every" data-same-width-label for="miniBreakEvery"></label>
-      <input type="range" min="5" max="65" step="5" list="tickmarksMiniBreakEvery" name="microbreakInterval"
-        data-divisor="60000" id="miniBreakEvery">
-      <datalist id="tickmarksMiniBreakEvery">
-        <option value="10"></option>
-        <option value="20"></option>
-        <option value="30"></option>
-        <option value="40"></option>
-        <option value="50"></option>
-        <option value="60"></option>
-      </datalist>
-      <output data-unit="minutes"></output>
-    </div>
-    <div>
-      <input type="checkbox" value="microbreakNotification" id="showNotificationBeforeMiniBreak">
-      <label data-i18next="preferences.schedule.showNotificationBeforeMiniBreak"
-        for="showNotificationBeforeMiniBreak"></label>
-    </div>
-    <div>
-      <input type="checkbox" value="microbreakPostpone" id="enablePostponeMini">
-      <label data-i18next="preferences.schedule.enablePostponeMini" for="enablePostponeMini"></label>
+      <label for="breakIntervalInput">Break every:</label>
+      <input type="number" id="breakIntervalInput" min="1" max="480" step="1" style="width:70px; margin: 0 8px;">
+      <span>minutes</span>
     </div>
     <div>
       <hr />
     </div>
     <div>
-      <span data-i18next="preferences.schedule.longBreaks">
-      </span>
+      <input type="checkbox" value="microbreakNotification" id="showNotificationBeforeBreak">
+      <label for="showNotificationBeforeBreak">Show notification before break starts</label>
     </div>
     <div>
-      <p data-i18next="preferences.schedule.longBreaksInfo">
-      </p>
-    </div>
-    <div>
-      <input type="checkbox" class="enabletype" value="break" id="enableLongBreaks">
-      <label data-i18next="preferences.schedule.enableLongBreaks" for="enableLongBreaks"></label>
-    </div>
-    <div>
-      <label data-i18next="preferences.schedule.breakFor" data-same-width-label for="longBreakFor"></label>
-      <input type="range" min="1" max="60" step="1" list="tickmarksLongBreakFor" name="breakDuration"
-        data-divisor="60000" id="longBreakFor">
-      <datalist id="tickmarksLongBreakFor">
-        <option value="10"></option>
-        <option value="20"></option>
-        <option value="30"></option>
-        <option value="40"></option>
-        <option value="50"></option>
-      </datalist>
-      <output data-unit="minutes"></output>
-    </div>
-    <div>
-      <label data-i18next="preferences.schedule.every" data-same-width-label for="longBreakEvery"></label>
-      <input type="range" min="1" max="30" step="1" list="tickmarksLongBreakEvery" name="breakInterval" data-divisor="1"
-        id="longBreakEvery">
-      <datalist id="tickmarksLongBreakEvery">
-        <option value="5"></option>
-        <option value="10"></option>
-        <option value="15"></option>
-        <option value="20"></option>
-        <option value="25"></option>
-        <option value="30"></option>
-      </datalist>
-      <output data-unit="minutes"></output>
-    </div>
-    <div>
-      <input type="checkbox" value="breakNotification" id="showNotificationBeforeLongBreak">
-      <label data-i18next="preferences.schedule.showNotificationBeforeLongBreak"
-        for="showNotificationBeforeLongBreak"></label>
-    </div>
-    <div>
-      <input type="checkbox" value="breakPostpone" id="enablePostponeLong">
-      <label data-i18next="preferences.schedule.enablePostponeLong" for="enablePostponeLong"></label>
+      <input type="checkbox" value="microbreakPostpone" id="enablePostpone">
+      <label for="enablePostpone">Enable postponement for breaks</label>
     </div>
     <div data-strict-mode>
       <hr />
     </div>
     <div data-strict-mode>
-      <span data-i18next="preferences.schedule.strictMode">
-      </span>
+      <span>Strict mode:</span>
     </div>
     <div data-strict-mode>
-      <p data-i18next="preferences.schedule.strictModeInfo">
-      </p>
+      <p>Strict mode prevents you from skipping breaks and is designed to help discipline.</p>
     </div>
     <div data-strict-mode>
-      <input type="checkbox" value="microbreakStrictMode" id="enableStrictMini">
-      <label data-i18next="preferences.schedule.enableStrictMini" for="enableStrictMini"></label>
-    </div>
-    <div data-strict-mode>
-      <input type="checkbox" value="breakStrictMode" id="enableStrictLong">
-      <label data-i18next="preferences.schedule.enableStrictLong" for="enableStrictLong"></label>
+      <input type="checkbox" value="microbreakStrictMode" id="enableStrict">
+      <label for="enableStrict">Enable Strict mode for breaks</label>
     </div>
   </div>
   <div class="theme hidden">
@@ -387,8 +312,8 @@
   <div class="about hidden">
     <div>
       <div>
-        <img src="images/stretchly.svg" data-has-dark-version alt="Stretchy logo">
-        <span>Stretchly</span>
+        <img src="images/stretchly.svg" data-has-dark-version alt="ScreenRest logo">
+        <span>ScreenRest</span>
       </div>
       <span data-i18next="preferences.about.tagline"></span>
     </div>
@@ -396,100 +321,6 @@
       <span data-i18next="preferences.about.version"></span>
       <span class="version"></span>
     </div>
-    <div>
-      <input type="checkbox" value="checkNewVersion" id="checkNewVersion">
-      <label data-i18next="preferences.about.checkNewVersion" for="checkNewVersion"></label>
-      <br />(<span data-i18next="preferences.about.latestVersion"></span>
-      <span class="latestVersion"></span>)
-    </div>
-    <div>
-      <img src="images/preferences/home.svg" data-has-dark-version alt="Home">
-      <div>
-        <span data-i18next="preferences.about.learnMore"></span>
-        <a data-i18next="preferences.about.ourWebsite" href="https://hovancik.net/stretchly/"></a>
-        <span data-i18next="preferences.about.dot"></span>
-      </div>
-    </div>
-    <div class="debug">
-      <div class="hidden">
-        <p id="to-copy">
-          breakPlanner: {reference: <span id="reference"></span>,
-          timeleft: <span id="timeleft"></span>,
-          breakNumber: <span id="breakNumber"></span>,
-          postponesNumber: <span id="postponesNumber"></span>,
-          Do Not Disturb: <span id="donotdisturb"></span>}
-          <br />
-          <span data-preferences-file>
-          settingsFile: <a href="" class="file" id="settingsfile"></a>
-          <br />
-          imagesFolder: <a href="" class="file" id="imagesfolder"></a>
-          <br />
-          </span>
-          logsFile: <a href="" class="file" id="logsfile"></a>
-          <br />Node.js: <span id="node"></span>,
-          Chromium: <span id="chrome"></span>,
-          Electron: <span id="electron"></span>
-          <br />OS: <span id="platform"></span><span class="linux-hidden darwin-hidden">,
-            Windows Store: <span id="windowsStore"></span>,
-            Windows Portable: <span id="windowsPortable"></span></span>
-        </p>
-        <p>
-          <button>copy to clipboard</button>
-        </p>
-      </div>
-    </div>
-    <div>
-      <span data-i18next="preferences.about.developedBy"></span>
-      <a data-i18next="preferences.about.janH" href="https://hovancik.net/"></a>
-    </div>
-    <div>
-      <span data-i18next="preferences.about.designedBy"></span>
-      (<a href="http://www.colinshanley.com/">www.colinshanley.com</a>)
-    </div>
-  </div>
-  <div class="heart hidden">
-    <div>
-      <img src="images/stretchly.svg" data-has-dark-version alt="Stretchy logo">
-    </div>
-    <div>
-      <span data-i18next="preferences.heart.loveStretchly"></span>
-    </div>
-    <div>
-      <span data-i18next="preferences.heart.desc1"></span>
-    </div>
-    <div>
-      <span data-i18next="preferences.heart.desc2"></span>
-    </div>
-    <div>
-    </div>
-    <div class="become">
-      <button type="button" name="becomeContributor" data-same-width-button
-        data-i18next="preferences.heart.becomeContributor"></button>
-    </div>
-    <div class="become">
-      <button type="button" name="alreadyContributor" data-same-width-button
-        data-i18next="preferences.heart.alreadyContributor"></button>
-    </div>
-    <div class="authenticate hidden">
-      <span data-i18next="preferences.heart.authenticateUsing"></span>
-    </div>
-    <div class="contributor hidden">
-      <button type="button" name="contributorPreferences" data-same-width-button
-        data-i18next="preferences.heart.contributorPreferences"></button>
-    </div>
-    <div class="contributor hidden">
-      <button type="button" name="syncPreferences" data-same-width-button
-        data-i18next="preferences.heart.syncPreferences"></button>
-    </div>
-    <div class="authenticate hidden">
-      <a data-provider="patreon">
-        <img src="images/preferences/patreon.svg" data-has-dark-version alt="Patreon">
-      </a>
-      <a data-provider="github">
-        <img src="images/preferences/github.svg" data-has-dark-version alt="Github">
-      </a>
-    </div>
-    <div></div>
   </div>
 </body>
 <script type="module" src="./preferences-renderer.js"></script>

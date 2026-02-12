@@ -33,7 +33,7 @@ function onShortcut ({ name, settings, log, breakPlanner, functions }) {
       }
       break
     case 'skipToNextScheduledBreakShortcut':
-      log.info('Stretchly: skipping to next scheduled break by shortcut')
+      log.info('ScreenRest: skipping to next scheduled break by shortcut')
       if (breakPlanner._scheduledBreakType === 'break') {
         functions.skipToBreak()
       } else if (breakPlanner._scheduledBreakType === 'microbreak') {
@@ -41,15 +41,15 @@ function onShortcut ({ name, settings, log, breakPlanner, functions }) {
       }
       break
     case 'skipToNextMiniBreakShortcut':
-      log.info('Stretchly: skipping to next Mini break by shortcut')
+      log.info('ScreenRest: skipping to next Mini break by shortcut')
       functions.skipToMicrobreak()
       break
     case 'skipToNextLongBreakShortcut':
-      log.info('Stretchly: skipping to next Long break by shortcut')
+      log.info('ScreenRest: skipping to next Long break by shortcut')
       functions.skipToBreak()
       break
     case 'resetBreaksShortcut':
-      log.info('Stretchly: resetting breaks by shortcut')
+      log.info('ScreenRest: resetting breaks by shortcut')
       functions.resetBreaks()
       break
     default: {
@@ -64,9 +64,9 @@ function setupBreak ({ name, shortcutText, settings, log, globalShortcut, breakP
   const shortcut = globalShortcut.register(shortcutText, () => onShortcut({ name, settings, log, breakPlanner, functions }))
 
   if (shortcut) {
-    log.info(`Stretchly: ${name} registration successful (${shortcutText})`)
+    log.info(`ScreenRest: ${name} registration successful (${shortcutText})`)
   } else {
-    log.warn(`Stretchly: ${name} registration failed`)
+    log.warn(`ScreenRest: ${name} registration failed`)
   }
 }
 

@@ -1,35 +1,26 @@
 import defaultBreakIdeas from './defaultBreakIdeas.js'
 import defaultMicrobreakIdeas from './defaultMicrobreakIdeas.js'
+import defaultCustomMessages from './defaultCustomMessages.js'
+import defaultQuranAyats from './defaultQuranAyats.js'
 import { insideFlatpak, insideWindowsStore, insideSnap, insideWindowsPortable } from './utils.js'
 
 export default {
   microbreakDuration: 20000,
   microbreakInterval: 600000,
-  breakDuration: 300000,
-  breakInterval: 2,
-  breakNotification: true,
   microbreakNotification: true,
-  breakNotificationInterval: 30000,
   microbreakNotificationInterval: 10000,
   microbreak: true,
-  break: true,
   microbreakStrictMode: false,
-  breakStrictMode: false,
   morningHour: 6,
   microbreakPostpone: true,
-  breakPostpone: true,
   microbreakPostponeTime: 120000,
-  breakPostponeTime: 300000,
   microbreakPostponesLimit: 1,
   microbreakPostponableDurationPercent: 30,
-  breakPostponesLimit: 1,
-  breakPostponableDurationPercent: 30,
   mainColor: '#478484',
   miniBreakColor: '#478484',
   transparentMode: false,
   blurredBackground: false,
   opacity: 0.9,
-  longBreakAudio: 'crystal-glass',
   miniBreakAudio: 'crystal-glass',
   volume: 1,
   fullscreen: false,
@@ -48,7 +39,6 @@ export default {
   silentNotifications: false,
   monitorDnd: true,
   miniBreakStartSound: 'silence',
-  longBreakStartSound: 'silence',
   themeSource: 'system',
   endBreakShortcut: 'CmdOrCtrl+X',
   breakWindowWidth: 0.85,
@@ -72,7 +62,6 @@ export default {
   showTrayIcon: true,
   skipToNextScheduledBreakShortcut: '',
   skipToNextMiniBreakShortcut: '',
-  skipToNextLongBreakShortcut: '',
   resetBreaksShortcut: '',
   showTrayMenuInStrictMode: false,
   customPreferencesMessage: '',
@@ -80,8 +69,11 @@ export default {
   hidePreferencesFileLocation: false,
   hideStrictModePreferences: false,
   miniBreakManualFinish: false,
-  longBreakManualFinish: false,
   openAtLogin: false,
   _migratedOpenAtLogin: false,
-  customBreakMessage: ''
+  customBreakMessage: '',
+  customMessageList: defaultCustomMessages,
+  customMessagesEnabled: true,
+  quranAyatEnabled: true,
+  quranAyats: defaultQuranAyats
 }

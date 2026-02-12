@@ -389,17 +389,57 @@ body[dir=rtl] .about > :nth-child(4) > div {
   font-size: 36px;
 }
 
-.heart > .authenticate > span {
-  font-size: 13px;
-  letter-spacing: -0.08px;
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
-.heart > .authenticate > a {
-  padding-right: 20px;
-  text-decoration: none;
+.modal-overlay.hidden {
+  display: none;
 }
 
-body[dir=rtl] .heart > .authenticate > a {
-  padding-right: 0;
-  padding-left: 20px;
+.modal-content {
+  background: var(--main-bg-color);
+  color: var(--main-color);
+  border-radius: 8px;
+  padding: 20px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.message-item {
+  display: flex;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--hr-bg-color);
+  gap: 8px;
+}
+
+.message-item span {
+  flex: 1;
+  font-size: 12px;
+  word-break: break-word;
+}
+
+.message-item button {
+  flex-shrink: 0;
+  font-size: 11px;
+  padding: 2px 8px;
+  cursor: pointer;
 }

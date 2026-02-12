@@ -1,0 +1,22 @@
+export default [
+  '"Indeed, with hardship comes ease." — Quran 94:6',
+  '"So remember Me; I will remember you." — Quran 2:152',
+  '"And He found you lost and guided you." — Quran 93:7',
+  '"Allah does not burden a soul beyond that it can bear." — Quran 2:286',
+  '"And whoever puts their trust in Allah, He will be enough for them." — Quran 65:3',
+  '"Verily, in the remembrance of Allah do hearts find rest." — Quran 13:28',
+  '"My mercy encompasses all things." — Quran 7:156',
+  '"And We have certainly made the Quran easy to remember. So is there anyone who will be mindful?" — Quran 54:17',
+  '"Do not lose hope in the mercy of Allah." — Quran 39:53',
+  '"And He is with you wherever you are." — Quran 57:4',
+  '"Indeed, Allah is with the patient." — Quran 2:153',
+  '"So which of the favors of your Lord would you deny?" — Quran 55:13',
+  '"Call upon Me; I will respond to you." — Quran 40:60',
+  '"And whoever fears Allah, He will make for him a way out." — Quran 65:2',
+  '"Indeed, the patient will be given their reward without account." — Quran 39:10',
+  '"He is the First and the Last, the Ascendant and the Intimate, and He is, of all things, Knowing." — Quran 57:3',
+  '"And We are closer to him than his jugular vein." — Quran 50:16',
+  '"Allah is the Light of the heavens and the earth." — Quran 24:35',
+  '"Indeed, prayer prohibits immorality and wrongdoing, and the remembrance of Allah is greater." — Quran 29:45',
+  '"And say: My Lord, increase me in knowledge." — Quran 20:114'
+]

@@ -1,7 +1,7 @@
 {
-  "name": "Stretchly",
-  "version": "1.20.0",
-  "description": "The break time reminder app",
+  "name": "ScreenRest",
+  "version": "1.0.0",
+  "description": "Take mindful screen breaks with Islamic reminders",
   "main": "app/main.js",
   "type": "module",
   "engines": {
@@ -22,25 +22,18 @@
     "postpublish": "pinst --enable",
     "prepare": "husky"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hovancik/stretchly.git"
-  },
   "keywords": [
-    "Stretchly",
+    "ScreenRest",
     "break",
-    "time",
-    "reminder"
+    "reminder",
+    "Islamic",
+    "Quran"
   ],
-  "author": "Jan Hovancik <jan@hovancik.net>",
-  "license": "BSD-2-Clause",
-  "bugs": {
-    "url": "https://github.com/hovancik/stretchly/issues"
-  },
-  "homepage": "https://hovancik.net/stretchly",
+  "author": "hozaifa1",
+  "license": "MIT",
   "build": {
-    "appId": "net.hovancik.stretchly",
-    "productName": "Stretchly",
+    "appId": "com.screenrest.app",
+    "productName": "ScreenRest",
     "dmg": {
       "icon": "build/icon.icns",
       "iconSize": 128,
@@ -94,11 +87,11 @@
       ]
     },
     "appx": {
-      "identityName": "33881JanHovancik.stretchly",
-      "publisher": "CN=35004EDA-CCDD-4304-A014-784D754E043F",
-      "publisherDisplayName": "Jan Hovancik",
-      "applicationId": "Stretchly",
-      "displayName": "Stretchly"
+      "identityName": "ScreenRest",
+      "publisher": "CN=ScreenRest",
+      "publisherDisplayName": "ScreenRest",
+      "applicationId": "ScreenRest",
+      "displayName": "ScreenRest"
     },
     "win": {
       "signAndEditExecutable": false,

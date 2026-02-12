@@ -1,6 +1,6 @@
 {
   "main": {
-    "toolTipHeader": "Stretchly - The break time reminder app",
+    "toolTipHeader": "ScreenRest - Mindful screen break reminder",
     "microbreakIn": "Mini break in $t(utils.seconds, {'count': {{seconds}} })",
     "breakIn": "Long break in $t(utils.seconds, {'count': {{seconds}} })",
     "resumingBreaks": "Resuming breaks",
@@ -16,14 +16,12 @@
     "untilMorning": "Until morning",
     "indefinitely": "Indefinitely",
     "resetBreaks": "Reset breaks",
-    "quitStretchly": "Quit Stretchly",
+    "quitScreenRest": "Quit ScreenRest",
     "restoreDefaults": "Restore defaults",
     "warning": "This will restore app defaults and all your settings will be lost.",
     "continue": "Continue",
     "cancel": "Cancel",
-    "preferences": "Preferences",
-    "contributorPreferences": "Contributor Preferences",
-    "syncPreferences": "Sync Preferences"
+    "preferences": "Preferences"
   },
   "break": {
     "postpone": "Postpone this break",
@@ -32,16 +30,16 @@
     "finish": "Finish this break"
   },
   "preferences": {
-    "title": "Stretchly Preferences",
+    "title": "ScreenRest Preferences",
     "nav": {
       "settings": "Settings",
       "schedule": "Schedule",
       "theme": "Theme",
       "about": "About",
-      "heart": "Love Stretchly"
+      "heart": "About"
     },
     "settings": {
-      "openAtLogin": "Start Stretchly automatically when logging in",
+      "openAtLogin": "Start ScreenRest automatically when logging in",
       "showBreaksIn": "Shows breaks in:",
       "window": "Window",
       "fullscreen": "Full screen",
@@ -99,16 +97,16 @@
       "trayIconStyleProgress": "Progress to break"
     },
     "about": {
-      "tagline": "The break time reminder app",
+      "tagline": "Mindful screen break reminder",
       "version": "Version ",
       "latestVersion": "Latest version ",
       "checkNewVersion": "Automatically check for app updates",
-      "learnMore": "To learn more about Stretchly features, view a tutorial, download the latest version or contact us for support, ",
-      "ourWebsite": "visit our website",
-      "dot": ".",
-      "developedBy": "Developed by",
-      "janH": "Jan Hovancik",
-      "designedBy": "Icon and UI design by Colin Shanley"
+      "learnMore": "",
+      "ourWebsite": "",
+      "dot": "",
+      "developedBy": "",
+      "janH": "",
+      "designedBy": ""
     },
     "heart": {
       "loveStretchly": "Love your Stretchly?",
@@ -176,7 +174,7 @@
     "primary": "Primary monitor",
     "cursor": "Follow cursor",
     "showTrayIcon": "Show tray icon",
-    "toShowTrayIcon": "Show Stretchly icon in tray",
+    "toShowTrayIcon": "Show ScreenRest icon in tray",
     "currentTimeInBreaks": "Current time",
     "showCurrentTimeInBreaks": "Show current local time in break window"
   },
@@ -201,8 +199,8 @@
     "newVersionAvailable": "New version is available!"
   },
   "welcome": {
-    "title": "Welcome to Stretchly",
-    "breakTimeReminderApp": "The break time reminder app",
+    "title": "Welcome to ScreenRest",
+    "breakTimeReminderApp": "Mindful screen break reminder",
     "viewTutorial": "View Tutorial",
     "openPreferences": "Open Preferences",
     "getStarted": "Get Started"
