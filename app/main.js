@@ -18,7 +18,6 @@ import {
   canPostpone, canSkip, formatTimeRemaining,
   minutesRemaining, insideWindowsStore, insideFlatpak, insideSnap, insideWindowsPortable
 } from './utils/utils.js'
-import IdeasLoader from './utils/ideasLoader.js'
 import BreaksPlanner from './breaksPlanner.js'
 import AppIcon from './utils/appIcon.js'
 import { UntilMorning } from './utils/untilMorning.js'
@@ -54,8 +53,6 @@ nativeTheme.on('updated', function theThemeHasChanged () {
   updateTray()
 })
 
-let microbreakIdeas
-let breakIdeas // eslint-disable-line no-unused-vars
 let breakPlanner
 let appIcon = null
 let autostartManager = null
@@ -324,7 +321,6 @@ i18next.on('languageChanged', () => {
     preferencesWin.webContents.send('translate')
   }
   updateTray()
-  loadIdeas()
 })
 
 function onSuspendOrLock () {
@@ -503,7 +499,7 @@ function startMicrobreak () {
   const modalPath = 'file://' + join(__dirname, '/microbreak.html')
   microbreakWins = []
 
-  const idea = settings.get('ideas') ? microbreakIdeas.randomElement : ['']
+  const idea = ['']
 
   if (!settings.get('silentNotifications')) {
     const sound = settings.get('miniBreakStartSound')
@@ -717,33 +713,6 @@ function calculateBackgroundColor (color) {
     opacityMultiplier = settings.get('opacity')
   }
   return color + Math.round(opacityMultiplier * 255).toString(16).padStart(2, '0')
-}
-
-function loadIdeas () {
-  let longBreakIdeasData
-  let miniBreakIdeasData
-  if (settings.get('useIdeasFromSettings')) {
-    longBreakIdeasData = settings.get('breakIdeas')
-    miniBreakIdeasData = settings.get('microbreakIdeas')
-    log.info('ScreenRest: loading custom break ideas from preferences file')
-  } else {
-    const t = i18next.getFixedT('en')
-    miniBreakIdeasData = Object.keys(t('miniBreakIdeas',
-      { returnObjects: true }))
-      .map((item) => {
-        return { data: i18next.t(`miniBreakIdeas.${item}.text`), enabled: true }
-      })
-
-    longBreakIdeasData = Object.keys(t('longBreakIdeas',
-      { returnObjects: true }))
-      .map((item) => {
-        return { data: [i18next.t(`longBreakIdeas.${item}.title`), i18next.t(`longBreakIdeas.${item}.text`)], enabled: true }
-      })
-    log.info('ScreenRest: loading default break ideas')
-  }
-
-  breakIdeas = new IdeasLoader(longBreakIdeasData).ideas()
-  microbreakIdeas = new IdeasLoader(miniBreakIdeasData).ideas()
 }
 
 function pauseBreaks (milliseconds) {

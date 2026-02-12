@@ -2,7 +2,7 @@ import HtmlTranslate from './utils/htmlTranslate.js'
 import './platform.js'
 
 window.onload = async (event) => {
-  const [idea, started, duration, strictMode, postpone,
+  const [, started, duration, strictMode, postpone,
     postponePercent, backgroundColor] = await window.breaks.sendBreakData()
 
   new HtmlTranslate(document).translate()
@@ -69,7 +69,7 @@ window.onload = async (event) => {
     customMessageElement.style.display = 'none'
   }
 
-  document.querySelector('.microbreak-idea').innerHTML = window.breaks.sanitizeIdea(idea)
+  document.querySelector('.microbreak-idea').style.display = 'none'
 
   document.querySelectorAll('.custom-break-message a, .microbreak-idea a').forEach(a => {
     a.onclick = (event) => {

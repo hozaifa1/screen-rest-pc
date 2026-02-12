@@ -40,7 +40,7 @@ window.onload = async (event) => {
     }
   })
 
-  window.stretchly.onTranslate(async () => {
+  window.screenrest.onTranslate(async () => {
     await new HtmlTranslate(document).translate()
     setTimeout(() => setSameWidths(), 100)
   })
@@ -84,12 +84,12 @@ window.onload = async (event) => {
             window.electronApi.openExternal('https://github.com/hozaifa1/stretchly')
             break
           case 'preferences':
-            window.stretchly.openPreferences()
+            window.screenrest.openPreferences()
             break
           default:
             break
         }
-        window.stretchly.closeWindow()
+        window.screenrest.closeWindow()
       }
     }
   })

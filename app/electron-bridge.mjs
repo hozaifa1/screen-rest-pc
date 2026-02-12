@@ -18,7 +18,7 @@ contextBridge.exposeInMainWorld('ElectronBridge', {
     shell.openExternal(link)
   },
 
-  stretchlyVersion: () => {
+  screenrestVersion: () => {
     return ipcRenderer.invoke('get-version')
   },
 

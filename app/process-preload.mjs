@@ -4,7 +4,7 @@ import {
   exposeI18next,
   exposeRuntime,
   exposeSemver,
-  exposeStretchly,
+  exposeScreenRest,
   exposeUtils
 } from './utils/context-bridge-exposers.js'
 
@@ -12,6 +12,6 @@ exposeElectronApi()
 exposeGlobal()
 exposeI18next()
 exposeRuntime()
-exposeStretchly()
+exposeScreenRest()
 exposeSemver()
 exposeUtils()

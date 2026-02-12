@@ -72,8 +72,8 @@ function exposeSettings () {
   })
 }
 
-function exposeStretchly () {
-  contextBridge.exposeInMainWorld('stretchly', {
+function exposeScreenRest () {
+  contextBridge.exposeInMainWorld('screenrest', {
     onTranslate: (callback) => ipcRenderer.on('translate',
       () => callback()),
     onPlaySound: (callback) => ipcRenderer.on('play-sound',
@@ -129,7 +129,7 @@ export {
   exposeBreaks,
   exposeSemver,
   exposeSettings,
-  exposeStretchly,
+  exposeScreenRest,
   exposeRuntime,
   exposeUtils
 }

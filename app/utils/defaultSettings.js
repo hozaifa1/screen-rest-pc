@@ -1,5 +1,3 @@
-import defaultBreakIdeas from './defaultBreakIdeas.js'
-import defaultMicrobreakIdeas from './defaultMicrobreakIdeas.js'
 import defaultCustomMessages from './defaultCustomMessages.js'
 import defaultQuranAyats from './defaultQuranAyats.js'
 import { insideFlatpak, insideWindowsStore, insideSnap, insideWindowsPortable } from './utils.js'
@@ -16,19 +14,17 @@ export default {
   microbreakPostponeTime: 120000,
   microbreakPostponesLimit: 1,
   microbreakPostponableDurationPercent: 30,
-  mainColor: '#478484',
-  miniBreakColor: '#478484',
+  mainColor: '#0D9488',
+  miniBreakColor: '#0D9488',
   transparentMode: false,
   blurredBackground: false,
   opacity: 0.9,
   miniBreakAudio: 'crystal-glass',
   volume: 1,
-  fullscreen: false,
-  ideas: true,
+  fullscreen: true,
   naturalBreaks: true,
   naturalBreaksInactivityResetTime: 300000,
   allScreens: true,
-  useIdeasFromSettings: false,
   language: 'en',
   notifyNewVersion: true,
   isFirstRun: true,
@@ -41,11 +37,9 @@ export default {
   miniBreakStartSound: 'silence',
   themeSource: 'system',
   endBreakShortcut: 'CmdOrCtrl+X',
-  breakWindowWidth: 0.85,
-  breakWindowHeight: 0.85,
+  breakWindowWidth: 1.0,
+  breakWindowHeight: 1.0,
   checkNewVersion: true,
-  breakIdeas: defaultBreakIdeas,
-  microbreakIdeas: defaultMicrobreakIdeas,
   showBreaksAsRegularWindows: false,
   appExclusions: [],
   appExclusionsCheckInterval: 1000,

@@ -39,7 +39,7 @@ const allCommands = {
     description: 'Show this help message'
   },
   version: {
-    description: 'Show current Stretchly version'
+    description: 'Show current ScreenRest version'
   },
   logs: {
     description: 'Show location of logs file'
@@ -71,39 +71,39 @@ const allCommands = {
 }
 
 const allExamples = [{
-  cmd: 'stretchly pause',
+  cmd: 'screenrest pause',
   description: 'Pause breaks indefinitely'
 },
 {
-  cmd: 'stretchly pause -d 60',
+  cmd: 'screenrest pause -d 60',
   description: 'Pause breaks for one hour'
 },
 {
-  cmd: 'stretchly pause -d 1h',
+  cmd: 'screenrest pause -d 1h',
   description: 'Pause breaks for one hour'
 },
 {
-  cmd: 'stretchly pause -d 1h20m',
+  cmd: 'screenrest pause -d 1h20m',
   description: 'Pause breaks for one hour and twenty minutes'
 },
 {
-  cmd: 'stretchly mini -T "Stretch up!"',
+  cmd: 'screenrest mini -T "Stretch up!"',
   description: 'Start a Mini break, with the title "Stretch up!"'
 },
 {
-  cmd: 'stretchly long -T "Stretch up!" --noskip',
+  cmd: 'screenrest long -T "Stretch up!" --noskip',
   description: 'Set the next break\'s title to "Stretch up!"'
 },
 {
-  cmd: 'stretchly long -T "Stretch up!" -t "Go stretch!"',
+  cmd: 'screenrest long -T "Stretch up!" -t "Go stretch!"',
   description: 'Start a long break, with the title "Stretch up!" and text "Go stretch!"'
 },
 {
-  cmd: 'stretchly long -w 20m -T "Stretch up!"',
+  cmd: 'screenrest long -w 20m -T "Stretch up!"',
   description: 'Wait 20 minutes, then start a long break with the title set to "Stretch up!"'
 },
 {
-  cmd: 'stretchly preferences',
+  cmd: 'screenrest preferences',
   description: 'Open Preferences window'
 }]
 
@@ -133,7 +133,7 @@ class Command {
     }
 
     if (!this.supported[this.command]) {
-      log.error(`Stretchly${this.isFirstInstance ? '' : ' 2'}: command '${this.command}' is not supported`)
+      log.error(`ScreenRest${this.isFirstInstance ? '' : ' 2'}: command '${this.command}' is not supported`)
       return
     }
 
@@ -165,7 +165,7 @@ class Command {
       })
 
       if (!valid) {
-        log.error(`Stretchly${this.isFirstInstance ? '' : ' 2'}: option '${name}' is not valid for command '${this.command}'`)
+        log.error(`ScreenRest${this.isFirstInstance ? '' : ' 2'}: option '${name}' is not valid for command '${this.command}'`)
       }
     }
 
@@ -188,7 +188,7 @@ class Command {
 
       default:
         if (this.hasSupportedCommand) {
-          log.info(`Stretchly${this.isFirstInstance ? '' : ' 2'}: forwarding command '${this.command}' to the main instance`)
+          log.info(`ScreenRest${this.isFirstInstance ? '' : ' 2'}: forwarding command '${this.command}' to the main instance`)
         }
     }
   }
@@ -231,7 +231,7 @@ class Command {
   }
 
   ver () {
-    console.log(`Stretchly version ${this.version}`)
+    console.log(`ScreenRest version ${this.version}`)
   }
 
   logs () {
@@ -241,14 +241,14 @@ class Command {
   cmdHelp () {
     let i = 0
     const options = '[options]'
-    let part = `Usage: stretchly <command> ${options}\n\nCommands:`
+    let part = `Usage: screenrest <command> ${options}\n\nCommands:`
 
     const cmds = Object.keys(this.supported).map(key => `${key}${this.supported[key].options === undefined ? '' : ` ${options}`}`)
     const longuest = cmds.reduce((acc, cur) => acc > cur.length ? acc : cur.length, 0)
 
     part = Object.keys(this.supported).reduce((acc, key) => {
       const padding = longuest - cmds[i].length
-      const line = `stretchly ${cmds[i]}${' '.repeat(padding)} ${this.supported[key].description}`
+      const line = `screenrest ${cmds[i]}${' '.repeat(padding)} ${this.supported[key].description}`
       i++
       return `${acc}\n\t${line}`
     }, part)

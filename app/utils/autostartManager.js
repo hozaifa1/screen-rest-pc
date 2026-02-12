@@ -16,7 +16,7 @@ class AutostartManager {
     if (this.isFlatpak) {
       this.flatpakPortalManager = new FlatpakPortalManager(settings)
     } else if (process.platform === 'linux') {
-      this.nativeAutoLauncher = new AutoLaunch({ name: 'stretchly' })
+      this.nativeAutoLauncher = new AutoLaunch({ name: 'screenrest' })
     } else if (this.isWindowsStore) {
       this.windowsStoreAutoLauncher = new AutoLaunch({
         name: 'ScreenRest',

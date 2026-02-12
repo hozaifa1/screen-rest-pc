@@ -6,7 +6,7 @@ import './platform.js'
 let eventsAttached = false
 
 window.onload = async (e) => {
-  const bounds = await window.stretchly.getWindowBounds()
+  const bounds = await window.screenrest.getWindowBounds()
   const settings = await window.settings.currentSettings()
   if (settings.hideStrictModePreferences) {
     document.querySelectorAll('[data-strict-mode]').forEach(element => {
@@ -55,7 +55,7 @@ window.onload = async (e) => {
   document.ondrop = event =>
     event.preventDefault()
 
-  window.stretchly.onTranslate(async () => {
+  window.screenrest.onTranslate(async () => {
     new HtmlTranslate(document).translate()
     setWindowHeight()
   })
@@ -114,25 +114,12 @@ window.onload = async (e) => {
     }
   })
 
-  // Custom color picker logic
-  const presetColors = ['#478484', '#633738', '#ffffff', '#1D1F21', '#A49898', '#567890']
-  const customColorRadio = document.querySelector('#customColor')
+  // Color picker logic
   const colorPicker = document.querySelector('#colorPicker')
-  if (customColorRadio && colorPicker) {
-    if (!presetColors.includes(settings.mainColor)) {
-      customColorRadio.value = settings.mainColor
-      customColorRadio.checked = true
-      colorPicker.value = settings.mainColor
-    } else {
-      colorPicker.value = settings.mainColor
-    }
+  if (colorPicker) {
+    colorPicker.value = settings.mainColor || '#478484'
     if (!eventsAttached) {
       colorPicker.oninput = () => {
-        customColorRadio.value = colorPicker.value
-        customColorRadio.checked = true
-        window.settings.saveSettings('mainColor', colorPicker.value)
-      }
-      customColorRadio.onchange = () => {
         window.settings.saveSettings('mainColor', colorPicker.value)
       }
     }
@@ -225,17 +212,17 @@ window.onload = async (e) => {
   document.querySelectorAll('.sounds img').forEach(preview => {
     if (!eventsAttached) {
       preview.onclick = (event) =>
-        window.stretchly.playSound(preview.closest('div').querySelector('input').value)
+        window.screenrest.playSound(preview.closest('div').querySelector('input').value)
     }
   })
 
   setWindowHeight()
 
-  document.querySelector('.settings > div > button').onclick = (event) => {
-    window.stretchly.restoreDefaults()
+  document.querySelector('#restoreDefaultsBtn').onclick = (event) => {
+    window.screenrest.restoreDefaults()
   }
 
-  document.querySelector('.version').innerHTML = await window.stretchly.getVersion()
+  document.querySelector('.version').innerHTML = await window.screenrest.getVersion()
 
   function setWindowHeight () {
     const classes = document.querySelector('body').classList
@@ -256,7 +243,7 @@ window.onload = async (e) => {
       }
     }
     if (height) {
-      window.stretchly.setWindowSize(bounds.width, height)
+      window.screenrest.setWindowSize(bounds.width, height)
     }
   }
 }

@@ -1,14 +1,14 @@
 import VersionChecker from './utils/versionChecker.js'
 
 window.onload = async (e) => {
-  window.stretchly.onPlaySound((file, volume) => {
+  window.screenrest.onPlaySound((file, volume) => {
     __electronLog.info(`ScreenRest: playing audio/${file}.wav (volume: ${volume})`)
     const audio = new Audio(`audio/${file}.wav`)
     audio.volume = volume
     audio.play()
   })
 
-  window.stretchly.onShowNotification(async (text, silent) => {
+  window.screenrest.onShowNotification(async (text, silent) => {
     __electronLog.info(`ScreenRest: showing notification "${text}" (silent: ${silent})`)
     const title = await window.utils.shouldShowNotificationTitle(
       await window.runtime.platform(),
@@ -25,7 +25,7 @@ window.onload = async (e) => {
     setTimeout(() => notification.close(), 7000)
   })
 
-  window.stretchly.onCheckVersion(async (oldVersion, notify, silent) => {
+  window.screenrest.onCheckVersion(async (oldVersion, notify, silent) => {
     if (await window.global.getValue('isNewVersion') && notify) {
       notifyNewVersion(silent)
     } else {
@@ -37,7 +37,7 @@ window.onload = async (e) => {
             __electronLog.info(`ScreenRest: checking for new version (local: ${oldVersion}, remote: ${cleanVersion})`)
             if (await window.semver.valid(cleanVersion) && await window.semver.gt(cleanVersion, oldVersion)) {
               await window.global.setValue('isNewVersion', true)
-              window.stretchly.updateTray()
+              window.screenrest.updateTray()
               if (notify) {
                 notifyNewVersion(silent)
               }

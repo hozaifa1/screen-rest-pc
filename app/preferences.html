@@ -56,10 +56,6 @@
       <label data-i18next="preferences.settings.fullscreen" for="fullscreen"></label>
     </div>
     <div>
-      <input type="checkbox" value="ideas" id="showIdeas">
-      <label data-i18next="preferences.settings.showIdeas" for="showIdeas"></label>
-    </div>
-    <div>
       <input type="checkbox" value="allScreens" id="allScreens">
       <label data-i18next="preferences.settings.allScreens" for="allScreens"></label>
     </div>
@@ -169,7 +165,7 @@
       <hr />
     </div>
     <div>
-      <button type="button" data-i18next="preferences.settings.restoreDefaults"></button>
+      <button type="button" id="restoreDefaultsBtn" data-i18next="preferences.settings.restoreDefaults"></button>
     </div>
   </div>
   <div class="schedule hidden">
@@ -219,35 +215,9 @@
       <span data-i18next="preferences.theme.appearance">
       </span>
     </div>
-    <div class="appearance">
-      <input type="radio" value="#478484" name="mainColor" id="greenClouds">
-      <label data-i18next="preferences.theme.greenClouds" for="greenClouds"></label>
-    </div>
-    <div class="appearance">
-      <input type="radio" value="#633738" name="mainColor" id="autumnBeBlessed">
-      <label data-i18next="preferences.theme.autumnBeBlessed" for="autumnBeBlessed"></label>
-    </div>
-
-    <div class="appearance">
-      <input type="radio" value="#ffffff" name="mainColor" id="snowWhite">
-      <label data-i18next="preferences.theme.snowWhite" for="snowWhite"></label>
-    </div>
-    <div class="appearance">
-      <input type="radio" value="#1D1F21" name="mainColor" id="graphiteCrystal">
-      <label data-i18next="preferences.theme.graphiteCrystal" for="graphiteCrystal"></label>
-    </div>
-    <div class="appearance">
-      <input type="radio" value="#A49898" name="mainColor" id="coffeeKisses">
-      <label data-i18next="preferences.theme.coffeeKisses" for="coffeeKisses"></label>
-    </div>
-    <div class="appearance">
-      <input type="radio" value="#567890" name="mainColor" id="morningSwim">
-      <label data-i18next="preferences.theme.morningSwim" for="morningSwim"></label>
-    </div>
-    <div class="appearance">
-      <input type="radio" value="custom" name="mainColor" id="customColor">
-      <label for="customColor">Custom color</label>
-      <input type="color" id="colorPicker" value="#478484" style="margin-left: 8px; vertical-align: middle; width: 40px; height: 24px; border: none; cursor: pointer;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 12px; padding: 10px 0;">
+      <label for="colorPicker">Break color:</label>
+      <input type="color" id="colorPicker" value="#478484" title="Choose break screen color" style="width: 60px; height: 36px; border: none; cursor: pointer; border-radius: 4px;">
     </div>
     <div>
       <input type="checkbox" value="transparentMode" id="enableTransparency">
@@ -317,7 +287,7 @@
   <div class="about hidden">
     <div>
       <div>
-        <img src="images/stretchly.svg" data-has-dark-version alt="ScreenRest logo">
+        <img src="images/screenrest.svg" data-has-dark-version alt="ScreenRest logo">
         <span>ScreenRest</span>
       </div>
       <span data-i18next="preferences.about.tagline"></span>

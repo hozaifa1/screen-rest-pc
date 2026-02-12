@@ -54,7 +54,7 @@ class FlatpakPortalManager {
 
     try {
       const background = this.portal.getInterface('org.freedesktop.portal.Background')
-      const handleToken = `stretchly_autostart_${Date.now()}_${Math.random().toString(36).substring(7)}`
+      const handleToken = `screenrest_autostart_${Date.now()}_${Math.random().toString(36).substring(7)}`
 
       const options = {
         handle_token: new Variant('s', handleToken),
