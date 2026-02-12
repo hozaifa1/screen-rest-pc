@@ -114,6 +114,30 @@ window.onload = async (e) => {
     }
   })
 
+  // Custom color picker logic
+  const presetColors = ['#478484', '#633738', '#ffffff', '#1D1F21', '#A49898', '#567890']
+  const customColorRadio = document.querySelector('#customColor')
+  const colorPicker = document.querySelector('#colorPicker')
+  if (customColorRadio && colorPicker) {
+    if (!presetColors.includes(settings.mainColor)) {
+      customColorRadio.value = settings.mainColor
+      customColorRadio.checked = true
+      colorPicker.value = settings.mainColor
+    } else {
+      colorPicker.value = settings.mainColor
+    }
+    if (!eventsAttached) {
+      colorPicker.oninput = () => {
+        customColorRadio.value = colorPicker.value
+        customColorRadio.checked = true
+        window.settings.saveSettings('mainColor', colorPicker.value)
+      }
+      customColorRadio.onchange = () => {
+        window.settings.saveSettings('mainColor', colorPicker.value)
+      }
+    }
+  }
+
   document.querySelector('#language').value = settings.language
   if (!eventsAttached) {
     document.querySelector('#language').onchange = (event) => {

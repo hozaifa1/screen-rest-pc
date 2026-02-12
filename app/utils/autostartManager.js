@@ -20,7 +20,7 @@ class AutostartManager {
     } else if (this.isWindowsStore) {
       this.windowsStoreAutoLauncher = new AutoLaunch({
         name: 'ScreenRest',
-        path: '33881JanHovancik.stretchly_24fg4m0zq65je!ScreenRest',
+        path: 'ScreenRest!ScreenRest',
         isHidden: true
       })
     }
