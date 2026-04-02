@@ -139,50 +139,189 @@ window.onload = async (e) => {
     }
   }
 
-  // Custom message list popup logic
-  const currentMessageList = settings.customMessageList || []
+  // Ayat list management
+  const currentAyahList = settings.quranAyats || []
 
-  function renderMessageList () {
-    const container = document.querySelector('#messageListContainer')
+  function getAyahDisplayText (ayah) {
+    if (ayah.includes('|||')) {
+      const parts = ayah.split('|||')
+      if (parts.length >= 3) return parts[1].trim() + ' — ' + parts[2].trim()
+      if (parts.length === 2) return parts[0].trim() + ' — ' + parts[1].trim()
+    }
+    return ayah
+  }
+
+  function renderAyahList () {
+    const container = document.querySelector('#ayahListContainer')
     container.innerHTML = ''
-    currentMessageList.forEach((msg, index) => {
+    if (currentAyahList.length === 0) {
+      container.innerHTML = '<div class="empty-list-message">No ayat added yet.</div>'
+      return
+    }
+    currentAyahList.forEach((ayah, index) => {
       const item = document.createElement('div')
       item.className = 'message-item'
+      const indexLabel = document.createElement('span')
+      indexLabel.className = 'item-index'
+      indexLabel.textContent = `${index + 1}`
       const span = document.createElement('span')
-      span.textContent = msg
-      const btn = document.createElement('button')
-      btn.textContent = 'Remove'
-      btn.onclick = () => {
-        currentMessageList.splice(index, 1)
-        window.settings.saveSettings('customMessageList', currentMessageList)
-        renderMessageList()
+      span.textContent = getAyahDisplayText(ayah)
+      const actions = document.createElement('div')
+      actions.className = 'item-actions'
+      const editBtn = document.createElement('button')
+      editBtn.className = 'item-btn edit-btn'
+      editBtn.textContent = 'Edit'
+      editBtn.onclick = () => {
+        document.querySelector('#editAyahModal').classList.remove('hidden')
+        document.querySelector('#editAyahInput').value = getAyahDisplayText(ayah)
+        document.querySelector('#editAyahRefInput').value = ''
+        if (ayah.includes('|||')) {
+          const parts = ayah.split('|||')
+          if (parts.length >= 3) {
+            document.querySelector('#editAyahInput').value = parts[1].trim()
+            document.querySelector('#editAyahRefInput').value = parts[2].trim()
+          } else if (parts.length === 2) {
+            document.querySelector('#editAyahInput').value = parts[0].trim()
+            document.querySelector('#editAyahRefInput').value = parts[1].trim()
+          }
+        } else {
+          document.querySelector('#editAyahInput').value = ayah
+        }
+        document.querySelector('#saveEditAyahBtn').onclick = () => {
+          const newText = document.querySelector('#editAyahInput').value.trim()
+          const newRef = document.querySelector('#editAyahRefInput').value.trim()
+          if (newText) {
+            currentAyahList[index] = newRef ? `|||${newText}|||${newRef}` : newText
+            window.settings.saveSettings('quranAyats', currentAyahList)
+            renderAyahList()
+          }
+          document.querySelector('#editAyahModal').classList.add('hidden')
+        }
       }
+      const removeBtn = document.createElement('button')
+      removeBtn.className = 'item-btn remove-btn'
+      removeBtn.textContent = 'Remove'
+      removeBtn.onclick = () => {
+        currentAyahList.splice(index, 1)
+        window.settings.saveSettings('quranAyats', currentAyahList)
+        window.settings.saveSettings('ayahIndex', 0)
+        renderAyahList()
+      }
+      actions.appendChild(editBtn)
+      actions.appendChild(removeBtn)
+      item.appendChild(indexLabel)
       item.appendChild(span)
-      item.appendChild(btn)
+      item.appendChild(actions)
+      container.appendChild(item)
+    })
+  }
+
+  // Reminders list management
+  const currentReminderList = settings.islamicReminders || []
+
+  function renderReminderList () {
+    const container = document.querySelector('#reminderListContainer')
+    container.innerHTML = ''
+    if (currentReminderList.length === 0) {
+      container.innerHTML = '<div class="empty-list-message">No reminders added yet.</div>'
+      return
+    }
+    currentReminderList.forEach((reminder, index) => {
+      const item = document.createElement('div')
+      item.className = 'message-item'
+      const indexLabel = document.createElement('span')
+      indexLabel.className = 'item-index'
+      indexLabel.textContent = `${index + 1}`
+      const span = document.createElement('span')
+      span.textContent = reminder
+      const actions = document.createElement('div')
+      actions.className = 'item-actions'
+      const editBtn = document.createElement('button')
+      editBtn.className = 'item-btn edit-btn'
+      editBtn.textContent = 'Edit'
+      editBtn.onclick = () => {
+        document.querySelector('#editReminderModal').classList.remove('hidden')
+        document.querySelector('#editReminderInput').value = reminder
+        document.querySelector('#saveEditReminderBtn').onclick = () => {
+          const newText = document.querySelector('#editReminderInput').value.trim()
+          if (newText) {
+            currentReminderList[index] = newText
+            window.settings.saveSettings('islamicReminders', currentReminderList)
+            renderReminderList()
+          }
+          document.querySelector('#editReminderModal').classList.add('hidden')
+        }
+      }
+      const removeBtn = document.createElement('button')
+      removeBtn.className = 'item-btn remove-btn'
+      removeBtn.textContent = 'Remove'
+      removeBtn.onclick = () => {
+        currentReminderList.splice(index, 1)
+        window.settings.saveSettings('islamicReminders', currentReminderList)
+        window.settings.saveSettings('reminderIndex', 0)
+        renderReminderList()
+      }
+      actions.appendChild(editBtn)
+      actions.appendChild(removeBtn)
+      item.appendChild(indexLabel)
+      item.appendChild(span)
+      item.appendChild(actions)
       container.appendChild(item)
     })
   }
 
   if (!eventsAttached) {
-    document.querySelector('#openCustomMessageList').onclick = () => {
-      document.querySelector('#customMessageModal').classList.remove('hidden')
-      renderMessageList()
+    document.querySelector('#openAyahList').onclick = () => {
+      document.querySelector('#ayahModal').classList.remove('hidden')
+      renderAyahList()
     }
-    document.querySelector('#closeMessageModal').onclick = () => {
-      document.querySelector('#customMessageModal').classList.add('hidden')
+    document.querySelector('#closeAyahModal').onclick = () => {
+      document.querySelector('#ayahModal').classList.add('hidden')
     }
-    document.querySelector('#addMessageBtn').onclick = () => {
-      const input = document.querySelector('#newMessageInput')
+    document.querySelector('#addAyahBtn').onclick = () => {
+      const input = document.querySelector('#newAyahInput')
+      const refInput = document.querySelector('#newAyahRefInput')
       const val = input.value.trim()
+      const ref = refInput ? refInput.value.trim() : ''
       if (val) {
-        currentMessageList.push(val)
-        window.settings.saveSettings('customMessageList', currentMessageList)
+        const entry = ref ? `|||${val}|||${ref}` : val
+        currentAyahList.push(entry)
+        window.settings.saveSettings('quranAyats', currentAyahList)
         input.value = ''
-        renderMessageList()
+        if (refInput) refInput.value = ''
+        renderAyahList()
       }
     }
-    document.querySelector('#newMessageInput').onkeydown = (e) => {
-      if (e.key === 'Enter') document.querySelector('#addMessageBtn').click()
+    document.querySelector('#newAyahInput').onkeydown = (e) => {
+      if (e.key === 'Enter') document.querySelector('#addAyahBtn').click()
+    }
+
+    document.querySelector('#openReminderList').onclick = () => {
+      document.querySelector('#reminderModal').classList.remove('hidden')
+      renderReminderList()
+    }
+    document.querySelector('#closeReminderModal').onclick = () => {
+      document.querySelector('#reminderModal').classList.add('hidden')
+    }
+    document.querySelector('#addReminderBtn').onclick = () => {
+      const input = document.querySelector('#newReminderInput')
+      const val = input.value.trim()
+      if (val) {
+        currentReminderList.push(val)
+        window.settings.saveSettings('islamicReminders', currentReminderList)
+        input.value = ''
+        renderReminderList()
+      }
+    }
+    document.querySelector('#newReminderInput').onkeydown = (e) => {
+      if (e.key === 'Enter') document.querySelector('#addReminderBtn').click()
+    }
+
+    document.querySelector('#resetAyahsBtn').onclick = () => {
+      window.screenrest.resetAyahs()
+    }
+    document.querySelector('#resetRemindersBtn').onclick = () => {
+      window.screenrest.resetReminders()
     }
   }
 

@@ -54,19 +54,28 @@
       <hr />
     </div>
     <div>
-      <input type="checkbox" value="customMessagesEnabled" id="customMessagesEnabled">
-      <label for="customMessagesEnabled">Enable custom messages during breaks</label>
-    </div>
-    <div>
-      <button type="button" id="openCustomMessageList" class="push">Custom Message List</button>
-    </div>
-    <div>
       <input type="checkbox" value="quranAyatEnabled" id="quranAyatEnabled">
       <label for="quranAyatEnabled">Enable Quran Ayat during breaks</label>
     </div>
     <div>
+      <button type="button" id="openAyahList" class="push">Manage Ayat List</button>
+    </div>
+    <div>
+      <button type="button" id="resetAyahsBtn" style="font-size: 12px; padding: 6px 12px;">Reset to Default Ayats</button>
+    </div>
+    <div>
+      <input type="checkbox" value="islamicRemindersEnabled" id="islamicRemindersEnabled">
+      <label for="islamicRemindersEnabled">Enable Islamic Reminders during breaks</label>
+    </div>
+    <div>
+      <button type="button" id="openReminderList" class="push">Manage Reminders List</button>
+    </div>
+    <div>
+      <button type="button" id="resetRemindersBtn" style="font-size: 12px; padding: 6px 12px;">Reset to Default Reminders</button>
+    </div>
+    <div>
       <p style="font-size: 0.9em; color: #888; margin-top: -10px;">
-        When both are enabled, break screens will randomly show either a custom message or a Quran Ayat.
+        Break screens will alternate between Ayat and Reminders sequentially.
       </p>
     </div>
     <div>
@@ -203,37 +212,6 @@
       <hr>
     </div>
     <div>
-      <span data-i18next="preferences.theme.sounds">
-      </span>
-    </div>
-    <div>
-      <input type="checkbox" class="negative" value="silentNotifications" id="enableSounds">
-      <label data-i18next="preferences.theme.enableSounds" for="enableSounds"></label>
-    </div>
-    <div class="sounds">
-      <input type="radio" value="crystal-glass" name="longBreakAudio" id="crystalGlass">
-      <label data-i18next="preferences.theme.crystalGlass" for="crystalGlass"></label>
-      <img src="images/preferences/speaker.png" data-has-dark-version alt="Play sound">
-    </div>
-    <div class="sounds">
-      <input type="radio" value="wind-chime" name="longBreakAudio" id="windChime">
-      <label data-i18next="preferences.theme.windChime" for="windChime"></label>
-      <img src="images/preferences/speaker.png" data-has-dark-version alt="Play sound">
-    </div>
-    <div class="sounds">
-      <input type="radio" value="tic-toc" name="longBreakAudio" id="ticToc">
-      <label data-i18next="preferences.theme.ticToc" for="ticToc"></label>
-      <img src="images/preferences/speaker.png" data-has-dark-version alt="Play sound">
-    </div>
-    <div class="sounds">
-      <input type="radio" value="reverie" name="longBreakAudio" id="reverie">
-      <label data-i18next="preferences.theme.reverie" for="reverie"></label>
-      <img src="images/preferences/speaker.png" data-has-dark-version alt="Play sound">
-    </div>
-    <div>
-      <hr>
-    </div>
-    <div>
       <span data-i18next="preferences.theme.trayIcon">
       </span>
     </div>
@@ -271,6 +249,63 @@
     <div>
       <span data-i18next="preferences.about.version"></span>
       <span class="version"></span>
+    </div>
+  </div>
+  <div id="ayahModal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <h3>Quran Ayat List</h3>
+      <p class="modal-subtitle">Ayat are shown sequentially during breaks. Add translation and optional reference.</p>
+      <div id="ayahListContainer" class="list-container"></div>
+      <div class="add-item-row">
+        <input type="text" id="newAyahInput" placeholder="Ayah translation text..." class="modal-input">
+        <input type="text" id="newAyahRefInput" placeholder="Reference e.g. Surah Al-Baqarah (2:153)" class="modal-input modal-input-sm">
+        <button type="button" id="addAyahBtn" class="push">Add</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="closeAyahModal">Close</button>
+      </div>
+    </div>
+  </div>
+  <div id="editAyahModal" class="modal-overlay hidden">
+    <div class="modal-content modal-content-sm">
+      <h3>Edit Ayah</h3>
+      <div class="edit-form">
+        <label>Translation</label>
+        <textarea id="editAyahInput" class="modal-textarea" rows="3" placeholder="Enter ayah translation..."></textarea>
+        <label>Reference (optional)</label>
+        <input type="text" id="editAyahRefInput" class="modal-input" placeholder="e.g. Surah Al-Baqarah (2:153)">
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cancelEditAyahBtn" onclick="document.querySelector('#editAyahModal').classList.add('hidden')">Cancel</button>
+        <button type="button" id="saveEditAyahBtn" class="push">Save</button>
+      </div>
+    </div>
+  </div>
+  <div id="reminderModal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <h3>Islamic Reminders List</h3>
+      <p class="modal-subtitle">Reminders alternate with Ayat during breaks, shown sequentially.</p>
+      <div id="reminderListContainer" class="list-container"></div>
+      <div class="add-item-row">
+        <input type="text" id="newReminderInput" placeholder="Add a new reminder..." class="modal-input">
+        <button type="button" id="addReminderBtn" class="push">Add</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="closeReminderModal">Close</button>
+      </div>
+    </div>
+  </div>
+  <div id="editReminderModal" class="modal-overlay hidden">
+    <div class="modal-content modal-content-sm">
+      <h3>Edit Reminder</h3>
+      <div class="edit-form">
+        <label>Reminder text</label>
+        <textarea id="editReminderInput" class="modal-textarea" rows="3" placeholder="Enter reminder text..."></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cancelEditReminderBtn" onclick="document.querySelector('#editReminderModal').classList.add('hidden')">Cancel</button>
+        <button type="button" id="saveEditReminderBtn" class="push">Save</button>
+      </div>
     </div>
   </div>
 </body>

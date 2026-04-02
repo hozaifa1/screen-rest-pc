@@ -26,6 +26,7 @@ import { registerBreakShortcuts } from './utils/breakShortcuts.js'
 import defaultSettings from './utils/defaultSettings.js'
 import StatusMessages from './utils/statusMessages.js'
 import DisplayManager from './utils/displayManager.js'
+import { getNextMessage, getNextThemeColor } from './utils/messageSelector.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -197,6 +198,16 @@ async function initialize (isAppStart = true) {
               log.info('ScreenRest: migrating tray settings to trayIconStyle="default"')
             }
             store.delete('timeToBreakInTray')
+          }
+        },
+        '1.21.0': store => {
+          // Reset quranAyats to new format with Arabic text
+          const currentAyats = store.get('quranAyats') || []
+          if (currentAyats.length > 0 && !currentAyats[0].includes('|||')) {
+            log.info('ScreenRest: resetting quranAyats to new format with Arabic text')
+            store.delete('quranAyats')
+            store.delete('ayahIndex')
+            store.delete('lastMessageType')
           }
         }
       },
@@ -499,14 +510,12 @@ function startMicrobreak () {
   const modalPath = 'file://' + join(__dirname, '/microbreak.html')
   microbreakWins = []
 
-  const idea = ['']
+  // Get next message sequentially (Ayah -> Reminder -> Ayah -> Reminder)
+  const message = getNextMessage(settings)
+  const idea = [message.content, '']
 
-  if (!settings.get('silentNotifications')) {
-    const sound = settings.get('miniBreakStartSound')
-    if (sound !== 'silence') {
-      processWin.webContents.send('play-sound', sound, settings.get('volume'))
-    }
-  }
+  // Get next theme color for dynamic rotation
+  const dynamicColor = getNextThemeColor(settings)
 
   ipcMain.handle('send-mini-break-data', (event) => {
     const startTime = Date.now()
@@ -525,7 +534,7 @@ function startMicrobreak () {
     }
     return [idea, startTime, breakDuration, strictMode,
       false, 0,
-      calculateBackgroundColor(settings.get('miniBreakColor'))]
+      calculateBackgroundColor(dynamicColor)]
   })
 
   for (let localDisplayId = 0; localDisplayId < displayManager.getDisplayCount(); localDisplayId++) {
@@ -540,7 +549,7 @@ function startMicrobreak () {
       backgroundThrottling: false,
       transparent: !showBreaksAsRegularWindows,
       ...getBlurredBackgroundWindowOptions(),
-      backgroundColor: calculateBackgroundColor(settings.get('miniBreakColor')),
+      backgroundColor: calculateBackgroundColor(dynamicColor),
       skipTaskbar: !showBreaksAsRegularWindows,
       focusable: showBreaksAsRegularWindows,
       alwaysOnTop: !showBreaksAsRegularWindows,
@@ -632,12 +641,9 @@ function startMicrobreak () {
   }
 }
 
-function breakComplete (shouldPlaySound, windows) {
+function breakComplete (windows) {
   if (settings.get('endBreakShortcut') && globalShortcut.isRegistered(settings.get('endBreakShortcut'))) {
     globalShortcut.unregister(settings.get('endBreakShortcut'))
-  }
-  if (shouldPlaySound && !settings.get('silentNotifications')) {
-    processWin.webContents.send('play-sound', settings.get('miniBreakAudio'), settings.get('volume'))
   }
   if (process.platform === 'darwin') {
     Menu.sendActionToFirstResponder('hide:')
@@ -645,11 +651,8 @@ function breakComplete (shouldPlaySound, windows) {
   return closeWindows(windows)
 }
 
-function enterMiniBreakManualContinuation (shouldPlaySound) {
+function enterMiniBreakManualContinuation () {
   if (!settings.get('miniBreakManualFinish')) return
-  if (shouldPlaySound && !settings.get('silentNotifications')) {
-    processWin.webContents.send('play-sound', settings.get('miniBreakAudio'), settings.get('volume'))
-  }
   if (microbreakWins) {
     microbreakWins.forEach(w => {
       if (w && !w.isDestroyed()) {
@@ -660,8 +663,8 @@ function enterMiniBreakManualContinuation (shouldPlaySound) {
   log.info('ScreenRest: entering manual finish phase (break)')
 }
 
-function finishMicrobreak (shouldPlaySound = true, shouldPlanNext = true) {
-  microbreakWins = breakComplete(shouldPlaySound, microbreakWins)
+function finishMicrobreak (shouldPlanNext = true) {
+  microbreakWins = breakComplete(microbreakWins)
   log.info(`ScreenRest: finishing break (shouldPlanNext: ${shouldPlanNext})`)
   if (shouldPlanNext) {
     breakPlanner.nextBreak()
@@ -673,7 +676,7 @@ function finishMicrobreak (shouldPlaySound = true, shouldPlanNext = true) {
 
 function skipToMicrobreak (delay) {
   if (microbreakWins) {
-    microbreakWins = breakComplete(false, microbreakWins)
+    microbreakWins = breakComplete(microbreakWins)
   }
   if (delay) {
     breakPlanner.skipToMicrobreak(delay)
@@ -691,7 +694,7 @@ function skipToBreak (delay) {
 
 function resetBreaks () {
   if (microbreakWins) {
-    microbreakWins = breakComplete(false, microbreakWins)
+    microbreakWins = breakComplete(microbreakWins)
   }
   breakPlanner.reset()
   log.info('ScreenRest: resetting breaks')
@@ -943,12 +946,12 @@ function updateToolTip () {
 function showNotification (text) {
   processWin.webContents.send('show-notification',
     text,
-    settings.get('silentNotifications')
+    true
   )
 }
 
-ipcMain.on('finish-mini-break', function (event, shouldPlaySound, shouldPlanNext) {
-  finishMicrobreak(shouldPlaySound, shouldPlanNext)
+ipcMain.on('finish-mini-break', function (event, shouldPlanNext) {
+  finishMicrobreak(shouldPlanNext)
 })
 
 ipcMain.on('save-setting', function (event, key, value) {
@@ -966,14 +969,6 @@ ipcMain.on('save-setting', function (event, key, value) {
 
   if (key === 'themeSource') {
     nativeTheme.themeSource = value
-  }
-
-  if (key === 'longBreakAudio') {
-    settings.set('miniBreakAudio', value)
-  }
-
-  if (key === 'mainColor') {
-    settings.set('miniBreakColor', value)
   }
 
   if (key === 'showTrayIcon') {
@@ -997,6 +992,20 @@ ipcMain.on('save-setting', function (event, key, value) {
   updateTray()
 })
 
+ipcMain.on('reset-quran-ayahs', (event) => {
+  log.info('ScreenRest: resetting Quran ayahs to defaults with Arabic text')
+  settings.delete('quranAyats')
+  settings.delete('ayahIndex')
+  event.sender.send('renderSettings', settings.store)
+})
+
+ipcMain.on('reset-islamic-reminders', (event) => {
+  log.info('ScreenRest: resetting Islamic reminders to defaults')
+  settings.delete('islamicReminders')
+  settings.delete('reminderIndex')
+  event.sender.send('renderSettings', settings.store)
+})
+
 ipcMain.on('update-tray', function (event) {
   updateTray()
 })
@@ -1016,10 +1025,6 @@ ipcMain.on('restore-defaults', (event) => {
       event.sender.reload()
     }
   })
-})
-
-ipcMain.on('play-sound', (event, sound) => {
-  processWin.webContents.send('play-sound', sound, settings.get('volume'))
 })
 
 ipcMain.handle('show-debug', (event) => {

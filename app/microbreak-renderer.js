@@ -2,7 +2,7 @@ import HtmlTranslate from './utils/htmlTranslate.js'
 import './platform.js'
 
 window.onload = async (event) => {
-  const [, started, duration, strictMode, ,
+  const [idea, started, duration, strictMode, ,
     , backgroundColor] = await window.breaks.sendBreakData()
 
   new HtmlTranslate(document).translate()
@@ -16,43 +16,54 @@ window.onload = async (event) => {
   document.querySelector('#close').onclick = async event =>
     await window.breaks.finishBreak()
 
-  const customMessagesEnabled = await window.settings.get('customMessagesEnabled')
-  const quranAyatEnabled = await window.settings.get('quranAyatEnabled')
-  const customMessageList = await window.settings.get('customMessageList') || []
-  const storedQuranAyats = await window.settings.get('quranAyats') || []
+  const customMessage = await window.settings.get('customBreakMessage')
   const customMessageElement = document.querySelector('.custom-break-message')
-
-  let displayMessage = ''
-
-  const pool = []
-  if (customMessagesEnabled && customMessageList.length > 0) {
-    pool.push(...customMessageList.map(m => m))
-  }
-  if (quranAyatEnabled && storedQuranAyats.length > 0) {
-    pool.push(...storedQuranAyats.map(a => a))
-  }
-
-  if (pool.length > 0) {
-    displayMessage = pool[Math.floor(Math.random() * pool.length)]
-  }
-
-  if (displayMessage) {
-    customMessageElement.innerHTML = window.breaks.sanitizeIdea(displayMessage)
+  if (customMessage && customMessage.trim() !== '') {
+    customMessageElement.innerHTML = window.breaks.sanitizeIdea(customMessage)
     customMessageElement.style.display = 'block'
   } else {
     customMessageElement.style.display = 'none'
   }
 
-  document.querySelector('.microbreak-idea').style.display = 'none'
+  const messageContent = idea[0]
+  const microbreakIdeaElement = document.querySelector('.microbreak-idea')
+  const breakTextElement = document.querySelector('.break-text')
+  const breakReferenceElement = document.querySelector('.break-reference')
 
-  document.querySelectorAll('.custom-break-message a, .microbreak-idea a').forEach(a => {
+  breakTextElement.style.display = 'none'
+  breakReferenceElement.style.display = 'none'
+  microbreakIdeaElement.style.display = 'none'
+
+  if (messageContent && messageContent.includes('|||')) {
+    const parts = messageContent.split('|||')
+    if (parts.length >= 3) {
+      breakTextElement.innerHTML = window.breaks.sanitizeIdea(parts[1].trim())
+      breakTextElement.style.display = 'block'
+      if (parts[2].trim()) {
+        breakReferenceElement.innerHTML = window.breaks.sanitizeIdea(`— ${parts[2].trim()}`)
+        breakReferenceElement.style.display = 'block'
+      }
+    } else if (parts.length === 2) {
+      breakTextElement.innerHTML = window.breaks.sanitizeIdea(parts[0].trim())
+      breakTextElement.style.display = 'block'
+      if (parts[1].trim()) {
+        breakReferenceElement.innerHTML = window.breaks.sanitizeIdea(`— ${parts[1].trim()}`)
+        breakReferenceElement.style.display = 'block'
+      }
+    }
+  } else if (messageContent) {
+    breakTextElement.innerHTML = window.breaks.sanitizeIdea(messageContent)
+    breakTextElement.style.display = 'block'
+  }
+
+  document.querySelectorAll('.custom-break-message a, .microbreak-idea a, .break-text a').forEach(a => {
     a.onclick = (event) => {
       event.preventDefault()
       window.electronApi.openExternal(a.href)
     }
   })
 
-  document.querySelectorAll('.microbreak-idea img').forEach(async img => {
+  document.querySelectorAll('.microbreak-idea img, .break-text img').forEach(async img => {
     const src = img.getAttribute('src') || ''
     const resolved = await window.electronApi.resolveLocalImage(src)
     if (resolved) {

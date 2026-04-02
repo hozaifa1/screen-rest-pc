@@ -25,8 +25,36 @@ window.onload = async (event) => {
     customMessageElement.style.display = 'none'
   }
 
-  document.querySelector('.break-idea').innerHTML = window.breaks.sanitizeIdea(idea[0])
-  document.querySelector('.break-text').innerHTML = window.breaks.sanitizeIdea(idea[1])
+  const messageContent = idea[0]
+  const breakIdeaElement = document.querySelector('.break-idea')
+  const breakTextElement = document.querySelector('.break-text')
+  const breakReferenceElement = document.querySelector('.break-reference')
+
+  breakReferenceElement.style.display = 'none'
+  breakIdeaElement.style.display = 'none'
+  breakTextElement.style.display = 'none'
+
+  if (messageContent && messageContent.includes('|||')) {
+    const parts = messageContent.split('|||')
+    if (parts.length >= 3) {
+      breakTextElement.innerHTML = window.breaks.sanitizeIdea(parts[1].trim())
+      breakTextElement.style.display = 'block'
+      if (parts[2].trim()) {
+        breakReferenceElement.innerHTML = window.breaks.sanitizeIdea(`— ${parts[2].trim()}`)
+        breakReferenceElement.style.display = 'block'
+      }
+    } else if (parts.length === 2) {
+      breakTextElement.innerHTML = window.breaks.sanitizeIdea(parts[0].trim())
+      breakTextElement.style.display = 'block'
+      if (parts[1].trim()) {
+        breakReferenceElement.innerHTML = window.breaks.sanitizeIdea(`— ${parts[1].trim()}`)
+        breakReferenceElement.style.display = 'block'
+      }
+    }
+  } else if (messageContent) {
+    breakTextElement.innerHTML = window.breaks.sanitizeIdea(messageContent)
+    breakTextElement.style.display = 'block'
+  }
 
   document.querySelectorAll('.custom-break-message a, .break-idea a, .break-text a').forEach(a => {
     a.onclick = (event) => {

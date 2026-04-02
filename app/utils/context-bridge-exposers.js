@@ -87,6 +87,8 @@ function exposeScreenRest () {
     getVersion: () => ipcRenderer.invoke('get-version'),
     setWindowSize: (width, height) => ipcRenderer.send('set-window-size', width, height),
     restoreDefaults: () => ipcRenderer.send('restore-defaults'),
+    resetAyahs: () => ipcRenderer.send('reset-quran-ayahs'),
+    resetReminders: () => ipcRenderer.send('reset-islamic-reminders'),
     closeWindow: () => ipcRenderer.send('close-current-window'),
     openContributorAuth: (provider) => ipcRenderer.send('open-contributor-auth', provider),
     openContributorPreferences: () => ipcRenderer.send('open-contributor-preferences'),

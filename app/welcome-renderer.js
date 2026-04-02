@@ -77,8 +77,8 @@ window.onload = async (event) => {
 
   document.querySelectorAll('button').forEach(button => {
     if (!eventsAttached) {
-      button.onclick = () => {
-        window.settings.saveSettings('isFirstRun', false)
+      button.onclick = async () => {
+        await window.settings.saveSettings('isFirstRun', false)
         switch (button.getAttribute('data-location')) {
           case 'tutorial':
             window.electronApi.openExternal('https://github.com/hozaifa1/screenrest-pc')
@@ -89,7 +89,9 @@ window.onload = async (event) => {
           default:
             break
         }
-        window.screenrest.closeWindow()
+        setTimeout(() => {
+          window.screenrest.closeWindow()
+        }, 100)
       }
     }
   })
