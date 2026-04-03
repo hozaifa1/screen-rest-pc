@@ -32,15 +32,7 @@ This project was built on top of the excellent [stretchly](https://github.com/ho
 
 ### Windows
 
-Download the latest installer or portable version from the [Releases](https://github.com/hozaifa1/screen-rest-pc/releases) page.
-
-### macOS
-
-Download the `.dmg` file from the [Releases](https://github.com/hozaifa1/screen-rest-pc/releases) page. ScreenRest supports both Intel and Apple Silicon Macs.
-
-### Linux
-
-Download the AppImage, `.deb`, `.rpm`, or other package from the [Releases](https://github.com/hozaifa1/screen-rest-pc/releases) page. Available formats: AppImage, deb, rpm, pacman, tar.xz, apk, and freebsd.
+The installer is located in the `dist/` directory after building. Run the `.exe` file to install.
 
 ### Running from Source
 
@@ -51,17 +43,12 @@ npm install
 npm start
 ```
 
-### Building an Installer
+### Building
 
 ```bash
 npm install --no-save
-npx electron-builder build
+npx electron-builder build --win
 ```
-
-Platform-specific builds:
-- Windows: `npx electron-builder build --win`
-- macOS: `npx electron-builder build --mac`
-- Linux: `npx electron-builder build --linux`
 
 Output files are placed in the `dist/` folder.
 
