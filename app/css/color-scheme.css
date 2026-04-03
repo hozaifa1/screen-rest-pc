@@ -2,35 +2,38 @@
   :root {
     --main-color: #1A2B2A;
     --main-bg-color: #F5F7F6;
-    --nav-bg: linear-gradient(180deg, #E0F2F1 1%, #D0F0ED 97%);
-    --nav-shadow: inset 0 0 0 0 rgba(255,255,255,0.50), inset 0 0 0 0 #B2DFDB, inset 0 -1px 0 0 rgba(178,223,219,0.30);
+    --nav-bg: linear-gradient(180deg, #E8F5F3 1%, #D8F0ED 97%);
+    --nav-shadow: 0 2px 8px rgba(0,0,0,0.08);
 
     --hr-bg-color: #B2DFDB;
 
     --button-bg-color: #FFFFFF;
     --button-color: #1A2B2A;
-    --button-shadow: 0 0 1px 0 rgba(0,0,0,0.15);
+    --button-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
     --button-push-bg: linear-gradient(180deg, #4DB6AC 0%, #26A69A 100%);
-    --button-push-shadow: 0 0 0 0 rgba(0,0,0,0.15);
+    --button-push-shadow: 0 4px 6px rgba(38, 166, 154, 0.3);
 
     --checkbox-bg: #FFFFFF;
-    --checkbox-shadow: inset 0 0 1px 0 rgba(0,0,0,0.25);
-    --checkbox-checked-bg: #26A69A;
+    --checkbox-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0 1px 2px rgba(0,0,0,0.05);
+    --checkbox-checked-bg: linear-gradient(180deg, #4DB6AC 0%, #26A69A 100%);
 
     --has-select-before-bg: linear-gradient(180deg, #4DB6AC 0%, #26A69A 100%);
     --select-bg: #FFFFFF;
     --select-color: #1A2B2A;
-    --select-border: 0 solid rgba(0,0,0,0.10);
-    --select-shadow: 0 0 1px 0 rgba(0,0,0,0.15);
+    --select-border: 1px solid #B2DFDB;
+    --select-shadow: 0 1px 2px rgba(0,0,0,0.05);
     --select-option-bg: #FFFFFF;
 
-    --appearance-border-color: #EEF3F2;
+    --appearance-border-color: #E0F2F1;
 
     --accent-color: #26A69A;
     --accent-light: #4DB6AC;
+    --accent-gradient: linear-gradient(135deg, #26A69A 0%, #4DB6AC 100%);
     --text-secondary: #5F7A78;
-    --surface-variant: #EEF3F2;
-    --primary-container: #D0F0ED;
+    --surface-variant: #E8F5F3;
+    --primary-container: #D8F0ED;
+    --card-bg: #FFFFFF;
+    --card-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
   }
 }
 
@@ -38,34 +41,37 @@
   :root {
     --main-color: #E0F2F1;
     --main-bg-color: #0D1B1A;
-    --nav-bg: linear-gradient(180deg, #1A302F 1%, #142625 97%);
-    --nav-shadow: inset 0 0 0 0 #000000, inset 0 -1px 0 0 #0D1B1A, inset 0 0 0 0 rgba(255,255,255,0.05);
+    --nav-bg: linear-gradient(180deg, #1A302F 1%, #152625 97%);
+    --nav-shadow: 0 2px 8px rgba(0,0,0,0.3);
 
     --hr-bg-color: #1C3331;
 
     --button-bg-color: rgba(77,182,172,0.15);
     --button-color: #E0F2F1;
-    --button-shadow: 0 0 1px 0 rgba(0,0,0,0.30);
+    --button-shadow: 0 1px 3px rgba(0,0,0,0.2);
     --button-push-bg: linear-gradient(180deg, #26A69A 0%, #00897B 100%);
-    --button-push-shadow: 0 0 1px 0 rgba(0,0,0,0.40);
+    --button-push-shadow: 0 4px 6px rgba(0,0,0,0.3);
 
     --checkbox-bg: rgba(77,182,172,0.12);
-    --checkbox-shadow: 0 0 1px 0 rgba(0,0,0,0.40), inset 0 0 0 0 rgba(255,255,255,0.08);
+    --checkbox-shadow: 0 1px 2px rgba(0,0,0,0.2), inset 0 1px 2px rgba(0,0,0,0.1);
     --checkbox-checked-bg: linear-gradient(180deg, #26A69A 0%, #00897B 100%);
 
     --has-select-before-bg: linear-gradient(180deg, #26A69A 0%, #00897B 100%);
     --select-bg: rgba(77,182,172,0.12);
     --select-color: #E0F2F1;
-    --select-border: 0 solid rgba(0,0,0,0.35);
-    --select-shadow: 0 0 1px 0 rgba(0,0,0,0.30);
+    --select-border: 1px solid #1C3331;
+    --select-shadow: 0 1px 2px rgba(0,0,0,0.2);
     --select-option-bg: #1A302F;
 
     --appearance-border-color: #1C3331;
 
     --accent-color: #4DB6AC;
     --accent-light: #80CBC4;
+    --accent-gradient: linear-gradient(135deg, #00897B 0%, #4DB6AC 100%);
     --text-secondary: #80A09E;
     --surface-variant: #1A302F;
     --primary-container: #1C3331;
+    --card-bg: #1A302F;
+    --card-shadow: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
   }
 }

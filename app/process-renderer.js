@@ -1,13 +1,6 @@
 import VersionChecker from './utils/versionChecker.js'
 
 window.onload = async (e) => {
-  window.screenrest.onPlaySound((file, volume) => {
-    __electronLog.info(`ScreenRest: playing audio/${file}.wav (volume: ${volume})`)
-    const audio = new Audio(`audio/${file}.wav`)
-    audio.volume = volume
-    audio.play()
-  })
-
   window.screenrest.onShowNotification(async (text, silent) => {
     __electronLog.info(`ScreenRest: showing notification "${text}" (silent: ${silent})`)
     const title = await window.utils.shouldShowNotificationTitle(
@@ -19,7 +12,7 @@ window.onload = async (e) => {
     const notification = new Notification(title, {
       body: text,
       requireInteraction: true,
-      silent,
+      silent: true,
       icon: '../build/icon.ico'
     })
     setTimeout(() => notification.close(), 7000)
